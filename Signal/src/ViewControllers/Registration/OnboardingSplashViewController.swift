@@ -9,8 +9,6 @@ import SafariServices
 @objc
 public class OnboardingSplashViewController: OnboardingBaseViewController {
 
-    let modeSwitchButton = UIButton()
-
     override var primaryLayoutMargins: UIEdgeInsets {
         var defaultMargins = super.primaryLayoutMargins
         // we want the hero image a bit closer to the top than most
@@ -23,19 +21,6 @@ public class OnboardingSplashViewController: OnboardingBaseViewController {
         view = UIView()
         view.addSubview(primaryView)
         primaryView.autoPinEdgesToSuperviewEdges()
-
-        view.addSubview(modeSwitchButton)
-        modeSwitchButton.setTemplateImageName(
-            OnboardingController.defaultOnboardingMode == .registering ? "link-24" : "link-broken-24",
-            tintColor: .ows_gray25
-        )
-        modeSwitchButton.autoSetDimensions(to: CGSize(square: 40))
-        modeSwitchButton.autoPinEdge(toSuperviewMargin: .trailing)
-        modeSwitchButton.autoPinEdge(toSuperviewMargin: .top)
-        modeSwitchButton.addTarget(self, action: #selector(didTapModeSwitch), for: .touchUpInside)
-        modeSwitchButton.accessibilityIdentifier = "onboarding.splash.modeSwitch"
-
-        modeSwitchButton.isHidden = !UIDevice.current.isIPad && !FeatureFlags.linkedPhones
 
         view.backgroundColor = Theme.backgroundColor
 

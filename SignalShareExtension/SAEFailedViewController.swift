@@ -42,7 +42,7 @@ class SAEFailedViewController: UIViewController {
 
         self.view.backgroundColor = Theme.launchScreenBackground
 
-        let logoImage = UIImage(named: "signal-logo-128-launch-screen")
+        let logoImage = UIImage(named: "loop-logo-128-launch-screen")
         let logoImageView = UIImageView(image: logoImage)
         self.view.addSubview(logoImageView)
         logoImageView.autoCenterInSuperview()

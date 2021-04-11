@@ -564,7 +564,7 @@ private class NoSelectedConversationViewController: OWSViewController {
         view = UIView()
 
         let logoContainer = UIView.container()
-        logoImageView.image = #imageLiteral(resourceName: "signal-logo-128").withRenderingMode(.alwaysTemplate)
+        logoImageView.image = UIImage(named: "loop-logo-128")?.withRenderingMode(.alwaysTemplate)
         logoImageView.contentMode = .scaleAspectFit
         logoContainer.addSubview(logoImageView)
         logoImageView.autoPinTopToSuperviewMargin()

@@ -251,8 +251,14 @@ public class OnboardingController: NSObject {
 
         Logger.info("")
 
-        let view = OnboardingPermissionsViewController(onboardingController: self)
-        viewController.navigationController?.pushViewController(view, animated: true)
+        guard let navigationController = viewController.navigationController else {
+            owsFailDebug("navigationController was unexpectedly nil")
+            return
+        }
+//        let view = OnboardingPermissionsViewController(onboardingController: self)
+//        viewController.navigationController?.pushViewController(view, animated: true)
+        
+        pushStartDeviceRegistrationView(onto: navigationController)
     }
 
     public func onboardingSplashRequestedModeSwitch(viewController: UIViewController) {

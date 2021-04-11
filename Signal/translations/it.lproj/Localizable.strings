@@ -3281,7 +3281,7 @@
 "ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Nome (obbligatorio)";
 
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Leggi la nostra Privacy Policy. Clicca su “Agree & Continue” per accettare i nostri Termini del servizio.";
+"ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Leggi la nostra Privacy Policy. Clicca su “Accetta e Continua” per accettare i nostri Termini del servizio.";
 
 /* Label 'privacy policy' in the 'onboarding splash' view for identification inside strings */
 "ONBOARDING_SPLASH_PRIVACY_POLICY_LABEL"= "Privacy Policy";

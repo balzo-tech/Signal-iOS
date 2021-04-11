@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "விதிமுறைகள் மற்றும் தனியுரிமைக் கொள்கை";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "உங்களின் தனியுரிமையை எடுத்துக் கொள்ளுங்கள்.\nஒவ்வொரு செய்தியிலும் நீஙகள் நீங்களாகவே இருங்கள் .";
+"ONBOARDING_SPLASH_TITLE" = "வரவேற்கிறோம் Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "தவறான எண்?";

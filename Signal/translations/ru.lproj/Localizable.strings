@@ -3278,7 +3278,7 @@
 "ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Имя (обязательно)";
 
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Условия и Политика конфиденциальности";
+"ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Добро пожаловать в Петля";
 
 /* Title of the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TITLE" = "Возьмите конфиденциальность с собой.\nБудьте собой в каждом сообщении.";

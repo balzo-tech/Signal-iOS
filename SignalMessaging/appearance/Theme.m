@@ -458,12 +458,12 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)darkThemePrimaryColor
 {
-    return UIColor.ows_gray02Color;
+    return UIColor.ows_whiteColor;
 }
 
 + (UIColor *)lightThemePrimaryColor
 {
-    return UIColor.ows_gray90Color;
+    return UIColor.ows_blackColor;
 }
 
 + (UIColor *)galleryHighlightColor

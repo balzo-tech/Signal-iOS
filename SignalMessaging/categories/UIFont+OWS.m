@@ -21,7 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIFont *)ows_regularFontWithSize:(CGFloat)size
 {
-    return [UIFont systemFontOfSize:size weight:UIFontWeightRegular];
+    return [UIFont systemFontOfSize:size weight:UIFontWeightRegular
+];
 }
 
 + (UIFont *)ows_semiboldFontWithSize:(CGFloat)size

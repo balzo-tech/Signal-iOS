@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Tingimused ja privaatsuspoliitika";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "Võta privaatsus endaga kaasa.\nOle igas sõnumis sina ise.";
+"ONBOARDING_SPLASH_TITLE" = "Tere tulemast Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Vale number?";

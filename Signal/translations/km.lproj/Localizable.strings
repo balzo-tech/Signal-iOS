@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "លក្ខខណ្ឌនិងគោលការណ៍ឯកជន";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "យកភាពឯកជនជាមួយអ្នក។ \nសូមធ្វើខ្លួនអ្នកនៅក្នុងគ្រប់សារទាំងអស់។";
+"ONBOARDING_SPLASH_TITLE" = "ស្វាគមន៍​មកកាន់ Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "ខុសលេខ?";

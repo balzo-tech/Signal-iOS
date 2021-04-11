@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Qaydalar və Məxfilik Siyasəti";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "Məxfiliyini qoru.\nHər mesajda özünəməxsus ol.";
+"ONBOARDING_SPLASH_TITLE" = "Xoş gəlmisiniz Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Nömrə səhvdir?";

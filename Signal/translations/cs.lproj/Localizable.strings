@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Smluvní podmínky a zásady ochrany osobních údajů";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "Noste soukromí s sebou.\nBuďte sami sebou v každé zprávě.";
+"ONBOARDING_SPLASH_TITLE" = "Vítejte v Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Špatné číslo?";

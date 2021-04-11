@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Villkor & sekretesspolicy";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "Ta integritet med dig.\nVar dig själv i varje meddelande.";
+"ONBOARDING_SPLASH_TITLE" = "Välkommen till Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Fel nummer?";

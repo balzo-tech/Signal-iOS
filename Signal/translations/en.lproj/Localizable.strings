@@ -3278,10 +3278,16 @@
 "ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "First Name (Required)";
 
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Terms & Privacy Policy";
+"ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Read our Privacy Policy. Tap “Agree & Continue” to accept the Terms of Service.";
+
+/* Label 'privacy policy' in the 'onboarding splash' view for identification inside strings */
+"ONBOARDING_SPLASH_PRIVACY_POLICY_LABEL"= "Privacy Policy";
+
+/* Label 'terms of services' in the 'onboarding splash' view for identification inside strings */
+"ONBOARDING_SPLASH_TERMS_OF_SERVICE_LABEL"= "Terms of service";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "Take privacy with you.\nBe yourself in every message.";
+"ONBOARDING_SPLASH_TITLE" = "Welcome to Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Wrong number?";

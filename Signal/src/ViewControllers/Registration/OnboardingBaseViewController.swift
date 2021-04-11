@@ -68,10 +68,10 @@ public class OnboardingBaseViewController: OWSViewController {
         return button
     }
 
-    func linkButton(title: String, selector: Selector) -> OWSFlatButton {
+    func linkButton(title: String, selector: Selector, font: UIFont = UIFont.ows_dynamicTypeSubheadlineClamped) -> OWSFlatButton {
         let button = OWSFlatButton.button(
             title: title,
-            font: UIFont.ows_dynamicTypeSubheadlineClamped,
+            font: font,
             titleColor: Theme.accentBlueColor,
             backgroundColor: .clear,
             target: self,

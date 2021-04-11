@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "শর্তাদি এবং গোপনীয়তা নীতি";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "আপনার গোপনীয়তা বজায় রাখুন।\nপ্রতিটি বার্তায় নিজস্ব থাকুন।";
+"ONBOARDING_SPLASH_TITLE" = "স্বাগতম Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "ভুল নাম্বার?";

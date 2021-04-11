@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Sera ya Masharti na Faragha ";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "Jichukulie faragha. Kuwa wewe binafsi katika kila ujumbe";
+"ONBOARDING_SPLASH_TITLE" = "Karibu Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Namba sio sahihi";

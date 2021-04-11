@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Polisi Telerau a Phreifatrwydd";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "Ewch â preifatrwydd gyda chi.\nByddwch eich hunan ym mhob neges.";
+"ONBOARDING_SPLASH_TITLE" = "Croeso i Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Rhif anghywir?";

@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "الشُروط وَسياسة الخُصُوصِية";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "احمل خُصُوصِيتكَ مَعَك.\nبِنَفسِكَ في كُلِّ رِسَالة.";
+"ONBOARDING_SPLASH_TITLE" = "مرحبا بك في";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "رقم غير صحيح؟";

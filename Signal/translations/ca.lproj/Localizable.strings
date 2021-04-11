@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Condicions de servei i política de privadesa";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "Porteu a sobre la privadesa.\n\nSigueu vosaltres mateixos a cada missatge.";
+"ONBOARDING_SPLASH_TITLE" = "Benvingut a Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "El número no és correcte?";

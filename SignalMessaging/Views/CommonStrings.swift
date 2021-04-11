@@ -116,6 +116,12 @@ import Foundation
     @objc
     static public let attachmentTypeVideo = NSLocalizedString("ATTACHMENT_TYPE_VIDEO",
                                           comment: "Short text label for a video attachment, used for thread preview and on the lock screen")
+    
+    @objc
+    static public let privacyPolicy = NSLocalizedString("ONBOARDING_SPLASH_PRIVACY_POLICY_LABEL", comment: "Label for the archive button for conversations list view")
+    
+    @objc
+    static public let termsOfService = NSLocalizedString("ONBOARDING_SPLASH_TERMS_OF_SERVICE_LABEL", comment: "Label for the archive button for conversations list view")
 }
 
 @objc

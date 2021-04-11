@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Mga Alituntunin at Polisiya sa Privacy";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "Dalhin ang privacy kasama mo.\nMaging ikaw sa bawat mensahe.";
+"ONBOARDING_SPLASH_TITLE" = "Maligayang Pagdating sa Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Mali ang numero?";

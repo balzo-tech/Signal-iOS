@@ -3278,7 +3278,7 @@
 "ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "First Name (Required)";
 
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "شرطاں تے رازداری دی پالیسی";
+"ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Loop ਸਵਾਗਤ ਹੈ";
 
 /* Title of the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TITLE" = "رازداری اپنے نال لے کے جاؤ۔\nہر سنیہا اچ قدرتی طرزعمل وکھاؤ۔";

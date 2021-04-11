@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Téarmaí Úsáide ⁊ Polasaí Príobháideachais";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "Beir an príobháideachas leat.\nBíodh cead cainte agat i ngach teachtaireacht.";
+"ONBOARDING_SPLASH_TITLE" = "Fáilte go Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Uimhir mhícheart?";

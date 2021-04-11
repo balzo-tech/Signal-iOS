@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Условия и политика за поверителност";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "Нека поверителността да бъде с вас.\nБъдете себе си във всяко съобщение.";
+"ONBOARDING_SPLASH_TITLE" = "Добре дошли в Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Грешен номер?";

@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Услови коришћења и правила о приватности";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "Обезбедите приватност где год се налазите.\nБудите својствени у свакој поруци.";
+"ONBOARDING_SPLASH_TITLE" = "Добродошли у Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Погрешан број?";

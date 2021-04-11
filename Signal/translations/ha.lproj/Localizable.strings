@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Sharuda da tsarin sirri";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "Je ko Ina da asirinka/ki a rufe.\nYi hira duk yadda kake/kike so. ";
+"ONBOARDING_SPLASH_TITLE" = "Barka da zuwa Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Lamba ba daidai ba? ";

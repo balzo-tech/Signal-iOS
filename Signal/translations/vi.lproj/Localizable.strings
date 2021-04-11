@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Điều khoản & Quyền riêng tư";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "Luôn có được sự riêng tư.\nHãy là chính mình trong từng tin nhắn.";
+"ONBOARDING_SPLASH_TITLE" = "Chào mừng bạn đến Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Sai số điện thoại?";

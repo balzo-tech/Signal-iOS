@@ -3281,7 +3281,7 @@
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Syarat & Kebijakan Privasi";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "Jaga privasimu.\nJadilah dirimu sendiri pada setiap pesan.";
+"ONBOARDING_SPLASH_TITLE" = "Selamat Datang di Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Salah nomor?";

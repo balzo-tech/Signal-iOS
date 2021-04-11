@@ -3278,10 +3278,16 @@
 "ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Nombre o alias (Necesario)";
 
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Términos y política de privacidad";
+"ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Lea nuestra Política de privacidad. Toque Aceptar y continuar para aceptar los Términos de servicio.";
+
+/* Label 'privacy policy' in the 'onboarding splash' view for identification inside strings */
+"ONBOARDING_SPLASH_PRIVACY_POLICY_LABEL"= "Política de privacidad";
+
+/* Label 'terms of services' in the 'onboarding splash' view for identification inside strings */
+"ONBOARDING_SPLASH_TERMS_OF_SERVICE_LABEL"= "Términos de servicio";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "Lleva la privacidad contigo.\nAñade tu personalidad en todos tus mensajes.";
+"ONBOARDING_SPLASH_TITLE" = "Bienvenido a Loop";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "¿Número correcto?";

@@ -3278,10 +3278,16 @@
 "ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "名（必须）";
 
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "协议与隐私政策";
+"ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "阅读我们的隐私政策。点击“同意并继续”以接受服务条款。";
+
+/* Label 'privacy policy' in the 'onboarding splash' view for identification inside strings */
+"ONBOARDING_SPLASH_PRIVACY_POLICY_LABEL"= "隐私政策";
+
+/* Label 'terms of services' in the 'onboarding splash' view for identification inside strings */
+"ONBOARDING_SPLASH_TERMS_OF_SERVICE_LABEL"= "服务条款";
 
 /* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE" = "让隐私与您形影不离。\n在每一条消息中展现真正的自己。";
+"ONBOARDING_SPLASH_TITLE" = "歡迎來到 環形";
 
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "错误的号码？";

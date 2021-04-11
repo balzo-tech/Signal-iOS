@@ -391,6 +391,9 @@
 /* Label for 'continue' button. */
 "BUTTON_CONTINUE" = "继续";
 
+/* Label for 'agree' button. */
+"BUTTON_AGREE" = "同意并继续";
+
 /* Label for generic done button. */
 "BUTTON_DONE" = "完成";
 

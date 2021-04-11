@@ -30,6 +30,11 @@ NS_ASSUME_NONNULL_BEGIN
     return [UIFont systemFontOfSize:size weight:UIFontWeightSemibold];
 }
 
++ (UIFont *)ows_boldFontWithSize:(CGFloat)size
+{
+    return [UIFont systemFontOfSize:size weight:UIFontWeightBold];
+}
+
 + (UIFont *)ows_monospacedDigitFontWithSize:(CGFloat)size
 {
     return [self monospacedDigitSystemFontOfSize:size weight:UIFontWeightRegular];
@@ -219,6 +224,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIFont *)ows_italic
 {
     return [self styleWithSymbolicTraits:UIFontDescriptorTraitItalic];
+}
+
+- (UIFont *)ows_bold
+{
+    return [self styleWithSymbolicTraits:UIFontDescriptorTraitBold];
 }
 
 - (UIFont *)styleWithSymbolicTraits:(UIFontDescriptorSymbolicTraits)symbolicTraits

@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIFont *)ows_semiboldFontWithSize:(CGFloat)size;
 
++ (UIFont *)ows_boldFontWithSize:(CGFloat)size;
+
 + (UIFont *)ows_monospacedDigitFontWithSize:(CGFloat)size;
 
 #pragma mark - Icon Fonts
@@ -58,6 +60,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic) UIFont *ows_semibold;
 @property (readonly, nonatomic) UIFont *ows_medium;
 @property (readonly, nonatomic) UIFont *ows_monospaced;
+@property (readonly, nonatomic) UIFont *ows_bold;
+
 
 @end
 

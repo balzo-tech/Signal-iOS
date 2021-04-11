@@ -391,6 +391,9 @@
 /* Label for 'continue' button. */
 "BUTTON_CONTINUE" = "Adelante";
 
+/* Label for 'agree' button. */
+"BUTTON_AGREE" = "Aceptar y continuar";
+
 /* Label for generic done button. */
 "BUTTON_DONE" = "Hecho";
 

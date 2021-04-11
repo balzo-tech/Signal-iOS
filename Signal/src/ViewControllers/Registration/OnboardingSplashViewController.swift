@@ -89,9 +89,9 @@ public class OnboardingSplashViewController: OnboardingBaseViewController {
         explanationLabel.setContentHuggingVerticalLow()
         explanationLabel.setCompressionResistanceLow()
 
-        let continueButton = self.linkButton(title: CommonStrings.continueButton,
+        let continueButton = self.linkButton(title: CommonStrings.agreeButton,
                                                     selector: #selector(continuePressed),
-                                                    font: UIFont.ows_semiboldFont(withSize: 20))
+                                                    font: UIFont.ows_boldFont(withSize: 20))
         continueButton.accessibilityIdentifier = "onboarding.splash." + "continueButton"
         let primaryButtonView = OnboardingBaseViewController.horizontallyWrap(primaryButton: continueButton)
 

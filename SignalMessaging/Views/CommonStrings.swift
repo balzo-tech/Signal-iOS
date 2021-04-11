@@ -18,6 +18,9 @@ import Foundation
 
     @objc
     static public let continueButton = NSLocalizedString("BUTTON_CONTINUE", comment: "Label for 'continue' button.")
+    
+    @objc
+    static public let agreeButton = NSLocalizedString("BUTTON_AGREE", comment: "Label for 'agree' button.")
 
     @objc
     static public let dismissButton = NSLocalizedString("DISMISS_BUTTON_TEXT", comment: "Short text to dismiss current modal / actionsheet / screen")

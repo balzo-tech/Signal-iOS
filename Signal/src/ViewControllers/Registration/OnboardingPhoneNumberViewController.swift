@@ -57,7 +57,7 @@ public class OnboardingPhoneNumberViewController: OnboardingBaseViewController {
 
     private let countryNameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Theme.primaryTextColor
+        label.textColor = Theme.accentBlueColor
         label.font = UIFont.ows_dynamicTypeBodyClamped
         label.accessibilityIdentifier = "onboarding.phoneNumber." + "countryNameLabel"
         return label
@@ -109,6 +109,8 @@ public class OnboardingPhoneNumberViewController: OnboardingBaseViewController {
 
         return field
     }()
+    
+    private lazy var additionalDescriptionLabel = UILabel()
 
     private var phoneStrokeNormal: UIView?
     private var phoneStrokeError: UIView?
@@ -180,12 +182,36 @@ public class OnboardingPhoneNumberViewController: OnboardingBaseViewController {
         let warningLabelSpacer = SpacerView(preferredHeight: 4)
         let bottomSpacer = SpacerView(preferredHeight: 4)
         self.titleSpacer = titleSpacer
+        
+        // TODO: Use localized text and allow navigation to external link (see splash screen)
+        self.additionalDescriptionLabel.text = "You must be at least 16 years old to register"
+        self.additionalDescriptionLabel.font = .ows_dynamicTypeCaption1Clamped
+        self.additionalDescriptionLabel.textColor = .ows_gray45
+        self.additionalDescriptionLabel.textAlignment = .center
+        self.additionalDescriptionLabel.numberOfLines = 0
+        self.additionalDescriptionLabel.lineBreakMode = .byWordWrapping
+
+        let descriptionLabelContainer = UIView()
+        descriptionLabelContainer.layoutMargins = UIEdgeInsets(
+            top: 16,
+            leading: 16,
+            bottom: 0,
+            trailing: 16
+        )
+        descriptionLabelContainer.addSubview(self.additionalDescriptionLabel)
+        self.additionalDescriptionLabel.autoPinEdgesToSuperviewMargins()
 
         let stackView = UIStackView(arrangedSubviews: [
-            titleLabel, titleSpacer,
-            countryRow, phoneNumberRow, phoneNumberSpacer,
-            validationWarningLabel, warningLabelSpacer,
-            OnboardingBaseViewController.horizontallyWrap(primaryButton: continueButton), bottomSpacer
+            titleLabel,
+            titleSpacer,
+            countryRow,
+            phoneNumberRow,
+            phoneNumberSpacer,
+            descriptionLabelContainer,
+            validationWarningLabel,
+            warningLabelSpacer,
+            OnboardingBaseViewController.horizontallyWrap(primaryButton: continueButton),
+            bottomSpacer
         ])
         stackView.axis = .vertical
         stackView.alignment = .fill
@@ -217,6 +243,7 @@ public class OnboardingPhoneNumberViewController: OnboardingBaseViewController {
          countryChevron,
          callingCodeLabel,
          phoneNumberTextField,
+         descriptionLabelContainer,
          continueButton].forEach { $0.setCompressionResistanceVerticalHigh() }
         equalSpacerHeightConstraint = titleSpacer.autoMatch(.height, to: .height, of: warningLabelSpacer)
         pinnedSpacerHeightConstraint = titleSpacer.autoSetDimension(.height, toSize: 0)

@@ -20,8 +20,10 @@ typedef NS_ENUM(NSInteger, TSWhisperMessageType) {
 
 #define textSecureHTTPTimeOut 10
 
+// TODO: Replace with Loop urls
 #define kLegalPrivacyUrlString @"https://signal.org/legal/"
 #define kLegalTermsUrlString @"https://signal.org/legal/"
+#define kLegalAgeUrlString @"https://signal.org/legal/"
 
 #define textSecureAccountsAPI @"v1/accounts"
 #define textSecureAttributesAPI @"v1/accounts/attributes/"

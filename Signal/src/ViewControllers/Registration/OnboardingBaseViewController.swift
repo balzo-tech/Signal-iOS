@@ -35,7 +35,7 @@ public class OnboardingBaseViewController: OWSViewController {
 
     func createExplanationLabel(explanationText: String) -> UILabel {
         let explanationLabel = UILabel()
-        explanationLabel.textColor = Theme.secondaryTextAndIconColor
+        explanationLabel.textColor = Theme.primaryTextColor
         explanationLabel.font = UIFont.ows_dynamicTypeSubheadlineClamped
         explanationLabel.text = explanationText
         explanationLabel.numberOfLines = 0
@@ -56,15 +56,18 @@ public class OnboardingBaseViewController: OWSViewController {
     }
 
     func primaryButton(title: String, selector: Selector) -> OWSFlatButton {
+        let buttonWidth: CGFloat = 58
         let button = OWSFlatButton.button(
-            title: title,
+            title: "",
             font: UIFont.ows_dynamicTypeBodyClamped.ows_semibold,
             titleColor: .white,
-            backgroundColor: .ows_accentBlue,
+            backgroundColor: Theme.ternaryTextColor,
             target: self,
             selector: selector)
-        button.button.layer.cornerRadius = 14
-        button.contentEdgeInsets = UIEdgeInsets(hMargin: 4, vMargin: 14)
+        button.button.layer.cornerRadius = buttonWidth / 2.0
+        button.autoSetDimensions(to: CGSize(square: buttonWidth))
+        button.setImage(#imageLiteral(resourceName: "arrow-right-24").withRenderingMode(.alwaysTemplate))
+        button.button.tintColor = Theme.backgroundColor
         return button
     }
 
@@ -97,6 +100,19 @@ public class OnboardingBaseViewController: OWSViewController {
         primaryButton.autoHCenterInSuperview()
         NSLayoutConstraint.autoSetPriority(.defaultLow) {
             primaryButton.autoPinEdge(toSuperviewEdge: .leading)
+            primaryButton.autoPinEdge(toSuperviewEdge: .trailing)
+        }
+
+        return buttonWrapper
+    }
+    
+    public class func trailingWrap(primaryButton: UIView) -> UIView {
+        let buttonWrapper = UIView()
+        buttonWrapper.addSubview(primaryButton)
+
+        primaryButton.autoPinEdge(toSuperviewEdge: .top)
+        primaryButton.autoPinEdge(toSuperviewEdge: .bottom)
+        NSLayoutConstraint.autoSetPriority(.defaultLow) {
             primaryButton.autoPinEdge(toSuperviewEdge: .trailing)
         }
 

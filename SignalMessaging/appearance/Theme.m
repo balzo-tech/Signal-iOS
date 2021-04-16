@@ -306,7 +306,7 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)ternaryTextColor
 {
-    return UIColor.ows_gray45Color;
+    return (Theme.isDarkThemeEnabled ? UIColor.ows_whiteColor : UIColor.ows_accentGreenColorDark);
 }
 
 + (UIColor *)boldColor

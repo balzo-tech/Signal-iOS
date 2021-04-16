@@ -3244,6 +3244,15 @@
 /* Title of the 'onboarding phone number' view. */
 "ONBOARDING_PHONE_NUMBER_TITLE" = "Inserisci il tuo numero di telefono";
 
+/* Explanation of the 'onboarding phone number' view. */
+"ONBOARDING_PHONE_NUMBER_EXPLANATION" = "Loop ti invierà un SMS per verificare il tuo numero di telefono.";
+
+/* Age disclamer of the 'onboarding phone number' view. */
+"ONBOARDING_PHONE_NUMBER_AGE_DISCLAMER" = "Devi avere almeno 16 anni per registrarti.";
+
+/* Label 'at least 16 years old' in the 'onboarding phone number' view for identification inside strings */
+"ONBOARDING_PHONE_NUMBER_AGE_DISCLAMER_LABEL"= "almeno 16 anni";
+
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
 "ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Numero di telefono non valido. Inserisci un numero di telefono valido per la registrazione.";
 

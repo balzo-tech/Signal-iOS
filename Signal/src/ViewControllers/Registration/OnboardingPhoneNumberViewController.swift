@@ -4,10 +4,37 @@
 
 import UIKit
 import PromiseKit
+import SafariServices
 
 @objc
 public class OnboardingPhoneNumberViewController: OnboardingBaseViewController {
 
+    private enum LabelInteractions: CaseIterable {
+        case ageDisclamer
+        
+        var text: String {
+            switch self {
+            case .ageDisclamer: return NSLocalizedString(
+                "ONBOARDING_PHONE_NUMBER_AGE_DISCLAMER_LABEL",
+                comment: "Label 'at least 16 years old' in the 'onboarding phone number' view for identification inside strings")
+            }
+        }
+        
+        func handleNavigation(presenter: UIViewController) {
+            var stringUrl: String
+            switch self {
+            case .ageDisclamer: stringUrl = kLegalAgeUrlString
+            }
+            
+            guard let url = URL(string: stringUrl) else {
+                owsFailDebug("Invalid URL.")
+                return
+            }
+            let safariVC = SFSafariViewController(url: url)
+            presenter.present(safariVC, animated: true)
+        }
+    }
+    
     // MARK: - Properties
 
     private lazy var retryAfterFormatter: DateFormatter = {
@@ -110,7 +137,7 @@ public class OnboardingPhoneNumberViewController: OnboardingBaseViewController {
         return field
     }()
     
-    private lazy var additionalDescriptionLabel = UILabel()
+    private var ageDisclamerInteractionManager: UILabelInteractionManager?
 
     private var phoneStrokeNormal: UIView?
     private var phoneStrokeError: UIView?
@@ -156,6 +183,12 @@ public class OnboardingPhoneNumberViewController: OnboardingBaseViewController {
             comment: "Title of the 'onboarding phone number' view.")
 
         let titleLabel = self.createTitleLabel(text: titleString)
+        
+        let explanationString = NSLocalizedString(
+            "ONBOARDING_PHONE_NUMBER_EXPLANATION",
+            comment: "Explanation of the 'onboarding phone number' view.")
+
+        let explanationLabel = self.createExplanationLabel(explanationText: explanationString)
 
         let countryRow = UIStackView(arrangedSubviews: [countryNameLabel, countryChevron])
         countryRow.axis = .horizontal
@@ -163,7 +196,6 @@ public class OnboardingPhoneNumberViewController: OnboardingBaseViewController {
         countryRow.spacing = 10
         countryRow.isUserInteractionEnabled = true
         countryRow.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(countryRowTapped)))
-        _ = countryRow.addBottomStroke(color: .ows_gray20, strokeWidth: CGHairlineWidth())
         countryChevron.setContentHuggingHorizontalHigh()
         countryChevron.setCompressionResistanceHigh()
 
@@ -176,41 +208,54 @@ public class OnboardingPhoneNumberViewController: OnboardingBaseViewController {
         callingCodeLabel.autoSetDimension(.width, toSize: 45, relation: .greaterThanOrEqual)
         callingCodeLabel.setCompressionResistanceHigh()
         callingCodeLabel.setContentHuggingHorizontalHigh()
+        
+        let ageDisclamerDescriptionLabel = UILabel()
+        ageDisclamerDescriptionLabel.textAlignment = .center
+        ageDisclamerDescriptionLabel.numberOfLines = 0
+        ageDisclamerDescriptionLabel.lineBreakMode = .byWordWrapping
+
+        let ageDisclamerDescriptionLabelContainer = UIView()
+        ageDisclamerDescriptionLabelContainer.layoutMargins = UIEdgeInsets(
+            top: 8,
+            leading: 0,
+            bottom: 0,
+            trailing: 0
+        )
+        ageDisclamerDescriptionLabelContainer.addSubview(ageDisclamerDescriptionLabel)
+        ageDisclamerDescriptionLabel.autoPinEdgesToSuperviewMargins()
+        
+        self.ageDisclamerInteractionManager = UILabelInteractionManager(withLabel: ageDisclamerDescriptionLabel,
+                                                                      text: NSLocalizedString(
+                                                                        "ONBOARDING_PHONE_NUMBER_AGE_DISCLAMER",
+                                                                        comment: "Age disclamer of the 'onboarding phone number' view."),
+                                                                      lineSpacing: 5.0,
+                                                                      normalTextFont: UIFont.ows_dynamicTypeFootnote.ows_medium,
+                                                                      normalTextColor: Theme.primaryTextColor,
+                                                                      interactableFont: UIFont.ows_dynamicTypeFootnote.ows_medium,
+                                                                      interactableColor: Theme.accentBlueColor,
+                                                                      interactableUnderline: false,
+                                                                      interactionCallback: self.handleLabelInteractions,
+                                                                      interactableStrings: LabelInteractions.allCases.map { $0.text })
 
         let titleSpacer = SpacerView(preferredHeight: 4)
         let phoneNumberSpacer = SpacerView(preferredHeight: 11)
         let warningLabelSpacer = SpacerView(preferredHeight: 4)
         let bottomSpacer = SpacerView(preferredHeight: 4)
         self.titleSpacer = titleSpacer
-        
-        // TODO: Use localized text and allow navigation to external link (see splash screen)
-        self.additionalDescriptionLabel.text = "You must be at least 16 years old to register"
-        self.additionalDescriptionLabel.font = .ows_dynamicTypeCaption1Clamped
-        self.additionalDescriptionLabel.textColor = .ows_gray45
-        self.additionalDescriptionLabel.textAlignment = .center
-        self.additionalDescriptionLabel.numberOfLines = 0
-        self.additionalDescriptionLabel.lineBreakMode = .byWordWrapping
-
-        let descriptionLabelContainer = UIView()
-        descriptionLabelContainer.layoutMargins = UIEdgeInsets(
-            top: 16,
-            leading: 16,
-            bottom: 0,
-            trailing: 16
-        )
-        descriptionLabelContainer.addSubview(self.additionalDescriptionLabel)
-        self.additionalDescriptionLabel.autoPinEdgesToSuperviewMargins()
 
         let stackView = UIStackView(arrangedSubviews: [
             titleLabel,
+            SpacerView(preferredHeight: 16),
+            explanationLabel,
             titleSpacer,
             countryRow,
             phoneNumberRow,
             phoneNumberSpacer,
-            descriptionLabelContainer,
+            ageDisclamerDescriptionLabelContainer,
+            SpacerView(preferredHeight: 8),
             validationWarningLabel,
             warningLabelSpacer,
-            OnboardingBaseViewController.horizontallyWrap(primaryButton: continueButton),
+            OnboardingBaseViewController.trailingWrap(primaryButton: continueButton),
             bottomSpacer
         ])
         stackView.axis = .vertical
@@ -243,7 +288,7 @@ public class OnboardingPhoneNumberViewController: OnboardingBaseViewController {
          countryChevron,
          callingCodeLabel,
          phoneNumberTextField,
-         descriptionLabelContainer,
+         ageDisclamerDescriptionLabelContainer,
          continueButton].forEach { $0.setCompressionResistanceVerticalHigh() }
         equalSpacerHeightConstraint = titleSpacer.autoMatch(.height, to: .height, of: warningLabelSpacer)
         pinnedSpacerHeightConstraint = titleSpacer.autoSetDimension(.height, toSize: 0)
@@ -270,6 +315,8 @@ public class OnboardingPhoneNumberViewController: OnboardingBaseViewController {
         warningLabelSpacer.setContentHuggingPriority(.init(100), for: .vertical)
 
         titleLabel.accessibilityIdentifier = "onboarding.phoneNumber." + "titleLabel"
+        explanationLabel.accessibilityIdentifier = "onboarding.phoneNumber." + "explanationLabel"
+        ageDisclamerDescriptionLabel.accessibilityIdentifier = "onboarding.phoneNumber." + "ageDisclamerDescriptionLabel"
         phoneNumberRow.accessibilityIdentifier = "onboarding.phoneNumber." + "phoneNumberRow"
         countryRow.accessibilityIdentifier = "onboarding.phoneNumber." + "countryRow"
     }
@@ -643,6 +690,16 @@ public class OnboardingPhoneNumberViewController: OnboardingBaseViewController {
             }
         } else {
             state = .interactive
+        }
+    }
+    
+    // MARK: - Label interaction
+    
+    private func handleLabelInteractions(_ text: String) {
+        if let interaction = LabelInteractions.allCases.first(where: { $0.text == text }) {
+            interaction.handleNavigation(presenter: self)
+        } else {
+            assertionFailure("Unhandled legal interaction")
         }
     }
 }

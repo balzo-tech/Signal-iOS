@@ -69,13 +69,13 @@ public extension UIColor {
     @objc(ows_accentBlueColor)
     class var ows_accentBlue: UIColor {
         // Ultramarine UI
-        return UIColor(rgbHex: 0x2C6BED)
+        return UIColor(rgbHex: 0x0666D6)
     }
 
     @objc(ows_accentBlueDarkColor)
     class var ows_accentBlueDark: UIColor {
         // Ultramarine UI Light
-        return UIColor(rgbHex: 0x6191F3)
+        return UIColor(rgbHex: 0x0666D6)
     }
 
     @objc(ows_accentBlueTintColor)
@@ -87,6 +87,11 @@ public extension UIColor {
     @objc(ows_accentGreenColor)
     class var ows_accentGreen: UIColor {
         return UIColor(rgbHex: 0x4CAF50)
+    }
+    
+    @objc(ows_accentGreenColorDark)
+    class var ows_accentGreenDark: UIColor {
+        return UIColor(rgbHex: 0x023D47)
     }
 
     /// Warning, update states

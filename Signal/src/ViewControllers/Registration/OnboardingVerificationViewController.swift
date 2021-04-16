@@ -303,10 +303,6 @@ public class OnboardingVerificationViewController: OnboardingBaseViewController 
         primaryView.autoPinEdgesToSuperviewEdges()
         view.backgroundColor = Theme.backgroundColor
 
-        let formattedPhoneNumber = PhoneNumber.bestEffortLocalizedPhoneNumber(
-            withE164: onboardingController.phoneNumber?.e164 ?? "")
-            .replacingOccurrences(of: " ", with: "\u{00a0}")
-
         let titleLabel = self.createTitleLabel(
             text: NSLocalizedString(
                 "ONBOARDING_VERIFICATION_TITLE_LABEL",
@@ -314,12 +310,10 @@ public class OnboardingVerificationViewController: OnboardingBaseViewController 
             )
 
         let subtitleLabel = self.createExplanationLabel(
-            explanationText: String(
-                format: NSLocalizedString(
-                    "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT",
-                    comment: "Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}."),
-                formattedPhoneNumber)
-            )
+            explanationText: NSLocalizedString(
+                "ONBOARDING_VERIFICATION_EXPLANATION",
+                comment: "Explanation for 'onboarding verification' view")
+        )
 
         self.titleLabel = titleLabel
         self.subtitleLabel = subtitleLabel

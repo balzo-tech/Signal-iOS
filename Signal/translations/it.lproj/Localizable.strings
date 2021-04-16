@@ -3322,11 +3322,11 @@
 /* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
 "ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "Rinvia codice tra %@";
 
-/* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "Inserisci il codice che abbiamo inviato a %@";
+/* Explanation for 'onboarding verification' view */
+"ONBOARDING_VERIFICATION_EXPLANATION" = "Inserisci il codice SMS che abbiamo inviato al tuo numero di telefono";
 
 /* Title label for the onboarding verification page */
-"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Codice di verifica";
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Verifica il tuo numero";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Impostazioni";

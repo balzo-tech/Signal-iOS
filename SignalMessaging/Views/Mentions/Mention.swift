@@ -68,7 +68,7 @@ public class Mention: NSObject {
             attributes[.backgroundColor] = Theme.isDarkThemeEnabled ? UIColor.ows_gray60 : UIColor.ows_gray20
             attributes[.foregroundColor] = ConversationStyle.bubbleTextColorIncoming
         case .outgoing:
-            attributes[.backgroundColor] = UIColor.ows_signalBlueDark
+            attributes[.backgroundColor] = UIColor.loopDarkColor
             attributes[.foregroundColor] = ConversationStyle.bubbleTextColorOutgoing
         case .composingAttachment:
             attributes[.backgroundColor] = UIColor.ows_gray75
@@ -77,7 +77,7 @@ public class Mention: NSObject {
             attributes[.backgroundColor] = nil
             attributes[.foregroundColor] = Theme.primaryTextColor
         case .longMessageView:
-            attributes[.backgroundColor] = Theme.isDarkThemeEnabled ? UIColor.ows_signalBlueDark : UIColor.ows_blackAlpha20
+            attributes[.backgroundColor] = Theme.isDarkThemeEnabled ? UIColor.loopDarkColor : UIColor.ows_blackAlpha20
             attributes[.foregroundColor] = Theme.primaryTextColor
         }
 

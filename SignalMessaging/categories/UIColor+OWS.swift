@@ -53,14 +53,14 @@ public extension UIColor {
 
     // MARK: Brand Colors
 
-    @objc(ows_signalBlueColor)
-    class var ows_signalBlue: UIColor {
-        return UIColor(rgbHex: 0x3A76F0)
+    @objc(loopLightColor)
+    class var loopLightColor: UIColor {
+        return ows_white
     }
 
-    @objc(ows_signalBlueDarkColor)
-    class var ows_signalBlueDark: UIColor {
-        return UIColor(rgbHex: 0x1851B4)
+    @objc(loopDarkColor)
+    class var loopDarkColor: UIColor {
+        return ows_black
     }
 
     // MARK: Accent Colors

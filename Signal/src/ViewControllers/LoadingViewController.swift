@@ -25,7 +25,6 @@ public class LoadingViewController: UIViewController {
         view.addSubview(logoView)
 
         logoView.autoCenterInSuperview()
-        logoView.autoSetDimensions(to: CGSize(square: 128))
 
         self.topLabel = buildLabel()
         topLabel.alpha = 0

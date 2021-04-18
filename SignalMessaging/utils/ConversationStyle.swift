@@ -314,7 +314,7 @@ public class ConversationStyle: NSObject {
 
     @objc
     public var quotedReplyBubbleColor: UIColor {
-        isDarkThemeEnabled ? .ows_signalBlueDark : .ows_accentBlueTint
+        isDarkThemeEnabled ? .loopDarkColor : .ows_accentBlueTint
     }
 
     @objc

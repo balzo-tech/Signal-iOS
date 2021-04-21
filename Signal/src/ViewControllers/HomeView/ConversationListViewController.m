@@ -600,17 +600,23 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
     [self resetMappings];
     [self tableViewSetUp];
 
-    switch (self.conversationListMode) {
-        case ConversationListMode_Inbox:
-            // TODO: Should our app name be translated?  Probably not.
-            self.title
-                = NSLocalizedString(@"HOME_VIEW_TITLE_INBOX", @"Title for the conversation list's default mode.");
-            break;
-        case ConversationListMode_Archive:
-            self.title
-                = NSLocalizedString(@"HOME_VIEW_TITLE_ARCHIVE", @"Title for the conversation list's 'archive' mode.");
-            break;
-    }
+//    switch (self.conversationListMode) {
+//        case ConversationListMode_Inbox:
+//            // TODO: Should our app name be translated?  Probably not.
+//            self.title
+//                = NSLocalizedString(@"HOME_VIEW_TITLE_INBOX", @"Title for the conversation list's default mode.");
+//            break;
+//        case ConversationListMode_Archive:
+//            self.title
+//                = NSLocalizedString(@"HOME_VIEW_TITLE_ARCHIVE", @"Title for the conversation list's 'archive' mode.");
+//            break;
+//    }
+    
+    UIImage *image = [UIImage imageNamed:@"loop-logo-128"];
+    UIImageView* titleImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    titleImageView.contentMode = UIViewContentModeScaleAspectFit;
+    titleImageView.image = image;
+    self.navigationItem.titleView = titleImageView;
 
     [self applyDefaultBackButton];
 
@@ -785,7 +791,7 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
         @"CAMERA_BUTTON_HINT", @"Accessibility hint describing what you can do with the camera button");
     camera.accessibilityIdentifier = ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"camera");
 
-    self.navigationItem.rightBarButtonItems = @[ compose, camera ];
+    self.navigationItem.rightBarButtonItems = @[ compose ];
 }
 
 - (void)showNewConversationView

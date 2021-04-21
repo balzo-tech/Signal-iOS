@@ -17,6 +17,7 @@ public enum ThemeIcon: UInt {
     case settingsTimer
     case settingsTimerDisabled
     case settingsSearch
+    case searchHeader
     case settingsShowGroup
     case settingsViewSafetyNumber
     case settingsUserInContacts
@@ -194,6 +195,8 @@ public extension Theme {
             return "ic_color_palette"
         case .settingsSearch:
             return "search-24"
+        case .searchHeader:
+            return "search-header"
         case .settingsAddMembers:
             return "plus-256"
         case .settingsShowAllMembers:

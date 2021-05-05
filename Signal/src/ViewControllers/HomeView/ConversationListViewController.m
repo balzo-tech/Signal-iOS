@@ -51,7 +51,6 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
 @interface ConversationListViewController () <UITableViewDelegate,
     UITableViewDataSource,
     UIViewControllerPreviewingDelegate,
-    UISearchBarDelegate,
     ConversationSearchViewDelegate,
     UIDatabaseSnapshotDelegate,
     OWSBlockListCacheDelegate,
@@ -77,7 +76,7 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
 
 // Mark: Search
 
-@property (nonatomic, readonly) OWSSearchBar *searchBar;
+//@property (nonatomic, readonly) OWSSearchBar *searchBar;
 @property (nonatomic) ConversationSearchViewController *searchResultsController;
 
 @property (nonatomic, readonly) OWSBlockListCache *blocklistCache;
@@ -245,16 +244,16 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
 {
     OWSAssertIsOnMainThread();
     OWSAssertDebug(self.tableView);
-    OWSAssertDebug(self.searchBar);
+//    OWSAssertDebug(self.searchBar);
 
     if (self.splitViewController.isCollapsed) {
         self.view.backgroundColor = Theme.backgroundColor;
         self.tableView.backgroundColor = Theme.backgroundColor;
-        [self.searchBar switchToStyle:OWSSearchBarStyle_Default];
+//        [self.searchBar switchToStyle:OWSSearchBarStyle_Default];
     } else {
         self.view.backgroundColor = Theme.secondaryBackgroundColor;
         self.tableView.backgroundColor = Theme.secondaryBackgroundColor;
-        [self.searchBar switchToStyle:OWSSearchBarStyle_SecondaryBar];
+//        [self.searchBar switchToStyle:OWSSearchBarStyle_SecondaryBar];
     }
 
     [self updateBarButtonItems];
@@ -365,7 +364,7 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
     [self.view addSubview:self.tableView];
     [self.tableView autoPinEdgesToSuperviewEdges];
     SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, _tableView);
-    SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, _searchBar);
+//    SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, _searchBar);
 
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 60;
@@ -613,7 +612,7 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
 //    }
     
     UIImage *image = [UIImage imageNamed:@"loop-logo-128"];
-    UIImageView* titleImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    UIImageView* titleImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
     titleImageView.contentMode = UIViewContentModeScaleAspectFit;
     titleImageView.image = image;
     self.navigationItem.titleView = titleImageView;
@@ -630,38 +629,38 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
 
     // Search
 
-    UIView *searchBarContainer = [UIView new];
-    searchBarContainer.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 8);
-
-    _searchBar = [OWSSearchBar new];
-    self.searchBar.placeholder = NSLocalizedString(@"HOME_VIEW_CONVERSATION_SEARCHBAR_PLACEHOLDER",
-        @"Placeholder text for search bar which filters conversations.");
-    self.searchBar.delegate = self;
-    self.searchBar.textField.accessibilityIdentifier = ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"conversation_search");
-    [self.searchBar sizeToFit];
-    self.searchBar.layoutMargins = UIEdgeInsetsZero;
-
-    searchBarContainer.frame = self.searchBar.frame;
-    [searchBarContainer addSubview:self.searchBar];
-    [self.searchBar autoPinEdgesToSuperviewMargins];
+//    UIView *searchBarContainer = [UIView new];
+//    searchBarContainer.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 8);
+//
+//    _searchBar = [OWSSearchBar new];
+//    self.searchBar.placeholder = NSLocalizedString(@"HOME_VIEW_CONVERSATION_SEARCHBAR_PLACEHOLDER",
+//        @"Placeholder text for search bar which filters conversations.");
+//    self.searchBar.delegate = self;
+//    self.searchBar.textField.accessibilityIdentifier = ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"conversation_search");
+//    [self.searchBar sizeToFit];
+//    self.searchBar.layoutMargins = UIEdgeInsetsZero;
+//
+//    searchBarContainer.frame = self.searchBar.frame;
+//    [searchBarContainer addSubview:self.searchBar];
+//    [self.searchBar autoPinEdgesToSuperviewMargins];
 
 
     // Setting tableHeader calls numberOfSections, which must happen after updateMappings has been called at least once.
-    OWSAssertDebug(self.tableView.tableHeaderView == nil);
-    self.tableView.tableHeaderView = searchBarContainer;
+//    OWSAssertDebug(self.tableView.tableHeaderView == nil);
+//    self.tableView.tableHeaderView = searchBarContainer;
     // Hide search bar by default.  User can pull down to search.
-    self.tableView.contentOffset = CGPointMake(0, CGRectGetHeight(self.searchBar.frame));
+    self.tableView.contentOffset = CGPointMake(0, 100);
 
-    ConversationSearchViewController *searchResultsController = [ConversationSearchViewController new];
-    searchResultsController.delegate = self;
-    self.searchResultsController = searchResultsController;
-    [self addChildViewController:searchResultsController];
-    [self.view addSubview:searchResultsController.view];
-    [searchResultsController.view autoPinEdgeToSuperviewEdge:ALEdgeBottom];
-    [searchResultsController.view autoPinEdgeToSuperviewEdge:ALEdgeLeading];
-    [searchResultsController.view autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
-    [searchResultsController.view autoPinTopToSuperviewMarginWithInset:56];
-    searchResultsController.view.hidden = YES;
+//    ConversationSearchViewController *searchResultsController = [ConversationSearchViewController new];
+//    searchResultsController.delegate = self;
+//    self.searchResultsController = searchResultsController;
+//    [self addChildViewController:searchResultsController];
+//    [self.view addSubview:searchResultsController.view];
+//    [searchResultsController.view autoPinEdgeToSuperviewEdge:ALEdgeBottom];
+//    [searchResultsController.view autoPinEdgeToSuperviewEdge:ALEdgeLeading];
+//    [searchResultsController.view autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
+//    [searchResultsController.view autoPinTopToSuperviewMarginWithInset:56];
+//    searchResultsController.view.hidden = YES;
 
     [self updateReminderViews];
     [self updateBarButtonItems];
@@ -782,16 +781,28 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
         @"COMPOSE_BUTTON_HINT", @"Accessibility hint describing what you can do with the compose button");
     compose.accessibilityIdentifier = ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"compose");
 
-    UIBarButtonItem *camera = [[UIBarButtonItem alloc] initWithImage:[Theme iconImage:ThemeIconCameraButton]
-                                                               style:UIBarButtonItemStylePlain
-                                                              target:self
-                                                              action:@selector(showCameraView)];
-    camera.accessibilityLabel = NSLocalizedString(@"CAMERA_BUTTON_LABEL", @"Accessibility label for camera button.");
-    camera.accessibilityHint = NSLocalizedString(
-        @"CAMERA_BUTTON_HINT", @"Accessibility hint describing what you can do with the camera button");
-    camera.accessibilityIdentifier = ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"camera");
-
+//    UIBarButtonItem *camera = [[UIBarButtonItem alloc] initWithImage:[Theme iconImage:ThemeIconCameraButton]
+//                                                               style:UIBarButtonItemStylePlain
+//                                                              target:self
+//                                                              action:@selector(showCameraView)];
+//    camera.accessibilityLabel = NSLocalizedString(@"CAMERA_BUTTON_LABEL", @"Accessibility label for camera button.");
+//    camera.accessibilityHint = NSLocalizedString(
+//        @"CAMERA_BUTTON_HINT", @"Accessibility hint describing what you can do with the camera button");
+//    camera.accessibilityIdentifier = ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"camera");
+    
     self.navigationItem.rightBarButtonItems = @[ compose ];
+    
+    [self updateFloatingButton];
+}
+
+- (void)updateFloatingButton
+{
+    UIButton *composeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [composeButton addTarget:self action:@selector(showNewConversationView) forControlEvents:UIControlEventTouchUpInside];
+    [composeButton setImage:[UIImage imageNamed:@"compose-main"] forState:UIControlStateNormal];
+    [self.view addSubview:composeButton];
+    [composeButton autoPinBottomToSuperviewMarginWithInset:10];
+    [composeButton autoPinTrailingToSuperviewMarginWithInset:15];
 }
 
 - (void)showNewConversationView
@@ -870,7 +881,7 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
         return;
     }
 
-    [self.searchBar becomeFirstResponder];
+//    [self.searchBar becomeFirstResponder];
 }
 
 - (void)selectPreviousConversation
@@ -995,13 +1006,14 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
     [super viewWillAppear:animated];
     self.isViewVisible = YES;
 
-    BOOL isShowingSearchResults = !self.searchResultsController.view.hidden;
-    if (isShowingSearchResults) {
-        OWSAssertDebug(self.searchBar.text.ows_stripped.length > 0);
-        [self scrollSearchBarToTopAnimated:NO];
-        [self.searchBar becomeFirstResponder];
-    } else if (self.lastViewedThread) {
-        OWSAssertDebug(self.searchBar.text.ows_stripped.length == 0);
+//    BOOL isShowingSearchResults = !self.searchResultsController.view.hidden;
+//    if (isShowingSearchResults) {
+//        OWSAssertDebug(self.searchBar.text.ows_stripped.length > 0);
+//        [self scrollSearchBarToTopAnimated:NO];
+//        [self.searchBar becomeFirstResponder];
+//    } else
+    if (self.lastViewedThread) {
+//        OWSAssertDebug(self.searchBar.text.ows_stripped.length == 0);
 
         // When returning to conversation list, try to ensure that the "last" thread is still
         // visible.  The threads often change ordering while in conversation view due
@@ -1614,97 +1626,97 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
     }
 }
 
-#pragma mark - UISearchBarDelegate
-
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
-{
-    [self scrollSearchBarToTopAnimated:NO];
-
-    [self updateSearchResultsVisibility];
-
-    [self ensureSearchBarCancelButton];
-}
-
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
-{
-    [self updateSearchResultsVisibility];
-
-    [self ensureSearchBarCancelButton];
-}
-
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    [self updateSearchResultsVisibility];
-
-    [self ensureSearchBarCancelButton];
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-    [self updateSearchResultsVisibility];
-}
-
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
-{
-    self.searchBar.text = nil;
-
-    [self dismissSearchKeyboard];
-
-    [self updateSearchResultsVisibility];
-
-    [self ensureSearchBarCancelButton];
-}
-
-- (void)ensureSearchBarCancelButton
-{
-    BOOL shouldShowCancelButton = (self.searchBar.isFirstResponder || self.searchBar.text.length > 0);
-    if (self.searchBar.showsCancelButton == shouldShowCancelButton) {
-        return;
-    }
-    [self.searchBar setShowsCancelButton:shouldShowCancelButton animated:self.isViewVisible];
-}
-
-- (void)updateSearchResultsVisibility
-{
-    OWSAssertIsOnMainThread();
-
-    NSString *searchText = self.searchBar.text.ows_stripped;
-    self.searchResultsController.searchText = searchText;
-    BOOL isSearching = searchText.length > 0;
-    self.searchResultsController.view.hidden = !isSearching;
-
-    if (isSearching) {
-        [self scrollSearchBarToTopAnimated:NO];
-        self.tableView.scrollEnabled = NO;
-    } else {
-        self.tableView.scrollEnabled = YES;
-    }
-}
-
-- (void)scrollSearchBarToTopAnimated:(BOOL)isAnimated
-{
-    CGFloat topInset = self.topLayoutGuide.length;
-    [self.tableView setContentOffset:CGPointMake(0, -topInset) animated:isAnimated];
-}
-
-- (void)dismissSearchKeyboard
-{
-    [self.searchBar resignFirstResponder];
-    OWSAssertDebug(!self.searchBar.isFirstResponder);
-}
+//#pragma mark - UISearchBarDelegate
+//
+//- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+//{
+//    [self scrollSearchBarToTopAnimated:NO];
+//
+//    [self updateSearchResultsVisibility];
+//
+//    [self ensureSearchBarCancelButton];
+//}
+//
+//- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+//{
+//    [self updateSearchResultsVisibility];
+//
+//    [self ensureSearchBarCancelButton];
+//}
+//
+//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+//{
+//    [self updateSearchResultsVisibility];
+//
+//    [self ensureSearchBarCancelButton];
+//}
+//
+//- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+//{
+//    [self updateSearchResultsVisibility];
+//}
+//
+//- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+//{
+//    self.searchBar.text = nil;
+//
+//    [self dismissSearchKeyboard];
+//
+//    [self updateSearchResultsVisibility];
+//
+//    [self ensureSearchBarCancelButton];
+//}
+//
+//- (void)ensureSearchBarCancelButton
+//{
+//    BOOL shouldShowCancelButton = (self.searchBar.isFirstResponder || self.searchBar.text.length > 0);
+//    if (self.searchBar.showsCancelButton == shouldShowCancelButton) {
+//        return;
+//    }
+//    [self.searchBar setShowsCancelButton:shouldShowCancelButton animated:self.isViewVisible];
+//}
+//
+//- (void)updateSearchResultsVisibility
+//{
+//    OWSAssertIsOnMainThread();
+//
+//    NSString *searchText = self.searchBar.text.ows_stripped;
+//    self.searchResultsController.searchText = searchText;
+//    BOOL isSearching = searchText.length > 0;
+//    self.searchResultsController.view.hidden = !isSearching;
+//
+//    if (isSearching) {
+//        [self scrollSearchBarToTopAnimated:NO];
+//        self.tableView.scrollEnabled = NO;
+//    } else {
+//        self.tableView.scrollEnabled = YES;
+//    }
+//}
+//
+//- (void)scrollSearchBarToTopAnimated:(BOOL)isAnimated
+//{
+//    CGFloat topInset = self.topLayoutGuide.length;
+//    [self.tableView setContentOffset:CGPointMake(0, -topInset) animated:isAnimated];
+//}
+//
+//- (void)dismissSearchKeyboard
+//{
+//    [self.searchBar resignFirstResponder];
+//    OWSAssertDebug(!self.searchBar.isFirstResponder);
+//}
 
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    [self dismissSearchKeyboard];
+//    [self dismissSearchKeyboard];
 }
 
 #pragma mark - ConversationSearchViewDelegate
 
 - (void)conversationSearchViewWillBeginDragging
 {
-    [self dismissSearchKeyboard];
+//    [self dismissSearchKeyboard];
 }
 
 #pragma mark - HomeFeedTableViewCellDelegate
@@ -1846,7 +1858,7 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
 {
     OWSLogInfo(@"%ld %ld", (long)indexPath.row, (long)indexPath.section);
 
-    [self dismissSearchKeyboard];
+//    [self dismissSearchKeyboard];
 
     ConversationListViewControllerSection section = (ConversationListViewControllerSection)indexPath.section;
     switch (section) {

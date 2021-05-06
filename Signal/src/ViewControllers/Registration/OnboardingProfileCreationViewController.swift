@@ -158,11 +158,7 @@ public class OnboardingProfileCreationViewController: OnboardingBaseViewControll
     private lazy var saveButtonBackdrop = UIView()
     private lazy var saveButtonGradient = GradientView(colors: [])
 
-    private lazy var saveButton = self.primaryButton(
-        title: NSLocalizedString("PROFILE_VIEW_SAVE_BUTTON",
-                                 comment: "Button to save the profile view in the profile view."),
-        selector: #selector(saveProfile)
-    )
+    private lazy var saveButton = self.primaryButton(selector: #selector(saveProfile))
 
     static private let standardMargin: CGFloat = UIDevice.current.isIPhone5OrShorter ? 16 : 32
 
@@ -222,7 +218,7 @@ public class OnboardingProfileCreationViewController: OnboardingBaseViewControll
         saveButtonBackdrop.preservesSuperviewLayoutMargins = true
         saveButtonBackdrop.layoutMargins = UIEdgeInsets(top: 8, leading: 0, bottom: Self.standardMargin, trailing: 0)
 
-        saveButton.autoPinEdgesToSuperviewMargins()
+        saveButton.autoPinEdges(toSuperviewMarginsExcludingEdge: .leading)
         saveButtonGradient.autoPinWidthToSuperview()
         saveButtonBackdrop.autoPinWidthToSuperview()
 

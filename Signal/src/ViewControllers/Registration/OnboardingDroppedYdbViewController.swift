@@ -35,10 +35,9 @@ public class OnboardingDroppedYdbViewController: OnboardingBaseViewController {
         explanationLabel.lineBreakMode = .byWordWrapping
         explanationLabel.accessibilityIdentifier = "onboarding.droppedYdb." + "explanationLabel"
 
-        let nextButton = self.primaryButton(title: CommonStrings.nextButton,
-                                            selector: #selector(nextPressed))
+        let nextButton = self.primaryButton(selector: #selector(nextPressed))
         nextButton.accessibilityIdentifier = "onboarding.droppedYdb." + "nextButton"
-        let primaryButtonView = OnboardingBaseViewController.horizontallyWrap(primaryButton: nextButton)
+        let primaryButtonView = OnboardingBaseViewController.trailingWrap(primaryButton: nextButton)
 
         let topStack = UIStackView(arrangedSubviews: [
             heroImageView,

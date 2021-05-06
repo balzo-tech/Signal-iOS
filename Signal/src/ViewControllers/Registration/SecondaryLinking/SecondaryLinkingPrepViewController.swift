@@ -56,10 +56,9 @@ public class SecondaryLinkingPrepViewController: OnboardingBaseViewController {
         dontHaveSignalButton.accessibilityIdentifier = "onboarding.prelink.explanationLabel"
         dontHaveSignalButton.isHidden = isTransferring
 
-        let nextButton = self.primaryButton(title: CommonStrings.nextButton,
-                                            selector: #selector(didPressNext))
+        let nextButton = self.primaryButton(selector: #selector(didPressNext))
         nextButton.accessibilityIdentifier = "onboarding.prelink.nextButton"
-        let primaryButtonView = OnboardingBaseViewController.horizontallyWrap(primaryButton: nextButton)
+        let primaryButtonView = OnboardingBaseViewController.trailingWrap(primaryButton: nextButton)
 
         let stackView = UIStackView(arrangedSubviews: [
             titleLabel,

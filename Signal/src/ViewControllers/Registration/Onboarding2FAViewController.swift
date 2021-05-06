@@ -12,8 +12,7 @@ public class Onboarding2FAViewController: OnboardingBaseViewController {
     private let attemptsAlertThreshold = 4
 
     private let pinTextField = UITextField()
-    private lazy var nextButton = self.primaryButton(title: CommonStrings.nextButton,
-                                                     selector: #selector(nextPressed))
+    private lazy var nextButton = self.primaryButton(selector: #selector(nextPressed))
 
     private lazy var pinStrokeNormal = pinTextField.addBottomStroke()
     private lazy var pinStrokeError = pinTextField.addBottomStroke(color: .ows_accentRed, strokeWidth: 2)
@@ -120,7 +119,7 @@ public class Onboarding2FAViewController: OnboardingBaseViewController {
         pinTypeToggle.accessibilityIdentifier = "onboarding.2fa." + "pinTypeToggle"
 
         nextButton.accessibilityIdentifier = "onboarding.2fa." + "nextButton"
-        let primaryButtonView = OnboardingBaseViewController.horizontallyWrap(primaryButton: nextButton)
+        let primaryButtonView = OnboardingBaseViewController.trailingWrap(primaryButton: nextButton)
 
         let topSpacer = UIView.vStretchingSpacer()
         let bottomSpacer = UIView.vStretchingSpacer()

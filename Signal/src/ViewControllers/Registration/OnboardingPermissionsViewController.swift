@@ -36,11 +36,9 @@ public class OnboardingPermissionsViewController: OnboardingBaseViewController {
         animationView.contentMode = .scaleAspectFit
         animationView.setContentHuggingHigh()
 
-        let giveAccessButton = self.primaryButton(title: NSLocalizedString("ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON",
-                                                                    comment: "Label for the 'give access' button in the 'onboarding permissions' view."),
-                                           selector: #selector(giveAccessPressed))
+        let giveAccessButton = self.primaryButton(selector: #selector(giveAccessPressed))
         giveAccessButton.accessibilityIdentifier = "onboarding.permissions." + "giveAccessButton"
-        let primaryButtonView = OnboardingBaseViewController.horizontallyWrap(primaryButton: giveAccessButton)
+        let primaryButtonView = OnboardingBaseViewController.trailingWrap(primaryButton: giveAccessButton)
 
         let stackView = UIStackView(arrangedSubviews: [
             titleLabel,

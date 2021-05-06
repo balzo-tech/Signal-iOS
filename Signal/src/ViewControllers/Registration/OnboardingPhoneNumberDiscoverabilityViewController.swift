@@ -99,11 +99,14 @@ public class OnboardingPhoneNumberDiscoverabilityViewController: OnboardingBaseV
         )
         descriptionLabelContainer.addSubview(selectionDescriptionLabel)
         selectionDescriptionLabel.autoPinEdgesToSuperviewMargins()
-
-        let nextButton = self.primaryButton(title: CommonStrings.nextButton,
-                                           selector: #selector(nextPressed))
+        
+        let nextButton = self.primaryButton(selector: #selector(nextPressed))
+        let primaryButtonView = OnboardingBaseViewController.trailingWrap(primaryButton: nextButton,
+                                                                          insets: UIEdgeInsets(top: 0,
+                                                                                               leading: 0,
+                                                                                               bottom: 0,
+                                                                                               trailing: super.primaryLayoutMargins.right))
         nextButton.accessibilityIdentifier = "onboarding.phoneNumberDiscoverability." + "nextButton"
-        let primaryButtonView = OnboardingBaseViewController.horizontallyWrap(primaryButton: nextButton)
 
         let compressableBottomMargin = UIView.vStretchingSpacer(minHeight: 16, maxHeight: primaryLayoutMargins.bottom)
 

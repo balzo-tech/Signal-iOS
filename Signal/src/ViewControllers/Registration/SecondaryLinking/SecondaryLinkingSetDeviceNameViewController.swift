@@ -57,10 +57,9 @@ class SecondaryLinkingSetDeviceNameViewController: OnboardingBaseViewController 
         textFieldStack.alignment = .center
         textFieldStack.setCompressionResistanceHigh()
 
-        let primaryButton = self.primaryButton(title: NSLocalizedString("SECONDARY_ONBOARDING_COMPLETE_LINKING_PROCESS", comment: "body text while displaying a QR code which, when scanned, will link this device."),
-                                               selector: #selector(didTapFinalizeLinking))
+        let primaryButton = self.primaryButton(selector: #selector(didTapFinalizeLinking))
         primaryButton.accessibilityIdentifier = "onboarding.confirmLink.confirmButton"
-        let primaryButtonView = OnboardingBaseViewController.horizontallyWrap(primaryButton: primaryButton)
+        let primaryButtonView = OnboardingBaseViewController.trailingWrap(primaryButton: primaryButton)
 
         let aboveTextFieldSpacer = UIView.vStretchingSpacer(maxHeight: 60)
         let belowTextFieldSpacer = UIView.vStretchingSpacer()

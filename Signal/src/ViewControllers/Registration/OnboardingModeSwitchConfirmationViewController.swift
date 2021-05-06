@@ -52,10 +52,9 @@ class OnboardingModeSwitchConfirmationViewController: OnboardingBaseViewControll
 
         let explanationLabel = self.createExplanationLabel(explanationText: explanationText)
 
-        let nextButton = self.primaryButton(title: nextButtonText,
-                                            selector: #selector(didPressNext))
+        let nextButton = self.primaryButton(selector: #selector(didPressNext))
         nextButton.accessibilityIdentifier = "onboarding.modeSwitch.nextButton"
-        let primaryButtonView = OnboardingBaseViewController.horizontallyWrap(primaryButton: nextButton)
+        let primaryButtonView = OnboardingBaseViewController.trailingWrap(primaryButton: nextButton)
 
         let topSpacer = UIView.vStretchingSpacer(minHeight: 12)
         let bottomSpacer = UIView.vStretchingSpacer(minHeight: 12)

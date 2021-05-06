@@ -152,7 +152,7 @@ public class OnboardingPhoneNumberViewController: OnboardingBaseViewController {
     }()
 
     lazy private var continueButton: OWSFlatButton = {
-        let button = self.primaryButton(title: CommonStrings.continueButton, selector: #selector(continuePressed))
+        let button = self.primaryButton(selector: #selector(continuePressed))
         button.accessibilityIdentifier = "onboarding.phoneNumber." + "continueButton"
         return button
     }()

@@ -99,20 +99,20 @@ public class PinSetupViewController: OWSViewController {
     }()
 
     private let nextButton: OWSFlatButton = {
-        let nextButton = OWSFlatButton()
-        nextButton.setTitle(
-            title: CommonStrings.nextButton,
+        let buttonWidth: CGFloat = 58
+        let button = OWSFlatButton.button(
+            title: "",
             font: UIFont.ows_dynamicTypeBodyClamped.ows_semibold,
-            titleColor: .white)
-        nextButton.setBackgroundColors(upColor: .ows_accentBlue)
-
-        nextButton.button.clipsToBounds = true
-        nextButton.button.layer.cornerRadius = 14
-        nextButton.contentEdgeInsets = UIEdgeInsets(hMargin: 4, vMargin: 14)
-
-        nextButton.addTarget(target: self, selector: #selector(nextPressed))
-        nextButton.accessibilityIdentifier = "pinCreation.nextButton"
-        return nextButton
+            titleColor: .white,
+            backgroundColor: Theme.ternaryTextColor,
+            target: self,
+            selector: #selector(nextPressed))
+        button.button.layer.cornerRadius = buttonWidth / 2.0
+        button.autoSetDimensions(to: CGSize(square: buttonWidth))
+        button.setImage(#imageLiteral(resourceName: "arrow-right-24").withRenderingMode(.alwaysTemplate))
+        button.button.tintColor = Theme.backgroundColor
+        button.accessibilityIdentifier = "pinCreation.nextButton"
+        return button
     }()
 
     private let validationWarningLabel: UILabel = {
@@ -324,7 +324,7 @@ public class PinSetupViewController: OWSViewController {
             bottomSpacer,
             pinTypeToggle,
             pinToggleSpacer,
-            OnboardingBaseViewController.horizontallyWrap(primaryButton: nextButton),
+            OnboardingBaseViewController.trailingWrap(primaryButton: nextButton),
             buttonSpacer
         ])
         stackView.axis = .vertical

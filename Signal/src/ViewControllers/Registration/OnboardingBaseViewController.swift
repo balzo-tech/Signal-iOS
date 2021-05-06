@@ -55,7 +55,7 @@ public class OnboardingBaseViewController: OWSViewController {
         }
     }
 
-    func primaryButton(title: String, selector: Selector) -> OWSFlatButton {
+    func primaryButton(selector: Selector) -> OWSFlatButton {
         let buttonWidth: CGFloat = 58
         let button = OWSFlatButton.button(
             title: "",
@@ -68,6 +68,19 @@ public class OnboardingBaseViewController: OWSViewController {
         button.autoSetDimensions(to: CGSize(square: buttonWidth))
         button.setImage(#imageLiteral(resourceName: "arrow-right-24").withRenderingMode(.alwaysTemplate))
         button.button.tintColor = Theme.backgroundColor
+        return button
+    }
+    
+    func primaryButton(title: String, selector: Selector) -> OWSFlatButton {
+        let button = OWSFlatButton.button(
+            title: title,
+            font: UIFont.ows_dynamicTypeBodyClamped.ows_semibold,
+            titleColor: .white,
+            backgroundColor: .ows_accentBlue,
+            target: self,
+            selector: selector)
+        button.button.layer.cornerRadius = 14
+        button.contentEdgeInsets = UIEdgeInsets(hMargin: 4, vMargin: 14)
         return button
     }
 
@@ -106,17 +119,15 @@ public class OnboardingBaseViewController: OWSViewController {
         return buttonWrapper
     }
     
-    public class func trailingWrap(primaryButton: UIView) -> UIView {
-        let buttonWrapper = UIView()
-        buttonWrapper.addSubview(primaryButton)
-
-        primaryButton.autoPinEdge(toSuperviewEdge: .top)
-        primaryButton.autoPinEdge(toSuperviewEdge: .bottom)
-        NSLayoutConstraint.autoSetPriority(.defaultLow) {
-            primaryButton.autoPinEdge(toSuperviewEdge: .trailing)
-        }
-
-        return buttonWrapper
+    public class func trailingWrap(primaryButton: UIView, insets: UIEdgeInsets = .zero) -> UIView {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.addArrangedSubview(HorizontalExpander())
+        stackView.addArrangedSubview(primaryButton)
+        let wrapperView = UIView()
+        wrapperView.addSubview(stackView)
+        stackView.autoPinEdgesToSuperviewEdges(with: insets)
+        return wrapperView
     }
 
     // MARK: - View Lifecycle
@@ -179,5 +190,11 @@ public class OnboardingBaseViewController: OWSViewController {
 
     public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIDevice.current.isIPad ? .all : .portrait
+    }
+}
+
+fileprivate class HorizontalExpander : UIView {
+    override public var intrinsicContentSize: CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 0.0)
     }
 }

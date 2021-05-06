@@ -52,12 +52,9 @@ public class OnboardingPinAttemptsExhaustedViewController: OnboardingBaseViewCon
         explanationLabel.textColor = Theme.primaryTextColor
         explanationLabel.accessibilityIdentifier = "onboarding.pinAtttemptsExhausted." + "explanationLabel"
 
-        let primaryButton = self.primaryButton(
-            title: primaryButtonText,
-            selector: #selector(primaryButtonPressed)
-        )
+        let primaryButton = self.primaryButton(selector: #selector(primaryButtonPressed))
         primaryButton.accessibilityIdentifier = "onboarding.pinAtttemptsExhausted." + "primaryButton"
-        let primaryButtonView = OnboardingBaseViewController.horizontallyWrap(primaryButton: primaryButton)
+        let primaryButtonView = OnboardingBaseViewController.trailingWrap(primaryButton: primaryButton)
 
         let linkButton = self.linkButton(
             title: linkButtonText,

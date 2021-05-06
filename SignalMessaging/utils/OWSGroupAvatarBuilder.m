@@ -69,7 +69,7 @@ NS_ASSUME_NONNULL_BEGIN
     UIColor *backgroundColor =
         [OWSConversationColor conversationColorOrDefaultForColorName:conversationColorName].themeColor;
 #else
-    UIColor *backgroundColor = [OWSConversationColor ows_steelColor];
+    UIColor *backgroundColor = [Theme conversationDefaulIconBackgroundColor];
 #endif
     UIImage *_Nullable image =
         [OWSGroupAvatarBuilder groupAvatarImageWithBackgroundColor:backgroundColor diameter:diameter];

@@ -61,7 +61,7 @@ public class OnboardingBaseViewController: OWSViewController {
             title: "",
             font: UIFont.ows_dynamicTypeBodyClamped.ows_semibold,
             titleColor: .white,
-            backgroundColor: Theme.ternaryTextColor,
+            backgroundColor: Theme.ternaryColor,
             target: self,
             selector: selector)
         button.button.layer.cornerRadius = buttonWidth / 2.0

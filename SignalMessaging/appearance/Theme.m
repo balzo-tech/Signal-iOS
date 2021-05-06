@@ -304,7 +304,7 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
     return UIColor.ows_gray25Color;
 }
 
-+ (UIColor *)ternaryTextColor
++ (UIColor *)ternaryColor
 {
     return (Theme.isDarkThemeEnabled ? UIColor.ows_whiteColor : UIColor.ows_accentGreenColorDark);
 }
@@ -479,6 +479,11 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 + (UIColor *)conversationButtonTextColor
 {
     return (Theme.isDarkThemeEnabled ? UIColor.ows_gray05Color : UIColor.ows_accentBlueColor);
+}
+
++ (UIColor *)conversationDefaulIconBackgroundColor
+{
+    return (Theme.isDarkThemeEnabled ? UIColor.ows_blueChillLight800 : UIColor.ows_blueGrey50);
 }
 
 

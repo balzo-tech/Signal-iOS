@@ -41,7 +41,7 @@ extern NSString *const ThemeDidChangeNotification;
 @property (class, readonly, nonatomic) UIColor *primaryTextColor;
 @property (class, readonly, nonatomic) UIColor *primaryIconColor;
 @property (class, readonly, nonatomic) UIColor *secondaryTextAndIconColor;
-@property (class, readonly, nonatomic) UIColor *ternaryTextColor;
+@property (class, readonly, nonatomic) UIColor *ternaryColor;
 @property (class, readonly, nonatomic) UIColor *boldColor;
 @property (class, readonly, nonatomic) UIColor *middleGrayColor;
 @property (class, readonly, nonatomic) UIColor *placeholderColor;
@@ -60,6 +60,7 @@ extern NSString *const ThemeDidChangeNotification;
 
 @property (class, readonly, nonatomic) UIColor *conversationButtonBackgroundColor;
 @property (class, readonly, nonatomic) UIColor *conversationButtonTextColor;
+@property (class, readonly, nonatomic) UIColor *conversationDefaulIconBackgroundColor;
 
 @property (class, readonly, nonatomic) UIColor *cellSelectedColor;
 @property (class, readonly, nonatomic) UIColor *cellSeparatorColor;

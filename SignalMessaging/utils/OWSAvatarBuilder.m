@@ -103,7 +103,7 @@ typedef void (^OWSAvatarDrawBlock)(CGContextRef context);
 
 + (UIColor *)avatarForegroundColor
 {
-    return (Theme.isDarkThemeEnabled ? UIColor.ows_gray05Color : UIColor.ows_whiteColor);
+    return UIColor.ows_blueChillLight600;
 }
 
 + (UIFont *)avatarTextFontForDiameter:(NSUInteger)diameter

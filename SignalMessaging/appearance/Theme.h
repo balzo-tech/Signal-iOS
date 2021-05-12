@@ -40,6 +40,7 @@ extern NSString *const ThemeDidChangeNotification;
 @property (class, readonly, nonatomic) UIColor *washColor;
 @property (class, readonly, nonatomic) UIColor *primaryTextColor;
 @property (class, readonly, nonatomic) UIColor *primaryIconColor;
+@property (class, readonly, nonatomic) UIColor *primaryBackgroundedIconColor;
 @property (class, readonly, nonatomic) UIColor *secondaryTextAndIconColor;
 @property (class, readonly, nonatomic) UIColor *ternaryColor;
 @property (class, readonly, nonatomic) UIColor *boldColor;

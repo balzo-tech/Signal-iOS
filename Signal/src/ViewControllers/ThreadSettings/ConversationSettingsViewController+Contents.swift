@@ -29,10 +29,15 @@ extension ConversationSettingsViewController {
         return contactsManagerImpl.hasSignalAccount(for: contactThread.contactAddress)
     }
 
-    private func buildCell(name: String, icon: ThemeIcon,
+    private func buildCell(name: String,
+                           icon: ThemeIcon,
+                           iconBackgroundColor: UIColor? = nil,
                            disclosureIconColor: UIColor? = nil,
                            accessibilityIdentifier: String? = nil) -> UITableViewCell {
-        let cell = OWSTableItem.buildCell(name: name, icon: icon, accessibilityIdentifier: accessibilityIdentifier)
+        let cell = OWSTableItem.buildCell(name: name,
+                                          icon: icon,
+                                          iconBackgroundColor: iconBackgroundColor,
+                                          accessibilityIdentifier: accessibilityIdentifier)
         if let disclosureIconColor = disclosureIconColor {
             let accessoryView = OWSColorPickerAccessoryView(color: disclosureIconColor)
             accessoryView.sizeToFit()
@@ -125,6 +130,7 @@ extension ConversationSettingsViewController {
             }
             return OWSTableItem.buildDisclosureCell(name: MediaStrings.allMedia,
                                                     icon: .settingsAllMedia,
+                                                    iconBackgroundColor: UIColor.ows_azureRadianceDark500,
                                                     accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "all_media"))
             },
                                  actionBlock: { [weak self] in
@@ -141,6 +147,7 @@ extension ConversationSettingsViewController {
                                               comment: "Table cell label in conversation settings which returns the user to the conversation with 'search mode' activated")
                 return OWSTableItem.buildDisclosureCell(name: title,
                                                         icon: .settingsSearch,
+                                                        iconBackgroundColor: UIColor.ows_persianGreenLight500,
                                                         accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "search"))
             },
             actionBlock: { [weak self] in
@@ -156,6 +163,7 @@ extension ConversationSettingsViewController {
 
             let cell = OWSTableItem.buildCellWithAccessoryLabel(
                 icon: .settingsWallpaper,
+                iconBackgroundColor: UIColor.ows_supernovaLight500,
                 itemName: NSLocalizedString("SETTINGS_ITEM_WALLPAPER",
                                             comment: "Label for settings view that allows user to change the wallpaper."),
                 accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "wallpaper")
@@ -177,6 +185,7 @@ extension ConversationSettingsViewController {
                 return OWSTableItem.buildDisclosureCell(name: NSLocalizedString("VERIFY_PRIVACY",
                                                                                 comment: "Label for button or row which allows users to verify the safety number of another user."),
                                                         icon: .settingsViewSafetyNumber,
+                                                        iconBackgroundColor: UIColor.ows_scienceBlueLight500,
                                                         accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "safety_numbers"))
                 },
                                      actionBlock: { [weak self] in
@@ -196,6 +205,7 @@ extension ConversationSettingsViewController {
                     "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT",
                     comment: "Indicates that user is in the system contacts list."),
                                                         icon: .settingsUserInContacts,
+                                                        iconBackgroundColor: UIColor.ows_lipstickLight500,
                                                         accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "is_in_contacts"))
                 },
                                      actionBlock: { [weak self] in
@@ -261,6 +271,7 @@ extension ConversationSettingsViewController {
                     icon: disappearingMessagesConfiguration.isEnabled
                         ? .settingsTimer
                         : .settingsTimerDisabled,
+                    iconBackgroundColor: UIColor.ows_blueGrey500,
                     itemName: NSLocalizedString(
                         "DISAPPEARING_MESSAGES",
                         comment: "table cell label in conversation settings"
@@ -317,6 +328,7 @@ extension ConversationSettingsViewController {
 
             let sound = OWSSounds.notificationSound(for: self.thread)
             let cell = OWSTableItem.buildCellWithAccessoryLabel(icon: .settingsMessageSound,
+                                                                iconBackgroundColor: UIColor.ows_blueChillLight500,
                                                                 itemName: NSLocalizedString("SETTINGS_ITEM_NOTIFICATION_SOUND",
                                                                                             comment: "Label for settings view that allows user to change the notification sound."),
                                                                 accessoryText: OWSSounds.displayName(forSound: sound))
@@ -364,6 +376,7 @@ extension ConversationSettingsViewController {
             }
 
             let cell = OWSTableItem.buildCellWithAccessoryLabel(icon: .settingsMuted,
+                                                                iconBackgroundColor: UIColor.ows_azureRadianceLight500,
                                                                 itemName: NSLocalizedString("CONVERSATION_SETTINGS_MUTE_LABEL",
                                                                                             comment: "label for 'mute thread' cell in conversation settings"),
                                                                 accessoryText: muteStatus)
@@ -428,9 +441,10 @@ extension ConversationSettingsViewController {
                 }
 
                 return OWSTableItem.buildIconNameCell(icon: .settingsLeaveGroup,
+                                                      iconBackgroundColor: UIColor.ows_lipstickLight500,
                                                       itemName: NSLocalizedString("LEAVE_GROUP_ACTION",
                                                                                   comment: "table cell label in conversation settings"),
-                                                      customColor: UIColor.ows_accentRed,
+                                                      customColor: UIColor.ows_lipstickLight500,
                                                       accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "leave_group"))
                 },
                                      actionBlock: { [weak self] in
@@ -462,9 +476,10 @@ extension ConversationSettingsViewController {
                                             comment: "Label for 'block group' action in conversation settings view.")
                         : NSLocalizedString("CONVERSATION_SETTINGS_BLOCK_USER",
                                             comment: "Label for 'block user' action in conversation settings view."))
-                customColor = UIColor.ows_accentRed
+                customColor = UIColor.ows_lipstickLight500
             }
             let cell = OWSTableItem.buildIconNameCell(icon: .settingsBlock,
+                                                      iconBackgroundColor: UIColor.ows_lipstickLight500,
                                                       itemName: cellTitle,
                                                       customColor: customColor,
                                                       accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "block"))

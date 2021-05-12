@@ -238,6 +238,7 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
     item.actionBlock = actionBlock;
     item.customCellBlock = ^{
         return [OWSTableItem buildCellWithAccessoryLabelWithItemName:text
+                                                 iconBackgroundColor:nil
                                                            textColor:nil
                                                        accessoryText:nil
                                                        accessoryType:accessoryType
@@ -289,6 +290,7 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
     item.actionBlock = actionBlock;
     item.customCellBlock = ^{
         return [OWSTableItem buildCellWithAccessoryLabelWithItemName:text
+                                                 iconBackgroundColor:nil
                                                            textColor:nil
                                                        accessoryText:detailText
                                                        accessoryType:UITableViewCellAccessoryDisclosureIndicator
@@ -317,6 +319,7 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
     };
     item.customCellBlock = ^{
         return [OWSTableItem buildCellWithAccessoryLabelWithItemName:text
+                                                 iconBackgroundColor:nil
                                                            textColor:nil
                                                        accessoryText:nil
                                                        accessoryType:UITableViewCellAccessoryDisclosureIndicator
@@ -364,6 +367,7 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
     item.actionBlock = actionBlock;
     item.customCellBlock = ^{
         return [OWSTableItem buildCellWithAccessoryLabelWithItemName:text
+                                                 iconBackgroundColor:nil
                                                            textColor:textColor
                                                        accessoryText:nil
                                                        accessoryType:UITableViewCellAccessoryNone
@@ -385,6 +389,7 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
     item.actionBlock = actionBlock;
     item.customCellBlock = ^{
         return [OWSTableItem buildCellWithAccessoryLabelWithItemName:text
+                                                 iconBackgroundColor:nil
                                                            textColor:nil
                                                        accessoryText:nil
                                                        accessoryType:UITableViewCellAccessoryNone
@@ -436,6 +441,7 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
     OWSTableItem *item = [OWSTableItem new];
     item.customCellBlock = ^{
         UITableViewCell *cell = [OWSTableItem buildCellWithAccessoryLabelWithItemName:text
+                                                                  iconBackgroundColor:nil
                                                                             textColor:nil
                                                                         accessoryText:nil
                                                                         accessoryType:UITableViewCellAccessoryNone
@@ -455,6 +461,7 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
     OWSTableItem *item = [OWSTableItem new];
     item.customCellBlock = ^{
         UITableViewCell *cell = [OWSTableItem buildCellWithAccessoryLabelWithItemName:text
+                                                                  iconBackgroundColor:nil
                                                                             textColor:nil
                                                                         accessoryText:accessoryText
                                                                         accessoryType:UITableViewCellAccessoryNone
@@ -533,6 +540,7 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
     __weak id weakTarget = target;
     item.customCellBlock = ^{
         UITableViewCell *cell = [OWSTableItem buildCellWithAccessoryLabelWithItemName:text
+                                                                  iconBackgroundColor:nil
                                                                             textColor:nil
                                                                         accessoryText:nil
                                                                         accessoryType:UITableViewCellAccessoryNone

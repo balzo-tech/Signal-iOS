@@ -294,6 +294,11 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
     return (Theme.isDarkThemeEnabled ? self.darkThemeNavbarIconColor : UIColor.ows_gray75Color);
 }
 
++ (UIColor *)primaryBackgroundedIconColor
+{
+    return UIColor.whiteColor;
+}
+
 + (UIColor *)secondaryTextAndIconColor
 {
     return (Theme.isDarkThemeEnabled ? Theme.darkThemeSecondaryTextAndIconColor : UIColor.ows_gray60Color);

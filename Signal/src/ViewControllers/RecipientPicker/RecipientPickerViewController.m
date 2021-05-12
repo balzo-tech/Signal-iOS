@@ -399,6 +399,7 @@ const NSUInteger kMinimumSearchLength = 2;
 
     if (self.shouldShowNewGroup && !isSearching) {
         [staticSection addItem:[OWSTableItem disclosureItemWithIcon:ThemeIconComposeNewGroup
+                                                iconBackgroundColor:nil
                                                                name:NSLocalizedString(
                                                                         @"NEW_GROUP_BUTTON", comment
                                                                         : @"Label for the 'create new group' button.")
@@ -413,6 +414,7 @@ const NSUInteger kMinimumSearchLength = 2;
         [staticSection
             addItem:[OWSTableItem
                          disclosureItemWithIcon:ThemeIconComposeFindByPhoneNumber
+                            iconBackgroundColor:nil
                                            name:NSLocalizedString(@"NEW_CONVERSATION_FIND_BY_PHONE_NUMBER",
                                                     @"A label the cell that lets you add a new member to a group.")
                                   accessoryText:nil
@@ -433,6 +435,7 @@ const NSUInteger kMinimumSearchLength = 2;
         [staticSection
             addItem:[OWSTableItem
                          disclosureItemWithIcon:ThemeIconComposeInvite
+                            iconBackgroundColor:nil
                                            name:NSLocalizedString(@"INVITE_FRIENDS_CONTACT_TABLE_BUTTON",
                                                     @"Label for the cell that presents the 'invite contacts' workflow.")
                                   accessoryText:nil

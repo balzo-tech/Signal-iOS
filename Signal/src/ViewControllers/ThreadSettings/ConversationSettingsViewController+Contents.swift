@@ -147,7 +147,9 @@ extension ConversationSettingsViewController {
                                               comment: "Table cell label in conversation settings which returns the user to the conversation with 'search mode' activated")
                 return OWSTableItem.buildDisclosureCell(name: title,
                                                         icon: .settingsSearch,
-                                                        iconBackgroundColor: UIColor.ows_persianGreenLight500,
+                                                        iconBackgroundColor: Theme.isDarkThemeEnabled
+                                                            ? UIColor.ows_persianGreenDark500
+                                                            : UIColor.ows_persianGreenLight500,
                                                         accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "search"))
             },
             actionBlock: { [weak self] in
@@ -163,7 +165,9 @@ extension ConversationSettingsViewController {
 
             let cell = OWSTableItem.buildCellWithAccessoryLabel(
                 icon: .settingsWallpaper,
-                iconBackgroundColor: UIColor.ows_supernovaLight500,
+                iconBackgroundColor: Theme.isDarkThemeEnabled
+                    ? UIColor.ows_supernovaDark500
+                    : UIColor.ows_supernovaLight500,
                 itemName: NSLocalizedString("SETTINGS_ITEM_WALLPAPER",
                                             comment: "Label for settings view that allows user to change the wallpaper."),
                 accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "wallpaper")
@@ -185,7 +189,9 @@ extension ConversationSettingsViewController {
                 return OWSTableItem.buildDisclosureCell(name: NSLocalizedString("VERIFY_PRIVACY",
                                                                                 comment: "Label for button or row which allows users to verify the safety number of another user."),
                                                         icon: .settingsViewSafetyNumber,
-                                                        iconBackgroundColor: UIColor.ows_scienceBlueLight500,
+                                                        iconBackgroundColor: Theme.isDarkThemeEnabled
+                                                            ? UIColor.ows_scienceBlueDark500
+                                                            : UIColor.ows_scienceBlueLight500,
                                                         accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "safety_numbers"))
                 },
                                      actionBlock: { [weak self] in
@@ -205,7 +211,9 @@ extension ConversationSettingsViewController {
                     "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT",
                     comment: "Indicates that user is in the system contacts list."),
                                                         icon: .settingsUserInContacts,
-                                                        iconBackgroundColor: UIColor.ows_lipstickLight500,
+                                                        iconBackgroundColor: Theme.isDarkThemeEnabled
+                                                            ? UIColor.ows_lipstickDark500
+                                                            : UIColor.ows_lipstickLight500,
                                                         accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "is_in_contacts"))
                 },
                                      actionBlock: { [weak self] in
@@ -328,7 +336,9 @@ extension ConversationSettingsViewController {
 
             let sound = OWSSounds.notificationSound(for: self.thread)
             let cell = OWSTableItem.buildCellWithAccessoryLabel(icon: .settingsMessageSound,
-                                                                iconBackgroundColor: UIColor.ows_blueChillLight500,
+                                                                iconBackgroundColor: Theme.isDarkThemeEnabled
+                                                                    ? UIColor.ows_blueChillDark500
+                                                                    : UIColor.ows_blueChillLight500,
                                                                 itemName: NSLocalizedString("SETTINGS_ITEM_NOTIFICATION_SOUND",
                                                                                             comment: "Label for settings view that allows user to change the notification sound."),
                                                                 accessoryText: OWSSounds.displayName(forSound: sound))
@@ -433,6 +443,8 @@ extension ConversationSettingsViewController {
             : NSLocalizedString("CONVERSATION_SETTINGS_BLOCK_AND_LEAVE_SECTION_CONTACT_FOOTER",
                                 comment: "Footer text for the 'block and leave' section of contact conversation settings view.")
 
+        let redColor = Theme.isDarkThemeEnabled ? UIColor.ows_lipstickDark500 : UIColor.ows_lipstickLight500
+        
         if isGroupThread, isLocalUserFullOrInvitedMember {
             section.add(OWSTableItem(customCellBlock: { [weak self] in
                 guard let self = self else {
@@ -441,10 +453,10 @@ extension ConversationSettingsViewController {
                 }
 
                 return OWSTableItem.buildIconNameCell(icon: .settingsLeaveGroup,
-                                                      iconBackgroundColor: UIColor.ows_lipstickLight500,
+                                                      iconBackgroundColor: redColor,
                                                       itemName: NSLocalizedString("LEAVE_GROUP_ACTION",
                                                                                   comment: "table cell label in conversation settings"),
-                                                      customColor: UIColor.ows_lipstickLight500,
+                                                      customColor: redColor,
                                                       accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "leave_group"))
                 },
                                      actionBlock: { [weak self] in
@@ -476,10 +488,10 @@ extension ConversationSettingsViewController {
                                             comment: "Label for 'block group' action in conversation settings view.")
                         : NSLocalizedString("CONVERSATION_SETTINGS_BLOCK_USER",
                                             comment: "Label for 'block user' action in conversation settings view."))
-                customColor = UIColor.ows_lipstickLight500
+                customColor = redColor
             }
             let cell = OWSTableItem.buildIconNameCell(icon: .settingsBlock,
-                                                      iconBackgroundColor: UIColor.ows_lipstickLight500,
+                                                      iconBackgroundColor: redColor,
                                                       itemName: cellTitle,
                                                       customColor: customColor,
                                                       accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "block"))

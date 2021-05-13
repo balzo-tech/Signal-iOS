@@ -28,7 +28,7 @@
 + (void)setupSignalAppearence
 {
     UINavigationBar.appearance.barTintColor = Theme.navbarBackgroundColor;
-    UINavigationBar.appearance.tintColor = Theme.primaryIconColor;
+    UINavigationBar.appearance.tintColor = Theme.accentBlueColor;
     UIToolbar.appearance.barTintColor = Theme.navbarBackgroundColor;
     UIToolbar.appearance.tintColor = Theme.primaryIconColor;
 

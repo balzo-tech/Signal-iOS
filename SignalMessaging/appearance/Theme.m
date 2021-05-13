@@ -301,12 +301,12 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)secondaryTextAndIconColor
 {
-    return (Theme.isDarkThemeEnabled ? Theme.darkThemeSecondaryTextAndIconColor : UIColor.ows_gray60Color);
+    return (Theme.isDarkThemeEnabled ? Theme.darkThemeSecondaryTextAndIconColor : UIColor.ows_gray500);
 }
 
 + (UIColor *)darkThemeSecondaryTextAndIconColor
 {
-    return UIColor.ows_gray25Color;
+    return UIColor.ows_gray500;
 }
 
 + (UIColor *)ternaryColor
@@ -353,7 +353,7 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)darkThemeNavbarBackgroundColor
 {
-    return UIColor.ows_blackColor;
+    return UIColor.ows_gray800;
 }
 
 + (UIColor *)darkThemeNavbarIconColor
@@ -403,7 +403,7 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)accentBlueColor
 {
-    return Theme.isDarkThemeEnabled ? UIColor.ows_accentBlueDarkColor : UIColor.ows_accentBlueColor;
+    return Theme.isDarkThemeEnabled ? UIColor.ows_azureRadianceDark500 : UIColor.ows_azureRadianceLight500;
 }
 
 + (UIColor *)tableCellBackgroundColor
@@ -468,7 +468,7 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)lightThemePrimaryColor
 {
-    return UIColor.ows_blackColor;
+    return UIColor.ows_gray900;
 }
 
 + (UIColor *)galleryHighlightColor

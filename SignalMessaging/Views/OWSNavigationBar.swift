@@ -159,14 +159,14 @@ public class OWSNavigationBar: UINavigationBar {
             self.barStyle = .black
             self.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.darkThemePrimaryColor]
             self.barTintColor = Theme.darkThemeBackgroundColor.withAlphaComponent(0.6)
-            self.tintColor = Theme.darkThemePrimaryColor
+            self.tintColor = Theme.accentBlueColor
         }
 
         let removeDarkThemeOverride = {
             self.barStyle = Theme.barStyle
             self.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.primaryTextColor]
             self.barTintColor = Theme.backgroundColor.withAlphaComponent(0.6)
-            self.tintColor = Theme.primaryTextColor
+            self.tintColor = Theme.accentBlueColor
         }
 
         let applyTransparentBarOverride = {

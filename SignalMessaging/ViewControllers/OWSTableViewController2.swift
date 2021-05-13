@@ -47,7 +47,7 @@ open class OWSTableViewController2: OWSViewController {
     }
 
     @objc
-    public var useNewStyle = true {
+    public var useNewStyle = false {
         didSet {
             applyTheme()
         }

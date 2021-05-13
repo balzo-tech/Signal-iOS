@@ -393,7 +393,7 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)cellSeparatorColor
 {
-    return Theme.hairlineColor;
+    return Theme.isDarkThemeEnabled ? UIColor.ows_gray700 : UIColor.ows_gray200;
 }
 
 + (UIColor *)cursorColor
@@ -408,22 +408,22 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)tableCellBackgroundColor
 {
-    return Theme.isDarkThemeEnabled ? UIColor.ows_gray95Color : Theme.backgroundColor;
+    return Theme.isDarkThemeEnabled ? UIColor.ows_gray900 : UIColor.ows_whiteColor;
 }
 
 + (UIColor *)tableViewBackgroundColor
 {
-    return (Theme.isDarkThemeEnabled ? UIColor.ows_blackColor : UIColor.ows_gray02Color);
+    return (Theme.isDarkThemeEnabled ? UIColor.ows_gray900 : UIColor.ows_whiteColor);
 }
 
 + (UIColor *)tableCell2BackgroundColor
 {
-    return Theme.isDarkThemeEnabled ? UIColor.ows_gray90Color : UIColor.ows_whiteColor;
+    return Theme.isDarkThemeEnabled ? UIColor.ows_gray900 : UIColor.ows_whiteColor;
 }
 
 + (UIColor *)tableCell2PresentedBackgroundColor
 {
-    return Theme.isDarkThemeEnabled ? UIColor.ows_gray80Color : UIColor.ows_whiteColor;
+    return Theme.isDarkThemeEnabled ? UIColor.ows_gray900 : UIColor.ows_whiteColor;
 }
 
 + (UIColor *)tableCell2SelectedBackgroundColor
@@ -438,27 +438,27 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)tableView2BackgroundColor
 {
-    return (Theme.isDarkThemeEnabled ? UIColor.ows_blackColor : UIColor.ows_gray10Color);
+    return (Theme.isDarkThemeEnabled ? UIColor.ows_gray900 : UIColor.ows_whiteColor);
 }
 
 + (UIColor *)tableView2PresentedBackgroundColor
 {
-    return (Theme.isDarkThemeEnabled ? UIColor.ows_gray90Color : UIColor.ows_gray10Color);
+    return (Theme.isDarkThemeEnabled ? UIColor.ows_gray900 : UIColor.ows_whiteColor);
 }
 
 + (UIColor *)tableView2SeparatorColor
 {
-    return (Theme.isDarkThemeEnabled ? UIColor.ows_gray75Color : UIColor.ows_gray20Color);
+    return Theme.isDarkThemeEnabled ? UIColor.ows_gray700 : UIColor.ows_gray200;
 }
 
 + (UIColor *)tableView2PresentedSeparatorColor
 {
-    return (Theme.isDarkThemeEnabled ? UIColor.ows_gray65Color : UIColor.ows_gray20Color);
+    return Theme.isDarkThemeEnabled ? UIColor.ows_gray700 : UIColor.ows_gray200;
 }
 
 + (UIColor *)darkThemeBackgroundColor
 {
-    return UIColor.ows_blackColor;
+    return UIColor.ows_gray900;
 }
 
 + (UIColor *)darkThemePrimaryColor

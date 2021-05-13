@@ -71,6 +71,7 @@ typedef void (^OWSAvatarDrawBlock)(CGContextRef context);
 
     return [self avatarImageWithDiameter:diameter
                          backgroundColor:backgroundColor
+                             borderColor:nil
                                drawBlock:^(CGContextRef context) {
                                    CGContextTranslateCTM(context, diameter / 2, diameter / 2);
                                    CGContextRotateCTM(context, (CGFloat)M_PI_2);
@@ -88,6 +89,7 @@ typedef void (^OWSAvatarDrawBlock)(CGContextRef context);
     UIColor *backgroundColor = [UIColor colorWithRGBHex:0xaca6633];
     return [self avatarImageWithDiameter:diameter
                          backgroundColor:backgroundColor
+                             borderColor:nil
                                drawBlock:^(CGContextRef context) {
                                    const NSUInteger stride = 1;
                                    for (NSUInteger x = 0; x < diameter; x += stride) {
@@ -115,11 +117,12 @@ typedef void (^OWSAvatarDrawBlock)(CGContextRef context);
 
 + (nullable UIImage *)avatarImageWithInitials:(NSString *)initials
                               backgroundColor:(UIColor *)backgroundColor
+                              foregroundColor:(UIColor *)foregroundColor
                                      diameter:(NSUInteger)diameter
 {
     return [self avatarImageWithInitials:initials
                          backgroundColor:backgroundColor
-                               textColor:self.avatarForegroundColor
+                               textColor:foregroundColor
                                     font:[self avatarTextFontForDiameter:diameter]
                                 diameter:diameter];
 }
@@ -136,6 +139,7 @@ typedef void (^OWSAvatarDrawBlock)(CGContextRef context);
 
     return [self avatarImageWithDiameter:diameter
                          backgroundColor:backgroundColor
+                             borderColor:textColor
                                drawBlock:^(CGContextRef context) {
                                    [self drawInitialsInAvatar:initials textColor:textColor font:font diameter:diameter];
                                }];
@@ -150,6 +154,7 @@ typedef void (^OWSAvatarDrawBlock)(CGContextRef context);
                             iconSize:iconSize
                            iconColor:self.avatarForegroundColor
                      backgroundColor:backgroundColor
+                         borderColor:self.avatarForegroundColor
                             diameter:diameter];
 }
 
@@ -157,6 +162,7 @@ typedef void (^OWSAvatarDrawBlock)(CGContextRef context);
                                  iconSize:(CGSize)iconSize
                                 iconColor:(UIColor *)iconColor
                           backgroundColor:(UIColor *)backgroundColor
+                              borderColor:(nullable UIColor *)borderColor
                                  diameter:(NSUInteger)diameter
 {
     OWSAssertDebug(icon);
@@ -164,6 +170,7 @@ typedef void (^OWSAvatarDrawBlock)(CGContextRef context);
 
     return [self avatarImageWithDiameter:diameter
                          backgroundColor:backgroundColor
+                             borderColor:borderColor
                                drawBlock:^(CGContextRef context) {
                                    [self drawIconInAvatar:icon
                                                  iconSize:iconSize
@@ -175,6 +182,7 @@ typedef void (^OWSAvatarDrawBlock)(CGContextRef context);
 
 + (nullable UIImage *)avatarImageWithDiameter:(NSUInteger)diameter
                               backgroundColor:(UIColor *)backgroundColor
+                                  borderColor:(nullable UIColor *)borderColor
                                     drawBlock:(OWSAvatarDrawBlock)drawBlock
 {
     OWSAssertDebug(drawBlock);
@@ -191,33 +199,52 @@ typedef void (^OWSAvatarDrawBlock)(CGContextRef context);
 
     CGContextSetFillColorWithColor(context, backgroundColor.CGColor);
     CGContextFillRect(context, frame);
-
+    
     // Gradient
-    CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
-    CGFloat gradientLocations[] = { 0.0, 1.0 };
-    CGGradientRef _Nullable gradient = CGGradientCreateWithColors(colorspace,
-        (__bridge CFArrayRef) @[
-            (id)[UIColor colorWithWhite:0.f alpha:0.f].CGColor,
-            (id)[UIColor colorWithWhite:0.f alpha:0.15f].CGColor,
-        ],
-        gradientLocations);
-    CFRelease(colorspace);
-    if (!gradient) {
-        return nil;
-    }
-    CGPoint startPoint = CGPointMake(diameter * 0.5f, 0);
-    CGPoint endPoint = CGPointMake(diameter * 0.5f, diameter);
-    CGContextDrawLinearGradient(context,
-        gradient,
-        startPoint,
-        endPoint,
-        kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
-    CFRelease(gradient);
+//    CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
+//    CGFloat gradientLocations[] = { 0.0, 1.0 };
+//    CGGradientRef _Nullable gradient = CGGradientCreateWithColors(colorspace,
+//        (__bridge CFArrayRef) @[
+//            (id)[UIColor colorWithWhite:0.f alpha:0.f].CGColor,
+//            (id)[UIColor colorWithWhite:0.f alpha:0.15f].CGColor,
+//        ],
+//        gradientLocations);
+//    CFRelease(colorspace);
+//    if (!gradient) {
+//        return nil;
+//    }
+//    CGPoint startPoint = CGPointMake(diameter * 0.5f, 0);
+//    CGPoint endPoint = CGPointMake(diameter * 0.5f, diameter);
+//    CGContextDrawLinearGradient(context,
+//        gradient,
+//        startPoint,
+//        endPoint,
+//        kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
+//    CFRelease(gradient);
+    
+    
+    
+//    ctx.cgContext.setFillColor(UIColor.red.cgColor)
+//        ctx.cgContext.setStrokeColor(UIColor.green.cgColor)
+//        ctx.cgContext.setLineWidth(10)
+//
+//        let rectangle = CGRect(x: 0, y: 0, width: 512, height: 512)
+//        ctx.cgContext.addEllipse(in: rectangle)
+//        ctx.cgContext.drawPath(using: .fillStroke)
 
     CGContextSaveGState(context);
     drawBlock(context);
     CGContextRestoreGState(context);
 
+    // Cicular border
+    if (borderColor != nil) {
+        CGContextSetStrokeColorWithColor(context, borderColor.CGColor);
+        CGContextSetLineWidth(context, 4);
+        
+        CGContextAddEllipseInRect(context, frame);
+        CGContextStrokePath(context);
+    }
+    
     UIImage *_Nullable image = UIGraphicsGetImageFromCurrentImageContext();
 
     UIGraphicsEndImageContext();

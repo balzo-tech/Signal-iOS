@@ -203,6 +203,7 @@ NS_ASSUME_NONNULL_BEGIN
     }
 
     UIColor *color = [OWSConversationColor conversationColorOrDefaultForColorName:self.colorName].themeColor;
+    UIColor *tintColor = [OWSConversationColor conversationColorOrDefaultForColorName:self.colorName].tintColor;
     OWSAssertDebug(color);
 
     UIImage *_Nullable image;
@@ -229,6 +230,7 @@ NS_ASSUME_NONNULL_BEGIN
     } else {
         image = [OWSAvatarBuilder avatarImageWithInitials:self.contactInitials
                                           backgroundColor:color
+                                          foregroundColor:tintColor
                                                  diameter:self.diameter];
     }
 

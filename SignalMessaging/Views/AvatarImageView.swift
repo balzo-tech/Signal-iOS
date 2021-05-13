@@ -39,8 +39,6 @@ open class AvatarImageView: UIImageView {
 
     override public func layoutSubviews() {
         super.layoutSubviews()
-        layer.borderWidth = 2.0
-        layer.borderColor = OWSAvatarBuilder.avatarForegroundColor().cgColor
         layer.cornerRadius = frame.size.width / 2
     }
 }

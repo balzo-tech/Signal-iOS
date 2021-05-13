@@ -120,7 +120,7 @@ public class CVComponentThreadDetails: CVComponentBase, CVRootComponent {
     private var titleLabelConfig: CVLabelConfig {
         CVLabelConfig(text: titleText,
                       font: UIFont.ows_dynamicTypeTitle1.ows_semibold,
-                      textColor: Theme.secondaryTextAndIconColor,
+                      textColor: Theme.primaryTextColor,
                       numberOfLines: 0,
                       lineBreakMode: .byWordWrapping,
                       textAlignment: .center)

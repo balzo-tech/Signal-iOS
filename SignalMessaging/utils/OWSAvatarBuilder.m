@@ -239,7 +239,7 @@ typedef void (^OWSAvatarDrawBlock)(CGContextRef context);
     // Cicular border
     if (borderColor != nil) {
         CGContextSetStrokeColorWithColor(context, borderColor.CGColor);
-        CGContextSetLineWidth(context, 4);
+        CGContextSetLineWidth(context, diameter * 0.066);
         
         CGContextAddEllipseInRect(context, frame);
         CGContextStrokePath(context);

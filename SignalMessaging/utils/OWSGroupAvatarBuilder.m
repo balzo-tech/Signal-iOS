@@ -91,6 +91,7 @@ NS_ASSUME_NONNULL_BEGIN
     return [OWSAvatarBuilder avatarImageWithIcon:icon
                                         iconSize:iconSize
                                  backgroundColor:backgroundColor
+                                       tintColor:nil
                                         diameter:diameter];
 }
 

@@ -148,13 +148,17 @@ typedef void (^OWSAvatarDrawBlock)(CGContextRef context);
 + (nullable UIImage *)avatarImageWithIcon:(UIImage *)icon
                                  iconSize:(CGSize)iconSize
                           backgroundColor:(UIColor *)backgroundColor
+                                tintColor:(nullable UIColor *)tintColor
                                  diameter:(NSUInteger)diameter
 {
+    if (tintColor == nil) {
+        tintColor = self.avatarForegroundColor;
+    }
     return [self avatarImageWithIcon:icon
                             iconSize:iconSize
-                           iconColor:self.avatarForegroundColor
+                           iconColor:tintColor
                      backgroundColor:backgroundColor
-                         borderColor:self.avatarForegroundColor
+                         borderColor:tintColor
                             diameter:diameter];
 }
 

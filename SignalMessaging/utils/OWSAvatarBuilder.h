@@ -39,6 +39,7 @@ extern const NSUInteger kLargeAvatarSize;
 + (nullable UIImage *)avatarImageWithIcon:(UIImage *)icon
                                  iconSize:(CGSize)iconSize
                           backgroundColor:(UIColor *)backgroundColor
+                                tintColor:(nullable UIColor *)tintColor
                                  diameter:(NSUInteger)diameter;
 
 + (UIColor *)avatarForegroundColor;

@@ -221,11 +221,12 @@ NS_ASSUME_NONNULL_BEGIN
         // Adjust its size to reflect the actual output diameter.
         // We use an oversize 1024px version of the asset to ensure quality results for larger avatars.
         CGFloat scaling = (self.diameter / (CGFloat)kStandardAvatarSize) * (28 / assetWidthPixels);
-
+        
         CGSize iconSize = CGSizeScale(icon.size, scaling);
         image = [OWSAvatarBuilder avatarImageWithIcon:icon
                                              iconSize:iconSize
                                       backgroundColor:color
+                                            tintColor:tintColor
                                              diameter:self.diameter];
     } else {
         image = [OWSAvatarBuilder avatarImageWithInitials:self.contactInitials

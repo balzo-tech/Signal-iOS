@@ -407,6 +407,7 @@ extension ConversationSettingsViewController {
                 }
 
                 let cell = OWSTableItem.buildCellWithAccessoryLabel(icon: .settingsMention,
+                                                                    iconBackgroundColor: UIColor.ows_electricViolet500,
                                                                     itemName: NSLocalizedString("CONVERSATION_SETTINGS_MENTIONS_LABEL",
                                                                                                 comment: "label for 'mentions' cell in conversation settings"),
                                                                     accessoryText: self.nameForMentionMode(self.thread.mentionNotificationMode))
@@ -443,7 +444,12 @@ extension ConversationSettingsViewController {
             : NSLocalizedString("CONVERSATION_SETTINGS_BLOCK_AND_LEAVE_SECTION_CONTACT_FOOTER",
                                 comment: "Footer text for the 'block and leave' section of contact conversation settings view.")
 
-        let redColor = Theme.isDarkThemeEnabled ? UIColor.ows_lipstickDark500 : UIColor.ows_lipstickLight500
+        let color: UIColor
+        if isGroupThread {
+            color = UIColor.ows_redRibbon500
+        } else {
+            color = Theme.isDarkThemeEnabled ? UIColor.ows_lipstickDark500 : UIColor.ows_lipstickLight500
+        }
         
         if isGroupThread, isLocalUserFullOrInvitedMember {
             section.add(OWSTableItem(customCellBlock: { [weak self] in
@@ -453,10 +459,10 @@ extension ConversationSettingsViewController {
                 }
 
                 return OWSTableItem.buildIconNameCell(icon: .settingsLeaveGroup,
-                                                      iconBackgroundColor: redColor,
+                                                      iconBackgroundColor: color,
                                                       itemName: NSLocalizedString("LEAVE_GROUP_ACTION",
                                                                                   comment: "table cell label in conversation settings"),
-                                                      customColor: redColor,
+                                                      customColor: color,
                                                       accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "leave_group"))
                 },
                                      actionBlock: { [weak self] in
@@ -488,10 +494,10 @@ extension ConversationSettingsViewController {
                                             comment: "Label for 'block group' action in conversation settings view.")
                         : NSLocalizedString("CONVERSATION_SETTINGS_BLOCK_USER",
                                             comment: "Label for 'block user' action in conversation settings view."))
-                customColor = redColor
+                customColor = color
             }
             let cell = OWSTableItem.buildIconNameCell(icon: .settingsBlock,
-                                                      iconBackgroundColor: redColor,
+                                                      iconBackgroundColor: color,
                                                       itemName: cellTitle,
                                                       customColor: customColor,
                                                       accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "block"))
@@ -521,6 +527,7 @@ extension ConversationSettingsViewController {
 
             let accessStatus = self.accessoryLabel(forAccess: groupModelV2.access.members)
             let cell = OWSTableItem.buildCellWithAccessoryLabel(icon: .settingsEditGroupAccess,
+                                                                iconBackgroundColor: UIColor.ows_turquoise500,
                                                                 itemName: NSLocalizedString("CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS",
                                                                                             comment: "Label for 'edit membership access' action in conversation settings view."),
                                                                 accessoryText: accessStatus)
@@ -542,6 +549,7 @@ extension ConversationSettingsViewController {
 
             let accessStatus = self.accessoryLabel(forAccess: groupModelV2.access.attributes)
             let cell = OWSTableItem.buildCellWithAccessoryLabel(icon: .settingsEditGroupAccess,
+                                                                iconBackgroundColor: UIColor.ows_malachite500,
                                                                 itemName: NSLocalizedString("CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS",
                                                                                             comment: "Label for 'edit attributes access' action in conversation settings view."),
                                                                 accessoryText: accessStatus)
@@ -595,8 +603,11 @@ extension ConversationSettingsViewController {
 
                 let iconView = OWSTableItem.buildIconInCircleView(icon: .settingsAddMembers,
                                                                   iconSize: kSmallAvatarSize,
+                                                                  iconBackgroundColor: Theme.isDarkThemeEnabled
+                                                                    ? UIColor.ows_gray700
+                                                                    : UIColor.ows_gray100,
                                                                   innerIconSize: 24,
-                                                                  iconTintColor: Theme.primaryTextColor)
+                                                                  iconTintColor: Theme.accentBlueColor)
 
                 let rowLabel = UILabel()
                 rowLabel.text = NSLocalizedString("CONVERSATION_SETTINGS_ADD_MEMBERS",
@@ -772,6 +783,7 @@ extension ConversationSettingsViewController {
             : NSLocalizedString("CONVERSATION_SETTINGS_MEMBER_INVITES",
                                 comment: "Label for 'member invites' action in conversation settings view."))
         section.add(OWSTableItem.disclosureItem(icon: .settingsViewRequestAndInvites,
+                                                iconBackgroundColor: UIColor.ows_ecstasy500,
                                                 name: itemTitle,
                                                 accessibilityIdentifier: "conversation_settings_requests_and_invites",
                                                 actionBlock: { [weak self] in
@@ -783,6 +795,7 @@ extension ConversationSettingsViewController {
                 ? CommonStrings.switchOn
                 : CommonStrings.switchOff)
             section.add(OWSTableItem.disclosureItem(icon: .settingsLink,
+                                                    iconBackgroundColor: UIColor.ows_shockingPink500,
                                                     name: NSLocalizedString("CONVERSATION_SETTINGS_GROUP_LINK",
                                                                             comment: "Label for 'group link' action in conversation settings view."),
                                                     accessoryText: groupLinkStatus,

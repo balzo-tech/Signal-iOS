@@ -349,6 +349,112 @@ public extension UIColor {
         return UIColor(rgbHex: 0x212121)
     }
     
+    // MARK: - RedRibbon
+
+    @objc(ows_redRibbon50)
+    class var ows_redRibbon50: UIColor {
+        return UIColor(rgbHex: 0xFEE7EB)
+    }
+
+    @objc(ows_redRibbon100)
+    class var ows_redRibbon100: UIColor {
+        return UIColor(rgbHex: 0xFBCED6)
+    }
+    
+    @objc(ows_redRibbon200)
+    class var ows_redRibbon200: UIColor {
+        return UIColor(rgbHex: 0xF89EAD)
+    }
+    
+    @objc(ows_redRibbon300)
+    class var ows_redRibbon300: UIColor {
+        return UIColor(rgbHex: 0xF46D84)
+    }
+    
+    @objc(ows_redRibbon400)
+    class var ows_redRibbon400: UIColor {
+        return UIColor(rgbHex: 0xF13D5B)
+    }
+    
+    @objc(ows_redRibbon500)
+    class var ows_redRibbon500: UIColor {
+        return UIColor(rgbHex: 0xED0C32)
+    }
+    
+    @objc(ows_redRibbon600)
+    class var ows_redRibbon600: UIColor {
+        return UIColor(rgbHex: 0xB20926)
+    }
+    
+    @objc(ows_redRibbon700)
+    class var ows_redRibbon700: UIColor {
+        return UIColor(rgbHex: 0x770619)
+    }
+    
+    @objc(ows_redRibbon800)
+    class var ows_redRibbon800: UIColor {
+        return UIColor(rgbHex: 0x3B030D)
+    }
+    
+    @objc(ows_redRibbon900)
+    class var ows_redRibbon900: UIColor {
+        return UIColor(rgbHex: 0x180105)
+    }
+    
+    // MARK: - Ecstasy
+
+    @objc(ows_ecstasy50)
+    class var ows_ecstasy50: UIColor {
+        return UIColor(rgbHex: 0xFFF1E7)
+    }
+
+    @objc(ows_ecstasy100)
+    class var ows_ecstasy100: UIColor {
+        return UIColor(rgbHex: 0xFFE3CF)
+    }
+    
+    @objc(ows_ecstasy200)
+    class var ows_ecstasy200: UIColor {
+        return UIColor(rgbHex: 0xFEC69E)
+    }
+    
+    @objc(ows_ecstasy300)
+    class var ows_ecstasy300: UIColor {
+        return UIColor(rgbHex: 0xFEAA6E)
+    }
+    
+    @objc(ows_ecstasy400)
+    class var ows_ecstasy400: UIColor {
+        return UIColor(rgbHex: 0xFD8D3D)
+    }
+    
+    @objc(ows_ecstasy500)
+    class var ows_ecstasy500: UIColor {
+        return UIColor(rgbHex: 0xFD710D)
+    }
+    
+    @objc(ows_ecstasy600)
+    class var ows_ecstasy600: UIColor {
+        return UIColor(rgbHex: 0xBE550A)
+    }
+    
+    @objc(ows_ecstasy700)
+    class var ows_ecstasy700: UIColor {
+        return UIColor(rgbHex: 0x7F3907)
+    }
+    
+    @objc(ows_ecstasy800)
+    class var ows_ecstasy800: UIColor {
+        return UIColor(rgbHex: 0x3F1C03)
+    }
+    
+    @objc(ows_ecstasy900)
+    class var ows_ecstasy900: UIColor {
+        return UIColor(rgbHex: 0x190B01)
+    }
+    
+    
+    
     // MARK: - CobaltDark
 
     @objc(ows_cobaltDark50)
@@ -1012,6 +1118,214 @@ public extension UIColor {
     @objc(ows_supernovaLight800)
     class var ows_supernovaLight800: UIColor {
         return UIColor(rgbHex: 0x3C2F03)
+    }
+    
+    // MARK: - Malachite
+
+    @objc(ows_malachite50)
+    class var ows_malachite50: UIColor {
+        return UIColor(rgbHex: 0xE8FDF0)
+    }
+
+    @objc(ows_malachite100)
+    class var ows_malachite100: UIColor {
+        return UIColor(rgbHex: 0xD0F9E0)
+    }
+    
+    @objc(ows_malachite200)
+    class var ows_malachite200: UIColor {
+        return UIColor(rgbHex: 0xA0F3C2)
+    }
+    
+    @objc(ows_malachite300)
+    class var ows_malachite300: UIColor {
+        return UIColor(rgbHex: 0x71EEA3)
+    }
+    
+    @objc(ows_malachite400)
+    class var ows_malachite400: UIColor {
+        return UIColor(rgbHex: 0x41E885)
+    }
+    
+    @objc(ows_malachite500)
+    class var ows_malachite500: UIColor {
+        return UIColor(rgbHex: 0x12E266)
+    }
+    
+    @objc(ows_malachite600)
+    class var ows_malachite600: UIColor {
+        return UIColor(rgbHex: 0x0EAA4D)
+    }
+    
+    @objc(ows_malachite700)
+    class var ows_malachite700: UIColor {
+        return UIColor(rgbHex: 0x097133)
+    }
+    
+    @objc(ows_malachite800)
+    class var ows_malachite800: UIColor {
+        return UIColor(rgbHex: 0x05391A)
+    }
+    
+    @objc(ows_malachite900)
+    class var ows_malachite900: UIColor {
+        return UIColor(rgbHex: 0x02170A)
+    }
+    
+    // MARK: - Turquoise
+
+    @objc(ows_turquoise50)
+    class var ows_turquoise50: UIColor {
+        return UIColor(rgbHex: 0xE8FEFE)
+    }
+
+    @objc(ows_turquoise100)
+    class var ows_turquoise100: UIColor {
+        return UIColor(rgbHex: 0xCFFBFC)
+    }
+    
+    @objc(ows_turquoise200)
+    class var ows_turquoise200: UIColor {
+        return UIColor(rgbHex: 0xA0F7F8)
+    }
+    
+    @objc(ows_turquoise300)
+    class var ows_turquoise300: UIColor {
+        return UIColor(rgbHex: 0x70F3F5)
+    }
+    
+    @objc(ows_turquoise400)
+    class var ows_turquoise400: UIColor {
+        return UIColor(rgbHex: 0x41EFF1)
+    }
+    
+    @objc(ows_turquoise500)
+    class var ows_turquoise500: UIColor {
+        return UIColor(rgbHex: 0x11EBEE)
+    }
+    
+    @objc(ows_turquoise600)
+    class var ows_turquoise600: UIColor {
+        return UIColor(rgbHex: 0x0DB0B3)
+    }
+    
+    @objc(ows_turquoise700)
+    class var ows_turquoise700: UIColor {
+        return UIColor(rgbHex: 0x097677)
+    }
+    
+    @objc(ows_turquoise800)
+    class var ows_turquoise800: UIColor {
+        return UIColor(rgbHex: 0x043B3C)
+    }
+    
+    @objc(ows_turquoise900)
+    class var ows_turquoise900: UIColor {
+        return UIColor(rgbHex: 0x021818)
+    }
+    
+    // MARK: - ElectricViolet
+
+    @objc(ows_electricViolet50)
+    class var ows_electricViolet50: UIColor {
+        return UIColor(rgbHex: 0xF7ECFF)
+    }
+
+    @objc(ows_electricViolet100)
+    class var ows_electricViolet100: UIColor {
+        return UIColor(rgbHex: 0xEDD8FD)
+    }
+    
+    @objc(ows_electricViolet200)
+    class var ows_electricViolet200: UIColor {
+        return UIColor(rgbHex: 0xDBB1FB)
+    }
+    
+    @objc(ows_electricViolet300)
+    class var ows_electricViolet300: UIColor {
+        return UIColor(rgbHex: 0xC98BF9)
+    }
+    
+    @objc(ows_electricViolet400)
+    class var ows_electricViolet400: UIColor {
+        return UIColor(rgbHex: 0xB764F7)
+    }
+    
+    @objc(ows_electricViolet500)
+    class var ows_electricViolet500: UIColor {
+        return UIColor(rgbHex: 0xA53DF5)
+    }
+    
+    @objc(ows_electricViolet600)
+    class var ows_electricViolet600: UIColor {
+        return UIColor(rgbHex: 0x7C2EB8)
+    }
+    
+    @objc(ows_electricViolet700)
+    class var ows_electricViolet700: UIColor {
+        return UIColor(rgbHex: 0x531F7B)
+    }
+    
+    @objc(ows_electricViolet800)
+    class var ows_electricViolet800: UIColor {
+        return UIColor(rgbHex: 0x290F3D)
+    }
+    
+    @objc(ows_electricViolet900)
+    class var ows_electricViolet900: UIColor {
+        return UIColor(rgbHex: 0x110619)
+    }
+    
+    // MARK: - ShockingPink
+
+    @objc(ows_shockingPink50)
+    class var ows_shockingPink50: UIColor {
+        return UIColor(rgbHex: 0xFFE9FA)
+    }
+
+    @objc(ows_shockingPink100)
+    class var ows_shockingPink100: UIColor {
+        return UIColor(rgbHex: 0xFED2F4)
+    }
+    
+    @objc(ows_shockingPink200)
+    class var ows_shockingPink200: UIColor {
+        return UIColor(rgbHex: 0xFCA6E8)
+    }
+    
+    @objc(ows_shockingPink300)
+    class var ows_shockingPink300: UIColor {
+        return UIColor(rgbHex: 0xFB79DD)
+    }
+    
+    @objc(ows_shockingPink400)
+    class var ows_shockingPink400: UIColor {
+        return UIColor(rgbHex: 0xF94DD1)
+    }
+    
+    @objc(ows_shockingPink500)
+    class var ows_shockingPink500: UIColor {
+        return UIColor(rgbHex: 0xF820C6)
+    }
+    
+    @objc(ows_shockingPink600)
+    class var ows_shockingPink600: UIColor {
+        return UIColor(rgbHex: 0xBA1895)
+    }
+    
+    @objc(ows_shockingPink700)
+    class var ows_shockingPink700: UIColor {
+        return UIColor(rgbHex: 0x7C1063)
+    }
+    
+    @objc(ows_shockingPink800)
+    class var ows_shockingPink800: UIColor {
+        return UIColor(rgbHex: 0x3E0832)
+    }
+    
+    @objc(ows_shockingPink900)
+    class var ows_shockingPink900: UIColor {
+        return UIColor(rgbHex: 0x190314)
     }
     
     // MARK: - Feedback

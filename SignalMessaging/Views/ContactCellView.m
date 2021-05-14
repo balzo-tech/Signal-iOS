@@ -92,7 +92,7 @@ const CGFloat kContactCellAvatarTextMargin = 12;
     self.nameLabel.textColor = self.forceDarkAppearance ? Theme.darkThemePrimaryColor : Theme.primaryTextColor;
     self.subtitleLabel.textColor
         = self.forceDarkAppearance ? Theme.darkThemeSecondaryTextAndIconColor : Theme.secondaryTextAndIconColor;
-    self.accessoryLabel.textColor = Theme.isDarkThemeEnabled ? UIColor.ows_gray25Color : UIColor.ows_gray45Color;
+    self.accessoryLabel.textColor = Theme.secondaryTextAndIconColor;
 
     if (self.nameLabel.attributedText.string.length > 0) {
         NSString *nameLabelText = self.nameLabel.attributedText.string;

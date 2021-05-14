@@ -16,7 +16,8 @@ public extension OWSTableItem {
     }
 
     static var iconSpacing: CGFloat { 16 }
-    static var iconSize: CGFloat { 32 }
+    static var iconSize: CGFloat { 24 }
+    static var cicurlarIconSize: CGFloat { 32 }
 
     static func buildCell(name: String, iconView: UIView) -> UITableViewCell {
         return buildCell(name: name, iconView: iconView, iconSpacing: self.iconSpacing)
@@ -79,13 +80,19 @@ public extension OWSTableItem {
 
     static func disclosureItem(icon: ThemeIcon,
                                iconBackgroundColor: UIColor? = nil,
+                               circularBackground: Bool = true,
+                               iconColor: UIColor? = nil,
                                name: String,
+                               textColor: UIColor? = nil,
                                accessoryText: String? = nil,
                                accessibilityIdentifier: String,
                                actionBlock: (() -> Void)?) -> OWSTableItem {
         item(icon: icon,
              iconBackgroundColor: iconBackgroundColor,
+             circularBackground: circularBackground,
+             iconColor: iconColor,
              name: name,
+             textColor: textColor,
              accessoryText: accessoryText,
              accessoryType: .disclosureIndicator,
              accessibilityIdentifier: accessibilityIdentifier,
@@ -95,7 +102,8 @@ public extension OWSTableItem {
     @nonobjc
     static func actionItem(icon: ThemeIcon? = nil,
                            iconBackgroundColor: UIColor? = nil,
-                           tintColor: UIColor? = nil,
+                           circularBackground: Bool = true,
+                           iconColor: UIColor? = nil,
                            name: String,
                            textColor: UIColor? = nil,
                            accessoryText: String? = nil,
@@ -104,7 +112,8 @@ public extension OWSTableItem {
                            actionBlock: (() -> Void)?) -> OWSTableItem {
         item(icon: icon,
              iconBackgroundColor: iconBackgroundColor,
-             tintColor: tintColor,
+             circularBackground: circularBackground,
+             iconColor: iconColor,
              name: name,
              textColor: textColor,
              accessoryText: accessoryText,
@@ -116,7 +125,8 @@ public extension OWSTableItem {
     @nonobjc
     static func item(icon: ThemeIcon? = nil,
                      iconBackgroundColor: UIColor? = nil,
-                     tintColor: UIColor? = nil,
+                     circularBackground: Bool = true,
+                     iconColor: UIColor? = nil,
                      name: String,
                      textColor: UIColor? = nil,
                      accessoryText: String? = nil,
@@ -128,7 +138,8 @@ public extension OWSTableItem {
         OWSTableItem(customCellBlock: {
             OWSTableItem.buildCellWithAccessoryLabel(icon: icon,
                                                      iconBackgroundColor: iconBackgroundColor,
-                                                     tintColor: tintColor,
+                                                     circularBackground: circularBackground,
+                                                     iconColor: iconColor,
                                                      itemName: name,
                                                      textColor: textColor,
                                                      accessoryText: accessoryText,
@@ -142,12 +153,14 @@ public extension OWSTableItem {
     @available(swift, obsoleted: 1.0)
     static func buildCellWithAccessoryLabel(itemName: String,
                                             iconBackgroundColor: UIColor? = nil,
+                                            circularBackground: Bool = true,
                                             textColor: UIColor?,
                                             accessoryText: String?,
                                             accessoryType: UITableViewCell.AccessoryType,
                                             accessoryImage: UIImage?,
                                             accessibilityIdentifier: String?) -> UITableViewCell {
         buildIconNameCell(iconBackgroundColor: iconBackgroundColor,
+                          circularBackground: circularBackground,
                           itemName: itemName,
                           textColor: textColor,
                           accessoryText: accessoryText,
@@ -159,7 +172,8 @@ public extension OWSTableItem {
     @nonobjc
     static func buildCellWithAccessoryLabel(icon: ThemeIcon? = nil,
                                             iconBackgroundColor: UIColor? = nil,
-                                            tintColor: UIColor? = nil,
+                                            circularBackground: Bool = true,
+                                            iconColor: UIColor? = nil,
                                             itemName: String,
                                             textColor: UIColor? = nil,
                                             accessoryText: String? = nil,
@@ -168,7 +182,8 @@ public extension OWSTableItem {
                                             accessibilityIdentifier: String? = nil) -> UITableViewCell {
         buildIconNameCell(icon: icon,
                           iconBackgroundColor: iconBackgroundColor,
-                          tintColor: tintColor,
+                          circularBackground: circularBackground,
+                          iconColor: iconColor,
                           itemName: itemName,
                           textColor: textColor,
                           accessoryText: accessoryText,
@@ -180,7 +195,8 @@ public extension OWSTableItem {
     @nonobjc
     static func buildIconNameCell(icon: ThemeIcon? = nil,
                                   iconBackgroundColor: UIColor? = nil,
-                                  tintColor: UIColor? = nil,
+                                  circularBackground: Bool = true,
+                                  iconColor: UIColor? = nil,
                                   itemName: String,
                                   textColor: UIColor? = nil,
                                   accessoryText: String? = nil,
@@ -201,9 +217,15 @@ public extension OWSTableItem {
         var subviews = [UIView]()
 
         if let icon = icon {
-            let iconView = self.buildIconInCircleViewDefault(icon: icon, iconBackgroundColor: iconBackgroundColor)
-            iconView.setCompressionResistanceHorizontalHigh()
-            subviews.append(iconView)
+            if circularBackground {
+                let iconView = self.buildIconInCircleViewDefault(icon: icon, iconBackgroundColor: iconBackgroundColor)
+                iconView.setCompressionResistanceHorizontalHigh()
+                subviews.append(iconView)
+            } else {
+                let iconView = self.imageView(forIcon: icon, tintColor: iconColor, iconSize: iconSize)
+                iconView.setCompressionResistanceHorizontalHigh()
+                subviews.append(iconView)
+            }
         }
 
         let nameLabel = UILabel()
@@ -266,7 +288,9 @@ public extension OWSTableItem {
 
         contentRow.setContentHuggingHigh()
         contentRow.autoPinEdgesToSuperviewMargins()
-        contentRow.autoSetDimension(.height, toSize: iconSize, relation: .greaterThanOrEqual)
+        contentRow.autoSetDimension(.height,
+                                    toSize: circularBackground ? cicurlarIconSize : iconSize,
+                                    relation: .greaterThanOrEqual)
 
         cell.accessibilityIdentifier = accessibilityIdentifier
 
@@ -333,7 +357,7 @@ public extension OWSTableItem {
     
     static func buildIconInCircleViewDefault(icon: ThemeIcon, iconBackgroundColor: UIColor? = nil) -> UIView {
         return buildIconInCircleView(icon: icon,
-                                     iconSize: UInt(Self.iconSize),
+                                     iconSize: UInt(Self.cicurlarIconSize),
                                      iconBackgroundColor: iconBackgroundColor,
                                      iconTintColor: (iconBackgroundColor != nil) ? Theme.primaryBackgroundedIconColor : Theme.primaryTextColor)
     }

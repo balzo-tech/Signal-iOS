@@ -106,7 +106,6 @@ public class GroupLinkViewController: OWSTableViewController2 {
 
             if groupModelV2.isGroupInviteLinkEnabled {
                 section.add(OWSTableItem.actionItem(icon: ThemeIcon.messageActionShare,
-                                                    tintColor: Theme.accentBlueColor,
                                                     name: NSLocalizedString("GROUP_LINK_VIEW_SHARE_LINK",
                                                                                 comment: "Label for the 'share link' button in the 'group link' view."),
                                                     textColor: Theme.accentBlueColor,
@@ -115,7 +114,6 @@ public class GroupLinkViewController: OWSTableViewController2 {
                                                         self?.shareLinkPressed()
                 }))
                 section.add(OWSTableItem.actionItem(icon: ThemeIcon.retry24,
-                                                    tintColor: Theme.accentBlueColor,
                                                     name: NSLocalizedString("GROUP_LINK_VIEW_RESET_LINK",
                                                                             comment: "Label for the 'reset link' button in the 'group link' view."),
                                                     textColor: Theme.accentBlueColor,

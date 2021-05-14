@@ -61,6 +61,7 @@ class AppSettingsViewController: OWSTableViewController2 {
         let section1 = OWSTableSection()
         section1.add(.disclosureItem(
             icon: .settingsAccount,
+            iconBackgroundColor: UIColor.ows_azureRadianceDark500,
             name: NSLocalizedString("SETTINGS_ACCOUNT", comment: "Title for the 'account' link in settings."),
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "account"),
             actionBlock: { [weak self] in
@@ -70,6 +71,7 @@ class AppSettingsViewController: OWSTableViewController2 {
         ))
         section1.add(.disclosureItem(
             icon: .settingsLinkedDevices,
+            iconBackgroundColor: UIColor.ows_blueGrey500,
             name: NSLocalizedString("LINKED_DEVICES_TITLE", comment: "Menu item and navbar title for the device manager"),
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "linked-devices"),
             actionBlock: { [weak self] in
@@ -82,6 +84,7 @@ class AppSettingsViewController: OWSTableViewController2 {
         let section2 = OWSTableSection()
         section2.add(.disclosureItem(
             icon: .settingsAppearance,
+            iconBackgroundColor: UIColor.ows_azureRadianceDark500,
             name: NSLocalizedString("SETTINGS_APPEARANCE_TITLE", comment: "The title for the appearance settings."),
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "appearance"),
             actionBlock: { [weak self] in
@@ -91,6 +94,7 @@ class AppSettingsViewController: OWSTableViewController2 {
         ))
         section2.add(.disclosureItem(
             icon: .settingsChats,
+            iconBackgroundColor: UIColor.ows_lipstickDark500,
             name: NSLocalizedString("SETTINGS_CHATS", comment: "Title for the 'chats' link in settings."),
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "chats"),
             actionBlock: { [weak self] in
@@ -100,6 +104,7 @@ class AppSettingsViewController: OWSTableViewController2 {
         ))
         section2.add(.disclosureItem(
             icon: .settingsNotifications,
+            iconBackgroundColor: UIColor.ows_supernovaDark500,
             name: NSLocalizedString("SETTINGS_NOTIFICATIONS", comment: "The title for the notification settings."),
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "notifications"),
             actionBlock: { [weak self] in
@@ -118,6 +123,7 @@ class AppSettingsViewController: OWSTableViewController2 {
         ))
         section2.add(.disclosureItem(
             icon: .settingsDataUsage,
+            iconBackgroundColor: UIColor.ows_blueGrey500,
             name: NSLocalizedString("SETTINGS_DATA", comment: "Label for the 'data' section of the app settings."),
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "data-usage"),
             actionBlock: { [weak self] in
@@ -130,6 +136,7 @@ class AppSettingsViewController: OWSTableViewController2 {
         let section3 = OWSTableSection()
         section3.add(.disclosureItem(
             icon: .settingsHelp,
+            iconBackgroundColor: UIColor.ows_azureRadianceDark500,
             name: NSLocalizedString("SETTINGS_HELP", comment: "Title for support page in app settings."),
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "help"),
             actionBlock: { [weak self] in
@@ -142,6 +149,7 @@ class AppSettingsViewController: OWSTableViewController2 {
         let section4 = OWSTableSection()
         section4.add(.item(
             icon: .settingsInvite,
+            iconBackgroundColor: UIColor.ows_azureRadianceDark500,
             name: NSLocalizedString("SETTINGS_INVITE_TITLE", comment: "Settings table view cell label"),
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "invite"),
             actionBlock: { [weak self] in
@@ -150,6 +158,7 @@ class AppSettingsViewController: OWSTableViewController2 {
         ))
         section4.add(.item(
             icon: .settingsDonate,
+            iconBackgroundColor: UIColor.ows_blueGrey500,
             name: NSLocalizedString("SETTINGS_DONATE", comment: "Title for the 'donate to signal' link in settings."),
             accessoryImage: #imageLiteral(resourceName: "open-externally-14"),
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "donate"),

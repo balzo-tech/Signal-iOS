@@ -248,13 +248,13 @@ const NSUInteger kMinimumSearchLength = 2;
               button.accessibilityIdentifier = ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, accessibilityIdentifierName);
               [buttonStack addArrangedSubview:button];
 
-              UIView *iconView = [OWSTableItem buildIconInCircleViewWithIcon:icon innerIconSize:innerIconSize];
+              UIView *iconView = [OWSTableItem imageViewForIcon: icon tintColor:Theme.accentBlueColor iconSize:[OWSTableItem iconSize]];
               iconView.backgroundColor = self.tableViewController.cellBackgroundColor;
 
               UILabel *label = [UILabel new];
               label.text = title;
               label.font = [UIFont ows_regularFontWithSize:17.f];
-              label.textColor = Theme.primaryTextColor;
+              label.textColor = Theme.accentBlueColor;
               label.lineBreakMode = NSLineBreakByTruncatingTail;
 
               UIStackView *hStack = [[UIStackView alloc] initWithArrangedSubviews:@[

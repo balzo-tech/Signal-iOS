@@ -326,7 +326,7 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)placeholderColor
 {
-    return (Theme.isDarkThemeEnabled ? UIColor.ows_gray45Color : UIColor.ows_gray45Color);
+    return (Theme.isDarkThemeEnabled ? UIColor.ows_gray500 : UIColor.ows_gray300);
 }
 
 + (UIColor *)hairlineColor
@@ -373,7 +373,7 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)conversationInputBackgroundColor
 {
-    return (Theme.isDarkThemeEnabled ? UIColor.ows_gray75Color : UIColor.ows_gray05Color);
+    return self.searchFieldBackgroundColor;
 }
 
 + (UIColor *)attachmentKeyboardItemBackgroundColor

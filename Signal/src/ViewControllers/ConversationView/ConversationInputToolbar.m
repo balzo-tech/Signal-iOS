@@ -220,7 +220,7 @@ const CGFloat kMaxIPadTextViewHeight = 142;
                           action:@selector(cameraButtonPressed)
                 forControlEvents:UIControlEventTouchUpInside];
     UIImage *cameraIcon = [Theme iconImage:ThemeIconCameraButton];
-    [self.cameraButton setTemplateImage:cameraIcon tintColor:Theme.primaryIconColor];
+    [self.cameraButton setTemplateImage:cameraIcon tintColor:Theme.accentBlueColor];
     [self.cameraButton autoSetDimensionsToSize:CGSizeMake(40, kMinToolbarItemHeight)];
     SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, _cameraButton);
 
@@ -232,8 +232,8 @@ const CGFloat kMaxIPadTextViewHeight = 142;
     [self.attachmentButton addTarget:self
                               action:@selector(attachmentButtonPressed)
                     forControlEvents:UIControlEventTouchUpInside];
-    self.attachmentButton.animationName = Theme.isDarkThemeEnabled ? @"attachment_dark" : @"attachment_light";
-    self.attachmentButton.animationSize = CGSizeMake(28, 28);
+    self.attachmentButton.animationName = @"attachment_accent_blue";
+    self.attachmentButton.animationSize = CGSizeMake(36, 36);
     [self.attachmentButton autoSetDimensionsToSize:CGSizeMake(55, kMinToolbarItemHeight)];
     SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, _attachmentButton);
 
@@ -248,7 +248,7 @@ const CGFloat kMaxIPadTextViewHeight = 142;
     self.voiceMemoButton.accessibilityLabel = NSLocalizedString(@"INPUT_TOOLBAR_VOICE_MEMO_BUTTON_ACCESSIBILITY_LABEL",
         @"accessibility label for the button which records voice memos");
     UIImage *micIcon = [Theme iconImage:ThemeIconMicButton];
-    [self.voiceMemoButton setTemplateImage:micIcon tintColor:Theme.primaryIconColor];
+    [self.voiceMemoButton setTemplateImage:micIcon tintColor:Theme.accentBlueColor];
     [self.voiceMemoButton autoSetDimensionsToSize:CGSizeMake(40, kMinToolbarItemHeight)];
     SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, _voiceMemoButton);
 
@@ -256,7 +256,7 @@ const CGFloat kMaxIPadTextViewHeight = 142;
     self.stickerButton.accessibilityLabel = NSLocalizedString(@"INPUT_TOOLBAR_STICKER_BUTTON_ACCESSIBILITY_LABEL",
         @"accessibility label for the button which shows the sticker picker");
     UIImage *stickerIcon = [Theme iconImage:ThemeIconStickerButton];
-    [self.stickerButton setTemplateImage:stickerIcon tintColor:Theme.primaryIconColor];
+    [self.stickerButton setTemplateImage:stickerIcon tintColor:Theme.accentBlueColor];
     [self.stickerButton addTarget:self
                            action:@selector(stickerButtonPressed)
                  forControlEvents:UIControlEventTouchUpInside];

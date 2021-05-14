@@ -798,6 +798,7 @@
 		88F7EE93230253C5003ADF7D /* UsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F7EE92230253C5003ADF7D /* UsernameViewController.swift */; };
 		88F8195A2383569A007914E8 /* CNContactViewController+OWS.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F819592383569A007914E8 /* CNContactViewController+OWS.m */; };
 		88FE237E249C22080041670F /* ConversationViewController+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE237D249C22080041670F /* ConversationViewController+Scroll.swift */; };
+		892D5A79264EDBE400C679DF /* attachment_accent_blue.json in Resources */ = {isa = PBXBuildFile; fileRef = 892D5A78264EDBE400C679DF /* attachment_accent_blue.json */; };
 		954AEE6A1DF33E01002E5410 /* ContactsPickerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954AEE681DF33D32002E5410 /* ContactsPickerTest.swift */; };
 		A10FDF79184FB4BB007FF963 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76C87F18181EFCE600C4ACAB /* MediaPlayer.framework */; };
 		A11CD70D17FA230600A2D1B1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11CD70C17FA230600A2D1B1 /* QuartzCore.framework */; };
@@ -1818,6 +1819,7 @@
 		88F819582383569A007914E8 /* CNContactViewController+OWS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CNContactViewController+OWS.h"; sourceTree = "<group>"; };
 		88F819592383569A007914E8 /* CNContactViewController+OWS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNContactViewController+OWS.m"; sourceTree = "<group>"; };
 		88FE237D249C22080041670F /* ConversationViewController+Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConversationViewController+Scroll.swift"; sourceTree = "<group>"; };
+		892D5A78264EDBE400C679DF /* attachment_accent_blue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = attachment_accent_blue.json; sourceTree = "<group>"; };
 		8981C8F64D94D3C52EB67A2C /* Pods-SignalTests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalTests.test.xcconfig"; path = "Pods/Target Support Files/Pods-SignalTests/Pods-SignalTests.test.xcconfig"; sourceTree = "<group>"; };
 		8EEE74B0753448C085B48721 /* Pods-SignalMessaging.app store release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalMessaging.app store release.xcconfig"; path = "Pods/Target Support Files/Pods-SignalMessaging/Pods-SignalMessaging.app store release.xcconfig"; sourceTree = "<group>"; };
 		948239851C08032C842937CC /* Pods-SignalMessaging.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalMessaging.test.xcconfig"; path = "Pods/Target Support Files/Pods-SignalMessaging/Pods-SignalMessaging.test.xcconfig"; sourceTree = "<group>"; };
@@ -3453,6 +3455,7 @@
 		88A9419324099F6E000E9700 /* Attachment Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				892D5A78264EDBE400C679DF /* attachment_accent_blue.json */,
 				88A9419424099F7E000E9700 /* attachment_dark.json */,
 				88A9419624099F85000E9700 /* attachment_light.json */,
 			);
@@ -4229,6 +4232,7 @@
 				34661FB820C1C0D60056EDD6 /* message_sent.aiff in Resources */,
 				45CB2FA81CB7146C00E1B343 /* Launch Screen.storyboard in Resources */,
 				34684DB025C2228D00C5A93C /* determinate_spinner_blue.json in Resources */,
+				892D5A79264EDBE400C679DF /* attachment_accent_blue.json in Resources */,
 				887CD4872473587300FDD265 /* transfer.json in Resources */,
 				4C0CF6FA2386295400C9F818 /* tap_to_focus.json in Resources */,
 				34684DB125C2228D00C5A93C /* indeterminate_spinner_blue.json in Resources */,

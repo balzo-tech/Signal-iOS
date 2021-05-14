@@ -7,10 +7,10 @@ import PromiseKit
 
 enum FeatureBuild: Int {
     case dev
-    case internalPreview
+//    case internalPreview
     case qa
     case beta
-    case production
+//    case production
 }
 
 extension FeatureBuild {
@@ -19,7 +19,8 @@ extension FeatureBuild {
     }
 }
 
-let build: FeatureBuild = OWSIsDebugBuild() ? .dev : .qa
+let build: FeatureBuild = .qa
+//let build: FeatureBuild = OWSIsDebugBuild() ? .dev : .qa
 
 // MARK: -
 

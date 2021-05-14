@@ -527,7 +527,12 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)searchFieldBackgroundColor
 {
-    return Theme.washColor;
+    return (Theme.isDarkThemeEnabled ? UIColor.ows_gray700 : UIColor.ows_gray100);
+}
+
++ (UIColor *)searchFieldForegroundColor
+{
+    return (Theme.isDarkThemeEnabled ? UIColor.ows_gray500 : UIColor.ows_blueGrey200);
 }
 
 #pragma mark -

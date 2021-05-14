@@ -77,8 +77,8 @@ NS_ASSUME_NONNULL_BEGIN
 {
     OWSAssertIsOnMainThread();
 
-    UIColor *foregroundColor = Theme.secondaryTextAndIconColor;
-    searchBar.tintColor = Theme.secondaryTextAndIconColor;
+    UIColor *foregroundColor = Theme.searchFieldForegroundColor;
+    searchBar.tintColor = Theme.searchFieldForegroundColor;
     searchBar.barStyle = Theme.barStyle;
     searchBar.barTintColor = Theme.backgroundColor;
 
@@ -106,7 +106,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     UIColor *searchFieldBackgroundColor = Theme.searchFieldBackgroundColor;
     if (style == OWSSearchBarStyle_SecondaryBar) {
-        searchFieldBackgroundColor = Theme.isDarkThemeEnabled ? UIColor.ows_gray95Color : UIColor.ows_gray05Color;
+        searchFieldBackgroundColor = Theme.searchFieldBackgroundColor;
     } else if ([searchBar isKindOfClass:[OWSSearchBar class]]
         && ((OWSSearchBar *)searchBar).searchFieldBackgroundColorOverride) {
         searchFieldBackgroundColor = ((OWSSearchBar *)searchBar).searchFieldBackgroundColorOverride;

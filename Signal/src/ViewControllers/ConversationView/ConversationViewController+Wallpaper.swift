@@ -39,7 +39,7 @@ extension ConversationViewController {
         guard let wallpaperView = databaseStorage.read(block: { transaction in
             Wallpaper.view(for: self.thread, transaction: transaction)
         }) else {
-            viewState.wallpaperContainer.backgroundColor = Theme.backgroundColor
+            viewState.wallpaperContainer.backgroundColor = Theme.conversationBackgroundColor
             return
         }
 

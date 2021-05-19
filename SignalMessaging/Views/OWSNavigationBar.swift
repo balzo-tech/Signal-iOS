@@ -62,7 +62,7 @@ public class OWSNavigationBar: UINavigationBar {
         if [.secondaryBar, .solid].contains(currentStyle) {
             let backgroundImage = UIImage(color: navbarBackgroundColor)
             self.setBackgroundImage(backgroundImage, for: .default)
-        } else if UIAccessibility.isReduceTransparencyEnabled {
+        } else if Theme.useReducedTransparency {
             blurEffectView?.isHidden = true
             let backgroundImage = UIImage(color: navbarBackgroundColor)
             self.setBackgroundImage(backgroundImage, for: .default)

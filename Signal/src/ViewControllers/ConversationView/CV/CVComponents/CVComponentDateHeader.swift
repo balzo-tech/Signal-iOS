@@ -99,7 +99,10 @@ public class CVComponentDateHeader: CVComponentBase, CVRootComponent {
             componentView.blurView?.removeFromSuperview()
             componentView.blurView = nil
 
-            if hasWallpaper {
+//            let wrapInBlurView = hasWallpaper
+            let wrapInBlurView = true
+            
+            if wrapInBlurView {
                 let blurView = buildBlurView(conversationStyle: conversationStyle)
                 componentView.blurView = blurView
 
@@ -107,7 +110,7 @@ public class CVComponentDateHeader: CVComponentBase, CVRootComponent {
                 blurView.autoPinEdgesToSuperviewEdges()
 
                 blurView.clipsToBounds = true
-                blurView.layer.cornerRadius = 8
+                blurView.layer.cornerRadius = 12.0
 
                 blurView.contentView.addSubview(titleLabel)
             } else {
@@ -132,7 +135,7 @@ public class CVComponentDateHeader: CVComponentBase, CVRootComponent {
     private var titleLabelConfig: CVLabelConfig {
         return CVLabelConfig(text: dateHeaderState.text,
                              font: UIFont.ows_dynamicTypeFootnote.ows_semibold,
-                             textColor: Theme.secondaryTextAndIconColor,
+                             textColor: Theme.conversationDateTextColor,
                              lineBreakMode: .byTruncatingTail,
                              textAlignment: .center)
     }

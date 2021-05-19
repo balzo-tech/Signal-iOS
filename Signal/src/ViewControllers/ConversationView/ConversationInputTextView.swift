@@ -64,6 +64,12 @@ class ConversationInputTextView: MentionTextView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func applyBorder(radius: CGFloat) {
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 18
+        self.layer.borderColor = Theme.conversationInputBorderColor.cgColor
+    }
 
     // MARK: -
 

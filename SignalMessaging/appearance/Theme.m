@@ -348,12 +348,12 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)navbarBackgroundColor
 {
-    return (Theme.isDarkThemeEnabled ? self.darkThemeNavbarBackgroundColor : UIColor.ows_whiteColor);
+    return (Theme.isDarkThemeEnabled ? self.darkThemeNavbarBackgroundColor : UIColor.ows_gray100);
 }
 
 + (UIColor *)darkThemeNavbarBackgroundColor
 {
-    return UIColor.ows_gray800;
+    return UIColor.ows_gray900;
 }
 
 + (UIColor *)darkThemeNavbarIconColor
@@ -373,7 +373,12 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)conversationInputBackgroundColor
 {
-    return self.searchFieldBackgroundColor;
+    return Theme.isDarkThemeEnabled ? UIColor.ows_gray700 : UIColor.ows_whiteColor;
+}
+
++ (UIColor *)conversationInputBorderColor
+{
+    return Theme.isDarkThemeEnabled ? UIColor.ows_gray600 : UIColor.ows_gray300;
 }
 
 + (UIColor *)attachmentKeyboardItemBackgroundColor
@@ -476,6 +481,11 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
     return [UIColor colorWithRGBHex:0x1f8fe8];
 }
 
++ (UIColor *)conversationBackgroundColor
+{
+    return UIColor.ows_blueGrey900;
+}
+
 + (UIColor *)conversationButtonBackgroundColor
 {
     return (Theme.isDarkThemeEnabled ? UIColor.ows_gray80Color : UIColor.ows_gray02Color);
@@ -484,6 +494,26 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 + (UIColor *)conversationButtonTextColor
 {
     return (Theme.isDarkThemeEnabled ? UIColor.ows_gray05Color : UIColor.ows_accentBlueColor);
+}
+
++ (UIColor *)conversationDetailsPrimaryTextColor
+{
+    return UIColor.ows_whiteColor;
+}
+
++ (UIColor *)conversationDetailsSecondaryTextColor
+{
+    return UIColor.ows_blueGrey300;
+}
+
++ (UIColor *)conversationDateTextColor
+{
+    return UIColor.ows_blueGrey500;
+}
+
++ (UIColor *)conversationDateBackgroundColor
+{
+    return UIColor.ows_blueGrey800;
 }
 
 + (UIColor *)conversationDefaulIconBackgroundColor
@@ -516,6 +546,13 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 + (UIKeyboardAppearance)darkThemeKeyboardAppearance
 {
     return UIKeyboardAppearanceDark;
+}
+
++ (BOOL)useReducedTransparency
+{
+    // blurred backgrounds doesn't look good with the new palette.
+    return true;
+//    return UIAccessibility.isReduceTransparencyEnabled;
 }
 
 #pragma mark - Search Bar

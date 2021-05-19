@@ -207,12 +207,12 @@ public class ConversationStyle: NSObject {
 
     @objc
     public var bubbleColorOutgoingSending: UIColor {
-        return isDarkThemeEnabled ? UIColor.ows_persianGreenDark500 : UIColor.ows_persianGreenLight500
+        return isDarkThemeEnabled ? UIColor(rgbHex: 0x056162) : UIColor(rgbHex: 0xE1F7CA)
     }
 
     @objc
     public var bubbleColorOutgoingSent: UIColor {
-        return isDarkThemeEnabled ? UIColor.ows_persianGreenDark500 : UIColor.ows_persianGreenLight500
+        return isDarkThemeEnabled ? UIColor(rgbHex: 0x056162) : UIColor(rgbHex: 0xE1F7CA)
     }
 
     @objc
@@ -243,32 +243,32 @@ public class ConversationStyle: NSObject {
 
     @objc
     public static var bubbleTextColorIncoming: UIColor {
-        Theme.isDarkThemeEnabled ? UIColor.ows_white : UIColor.ows_gray800
+        Theme.isDarkThemeEnabled ? UIColor.ows_white : UIColor.ows_gray900
     }
 
     @objc
     public static var bubbleTextColorOutgoing: UIColor {
-        Theme.isDarkThemeEnabled ? UIColor.ows_white : UIColor.ows_white
+        Theme.isDarkThemeEnabled ? UIColor.ows_white : UIColor.ows_gray800
     }
 
     @objc
     public var bubbleTextColorIncoming: UIColor {
-        Theme.isDarkThemeEnabled ? UIColor.ows_white : UIColor.ows_gray800
+        ConversationStyle.bubbleTextColorIncoming
+    }
+    
+    @objc
+    public var bubbleTextColorOutgoing: UIColor {
+        ConversationStyle.bubbleTextColorOutgoing
     }
 
     @objc
     public var bubbleSecondaryTextColorIncoming: UIColor {
         .ows_gray500
     }
-
-    @objc
-    public var bubbleTextColorOutgoing: UIColor {
-        Theme.isDarkThemeEnabled ? UIColor.ows_white : UIColor.ows_white
-    }
-
+    
     @objc
     public var bubbleSecondaryTextColorOutgoing: UIColor {
-        isDarkThemeEnabled ? .ows_whiteAlpha75 : .ows_azureRadianceLight200
+        isDarkThemeEnabled ? .ows_whiteAlpha50 : UIColor(rgbHex: 0x2E2E2E).withAlphaComponent(0.5)
     }
 
     @objc

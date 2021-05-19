@@ -55,12 +55,21 @@ extern NSString *const ThemeDidChangeNotification;
 
 @property (class, readonly, nonatomic) UIColor *toolbarBackgroundColor;
 @property (class, readonly, nonatomic) UIColor *conversationInputBackgroundColor;
+@property (class, readonly, nonatomic) UIColor *conversationInputBorderColor;
 
 @property (class, readonly, nonatomic) UIColor *attachmentKeyboardItemBackgroundColor;
 @property (class, readonly, nonatomic) UIColor *attachmentKeyboardItemImageColor;
 
+@property (class, readonly, nonatomic) UIColor *conversationBackgroundColor;
 @property (class, readonly, nonatomic) UIColor *conversationButtonBackgroundColor;
 @property (class, readonly, nonatomic) UIColor *conversationButtonTextColor;
+
+@property (class, readonly, nonatomic) UIColor *conversationDetailsPrimaryTextColor;
+@property (class, readonly, nonatomic) UIColor *conversationDetailsSecondaryTextColor;
+
+@property (class, readonly, nonatomic) UIColor *conversationDateTextColor;
+@property (class, readonly, nonatomic) UIColor *conversationDateBackgroundColor;
+
 @property (class, readonly, nonatomic) UIColor *conversationDefaulIconBackgroundColor;
 
 @property (class, readonly, nonatomic) UIColor *cellSelectedColor;
@@ -74,6 +83,8 @@ extern NSString *const ThemeDidChangeNotification;
 // * Fine detail (e.g., text, non-filled icons) should use Theme.accentBlueColor.
 //   It is brighter in dark mode, improving legibility.
 @property (class, readonly, nonatomic) UIColor *accentBlueColor;
+
+@property (class, readonly, nonatomic) BOOL useReducedTransparency;
 
 @property (class, readonly, nonatomic) UIColor *tableCellBackgroundColor;
 @property (class, readonly, nonatomic) UIColor *tableViewBackgroundColor;

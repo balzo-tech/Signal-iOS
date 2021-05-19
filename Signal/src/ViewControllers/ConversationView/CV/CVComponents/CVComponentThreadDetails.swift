@@ -120,7 +120,7 @@ public class CVComponentThreadDetails: CVComponentBase, CVRootComponent {
     private var titleLabelConfig: CVLabelConfig {
         CVLabelConfig(text: titleText,
                       font: UIFont.ows_dynamicTypeTitle1.ows_semibold,
-                      textColor: Theme.primaryTextColor,
+                      textColor: Theme.conversationDetailsPrimaryTextColor,
                       numberOfLines: 0,
                       lineBreakMode: .byWordWrapping,
                       textAlignment: .center)
@@ -129,7 +129,7 @@ public class CVComponentThreadDetails: CVComponentBase, CVRootComponent {
     private func bioLabelConfig(text: String) -> CVLabelConfig {
         CVLabelConfig(text: text,
                       font: .ows_dynamicTypeSubheadline,
-                      textColor: Theme.secondaryTextAndIconColor,
+                      textColor: Theme.conversationDetailsSecondaryTextColor,
                       numberOfLines: 0,
                       lineBreakMode: .byWordWrapping,
                       textAlignment: .center)
@@ -138,7 +138,7 @@ public class CVComponentThreadDetails: CVComponentBase, CVRootComponent {
     private func detailsLabelConfig(text: String) -> CVLabelConfig {
         CVLabelConfig(text: text,
                       font: .ows_dynamicTypeSubheadline,
-                      textColor: Theme.secondaryTextAndIconColor,
+                      textColor: Theme.conversationDetailsSecondaryTextColor,
                       numberOfLines: 0,
                       lineBreakMode: .byWordWrapping,
                       textAlignment: .center)
@@ -147,7 +147,7 @@ public class CVComponentThreadDetails: CVComponentBase, CVRootComponent {
     private func mutualGroupsLabelConfig(attributedText: NSAttributedString) -> CVLabelConfig {
         CVLabelConfig(attributedText: attributedText,
                       font: .ows_dynamicTypeSubheadline,
-                      textColor: Theme.secondaryTextAndIconColor,
+                      textColor: Theme.conversationDetailsSecondaryTextColor,
                       numberOfLines: 0,
                       lineBreakMode: .byWordWrapping,
                       textAlignment: .center)

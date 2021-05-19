@@ -171,8 +171,8 @@ const CGFloat kMaxIPadTextViewHeight = 142;
     // the animation. Extend the background below the toolbar's bounds
     // by this much to mask that extra space.
     CGFloat backgroundExtension = 100;
-
-    if (UIAccessibilityIsReduceTransparencyEnabled()) {
+    
+    if (Theme.useReducedTransparency) {
         self.backgroundColor = Theme.toolbarBackgroundColor;
 
         UIView *extendedBackground = [UIView new];
@@ -307,6 +307,9 @@ const CGFloat kMaxIPadTextViewHeight = 142;
 
     // V Stack Wrapper
     const CGFloat vStackRounding = 18.f;
+    
+    [self.inputTextView applyBorderWithRadius:vStackRounding];
+    
     UIView *vStackRoundingView = [UIView containerView];
     vStackRoundingView.layer.cornerRadius = vStackRounding;
     vStackRoundingView.clipsToBounds = YES;

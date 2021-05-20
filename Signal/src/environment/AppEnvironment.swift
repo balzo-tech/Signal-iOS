@@ -55,6 +55,9 @@ public class AppEnvironment: NSObject {
 
     @objc
     let cvAudioPlayerRef = CVAudioPlayer()
+    
+    @objc
+    let subscriptionManagerRef = SubscriptionManager()
 
     private override init() {
         self.callMessageHandlerRef = WebRTCCallMessageHandler()

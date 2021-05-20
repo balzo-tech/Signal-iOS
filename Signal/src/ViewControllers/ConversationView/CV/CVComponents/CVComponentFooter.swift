@@ -134,7 +134,7 @@ public class CVComponentFooter: CVComponentBase, CVComponent {
                 let statusIndicatorImageView = componentView.statusIndicatorImageView
                 owsAssertDebug(icon.size.width <= CVComponentFooter.maxImageWidth)
                 statusIndicatorImageView.image = icon.withRenderingMode(.alwaysTemplate)
-                statusIndicatorImageView.tintColor = textColor
+                statusIndicatorImageView.tintColor = UIColor.ows_accentBlue// textColor
                 innerViews.append(statusIndicatorImageView)
 
                 if isStatusIndicatorAnimated {

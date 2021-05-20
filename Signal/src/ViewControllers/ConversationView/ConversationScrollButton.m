@@ -138,9 +138,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updateColors
 {
     self.unreadBadge.backgroundColor = UIColor.ows_accentBlueColor;
-    self.circleView.backgroundColor = Theme.isDarkThemeEnabled ? UIColor.ows_gray65Color : UIColor.ows_gray02Color;
-    [self.iconView setTemplateImageName:self.iconName
-                              tintColor:Theme.isDarkThemeEnabled ? UIColor.ows_gray15Color : UIColor.ows_gray75Color];
+    self.circleView.backgroundColor = Theme.isDarkThemeEnabled ? UIColor.ows_gray700 : UIColor.ows_whiteColor;
+    [self.iconView setTemplateImageName:self.iconName tintColor:UIColor.ows_accentBlueColor];
 }
 
 @end

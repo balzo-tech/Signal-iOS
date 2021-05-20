@@ -13,5 +13,7 @@ class SubscriptionManager: NSObject {
         super.init()
 
         SwiftSingletons.register(self)
+        
+        StripeAPI.defaultPublishableKey = FeatureFlags.isUsingProductionService ? ProjectInfo.StripeTestKey : ProjectInfo.StripeProductionKey
     }
 }

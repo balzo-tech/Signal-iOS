@@ -456,7 +456,7 @@ extension OWSTableViewController2: UITableViewDataSource, UITableViewDelegate {
     // The distance from the the cell border to the cell content.
     @objc
     public static var cellHInnerMargin: CGFloat {
-        UIDevice.current.isPlusSizePhone ? 20 : 16
+        UIDevice.current.isPlusSizePhone ? 4 : 0
     }
 
     // The distance from the the cell border to the cell content.

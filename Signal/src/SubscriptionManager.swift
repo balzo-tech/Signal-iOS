@@ -3,17 +3,17 @@
 //
 
 import Foundation
-import Stripe
 
 @objc
 class SubscriptionManager: NSObject {
     
+    private let paymentManager: PaymentManager
+    
     @objc
-    public override init() {
+    public init(withPaymentManager paymentManager: PaymentManager) {
+        self.paymentManager = paymentManager
         super.init()
-
-        SwiftSingletons.register(self)
         
-        StripeAPI.defaultPublishableKey = FeatureFlags.isUsingProductionService ? ProjectInfo.StripeTestKey : ProjectInfo.StripeProductionKey
+        SwiftSingletons.register(self)
     }
 }

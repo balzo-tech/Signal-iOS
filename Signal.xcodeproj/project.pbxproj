@@ -799,6 +799,7 @@
 		88F8195A2383569A007914E8 /* CNContactViewController+OWS.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F819592383569A007914E8 /* CNContactViewController+OWS.m */; };
 		88FE237E249C22080041670F /* ConversationViewController+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE237D249C22080041670F /* ConversationViewController+Scroll.swift */; };
 		892D5A79264EDBE400C679DF /* attachment_accent_blue.json in Resources */ = {isa = PBXBuildFile; fileRef = 892D5A78264EDBE400C679DF /* attachment_accent_blue.json */; };
+		89750E5A2657E986005A1BC5 /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89750E592657E986005A1BC5 /* PaymentManager.swift */; };
 		89EF3B3626569348001BA601 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EF3B3526569348001BA601 /* SubscriptionManager.swift */; };
 		89EF3B3926569E9C001BA601 /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = 89EF3B3826569E9C001BA601 /* Stripe */; };
 		89EF3B692656A991001BA601 /* ProjectInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89EF3B682656A991001BA601 /* ProjectInfo.plist */; };
@@ -1824,6 +1825,7 @@
 		88F819592383569A007914E8 /* CNContactViewController+OWS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNContactViewController+OWS.m"; sourceTree = "<group>"; };
 		88FE237D249C22080041670F /* ConversationViewController+Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConversationViewController+Scroll.swift"; sourceTree = "<group>"; };
 		892D5A78264EDBE400C679DF /* attachment_accent_blue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = attachment_accent_blue.json; sourceTree = "<group>"; };
+		89750E592657E986005A1BC5 /* PaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		8981C8F64D94D3C52EB67A2C /* Pods-SignalTests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalTests.test.xcconfig"; path = "Pods/Target Support Files/Pods-SignalTests/Pods-SignalTests.test.xcconfig"; sourceTree = "<group>"; };
 		89EF3B3526569348001BA601 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
 		89EF3B682656A991001BA601 /* ProjectInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ProjectInfo.plist; sourceTree = "<group>"; };
@@ -3070,7 +3072,7 @@
 			children = (
 				76EB03C218170B33006006FC /* AppDelegate.h */,
 				76EB03C318170B33006006FC /* AppDelegate.m */,
-				89EF3B342656931F001BA601 /* Subscriptions */,
+				89EF3B342656931F001BA601 /* Payment */,
 				88D23D1323CEC0C700B0E74B /* Calls */,
 				76EB041118170B33006006FC /* environment */,
 				45D231751DC7E8C50034FA89 /* Jobs */,
@@ -3577,12 +3579,13 @@
 			path = "Storage Service";
 			sourceTree = "<group>";
 		};
-		89EF3B342656931F001BA601 /* Subscriptions */ = {
+		89EF3B342656931F001BA601 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
 				89EF3B3526569348001BA601 /* SubscriptionManager.swift */,
+				89750E592657E986005A1BC5 /* PaymentManager.swift */,
 			);
-			name = Subscriptions;
+			name = Payment;
 			sourceTree = "<group>";
 		};
 		9404664EC513585B05DF1350 /* Pods */ = {
@@ -5283,6 +5286,7 @@
 				346594802434D49F00E5C510 /* NewGroupState.swift in Sources */,
 				340FC8B6204DAC8D007AEB0F /* OWSQRCodeScanningViewController.m in Sources */,
 				4CB5F26920F7D060004D1B42 /* MessageActions.swift in Sources */,
+				89750E5A2657E986005A1BC5 /* PaymentManager.swift in Sources */,
 				8841584C252F9F1C0078903D /* SignalCall.swift in Sources */,
 				88594E5A2335B08000390B19 /* AudioMessageView.swift in Sources */,
 				88FE237E249C22080041670F /* ConversationViewController+Scroll.swift in Sources */,

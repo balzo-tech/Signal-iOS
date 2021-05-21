@@ -57,8 +57,11 @@ public class AppEnvironment: NSObject {
     let cvAudioPlayerRef = CVAudioPlayer()
     
     @objc
-    let subscriptionManagerRef = SubscriptionManager()
-
+    let paymentManagerRef: PaymentManager
+    
+    @objc
+    let subscriptionManagerRef: SubscriptionManager
+    
     private override init() {
         self.callMessageHandlerRef = WebRTCCallMessageHandler()
         self.callServiceRef = CallService()
@@ -68,6 +71,9 @@ public class AppEnvironment: NSObject {
         self.pushRegistrationManagerRef = PushRegistrationManager()
         self.sessionResetJobQueueRef = SessionResetJobQueue()
         self.userNotificationActionHandlerRef = UserNotificationActionHandler()
+        let paymentManager = PaymentManager()
+        self.paymentManagerRef = paymentManager
+        self.subscriptionManagerRef = SubscriptionManager(withPaymentManager: paymentManager)
 
         super.init()
 

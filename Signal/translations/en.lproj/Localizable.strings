@@ -4366,6 +4366,9 @@
 /* Title for the 'account' link in settings. */
 "SETTINGS_ACCOUNT" = "Account";
 
+/* Title for the 'payment methods' link in settings. */
+"SETTINGS_PAYMENT_METHODS" = "Payment Methods";
+
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "Block";
 

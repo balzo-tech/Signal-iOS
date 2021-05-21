@@ -69,6 +69,18 @@ class AppSettingsViewController: OWSTableViewController2 {
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
         ))
+        
+        section1.add(.disclosureItem(
+            icon: .settingsAccount,
+            iconBackgroundColor: UIColor.ows_azureRadianceDark500,
+            name: NSLocalizedString("SETTINGS_PAYMENT_METHODS", comment: "Title for the 'payment methods' link in settings."),
+            accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "account"),
+            actionBlock: { [weak self] in
+                guard let self = self else { return }
+                AppEnvironment.shared.paymentManagerRef.showPaymentMethods(presenter: self)
+            }
+        ))
+        
         section1.add(.disclosureItem(
             icon: .settingsLinkedDevices,
             iconBackgroundColor: UIColor.ows_blueGrey500,

@@ -81,7 +81,6 @@ class AppSettingsViewController: OWSTableViewController2 {
                 firstly {
                     AppEnvironment.shared.paymentManagerRef.showPaymentMethods(presenter: self)
                 }.catch { error in
-                    print("AppSettingsViewController - showPaymentMethods Failed")
                     OWSActionSheets.showActionSheet(title: NSLocalizedString("ALERT_ERROR_TITLE", comment: "Generic error indicator"),
                                                     message: error.localizedDescription)
                 }

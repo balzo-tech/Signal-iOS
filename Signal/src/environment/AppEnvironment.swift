@@ -71,9 +71,11 @@ public class AppEnvironment: NSObject {
         self.pushRegistrationManagerRef = PushRegistrationManager()
         self.sessionResetJobQueueRef = SessionResetJobQueue()
         self.userNotificationActionHandlerRef = UserNotificationActionHandler()
-        let paymentManager = PaymentManager()
+        // TODO: Replace with real concrete instance of PaymentNetworkService
+        let paymentManagerService = MockPaymentNetworkManager()
+        let paymentManager = PaymentManager(paymentNetworkService: paymentManagerService)
         self.paymentManagerRef = paymentManager
-        self.subscriptionManagerRef = SubscriptionManager(withPaymentManager: paymentManager)
+        self.subscriptionManagerRef = SubscriptionManager(withPaymentManager: paymentManager, paymentNetworkService: paymentManagerService)
 
         super.init()
 

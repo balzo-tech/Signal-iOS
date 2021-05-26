@@ -800,6 +800,8 @@
 		88FE237E249C22080041670F /* ConversationViewController+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE237D249C22080041670F /* ConversationViewController+Scroll.swift */; };
 		892D5A79264EDBE400C679DF /* attachment_accent_blue.json in Resources */ = {isa = PBXBuildFile; fileRef = 892D5A78264EDBE400C679DF /* attachment_accent_blue.json */; };
 		89750E5A2657E986005A1BC5 /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89750E592657E986005A1BC5 /* PaymentManager.swift */; };
+		89BFD362265E9ED400955B2F /* PaymentNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFD361265E9ED400955B2F /* PaymentNetworkService.swift */; };
+		89BFD369265EA59800955B2F /* MockPaymentNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFD368265EA59800955B2F /* MockPaymentNetworkManager.swift */; };
 		89EF3B3626569348001BA601 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EF3B3526569348001BA601 /* SubscriptionManager.swift */; };
 		89EF3B3926569E9C001BA601 /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = 89EF3B3826569E9C001BA601 /* Stripe */; };
 		89EF3B692656A991001BA601 /* ProjectInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89EF3B682656A991001BA601 /* ProjectInfo.plist */; };
@@ -1827,6 +1829,8 @@
 		892D5A78264EDBE400C679DF /* attachment_accent_blue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = attachment_accent_blue.json; sourceTree = "<group>"; };
 		89750E592657E986005A1BC5 /* PaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		8981C8F64D94D3C52EB67A2C /* Pods-SignalTests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalTests.test.xcconfig"; path = "Pods/Target Support Files/Pods-SignalTests/Pods-SignalTests.test.xcconfig"; sourceTree = "<group>"; };
+		89BFD361265E9ED400955B2F /* PaymentNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentNetworkService.swift; sourceTree = "<group>"; };
+		89BFD368265EA59800955B2F /* MockPaymentNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaymentNetworkManager.swift; sourceTree = "<group>"; };
 		89EF3B3526569348001BA601 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
 		89EF3B682656A991001BA601 /* ProjectInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ProjectInfo.plist; sourceTree = "<group>"; };
 		89EF3B982656AADD001BA601 /* ProjectInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfo.swift; sourceTree = "<group>"; };
@@ -3584,6 +3588,8 @@
 			children = (
 				89EF3B3526569348001BA601 /* SubscriptionManager.swift */,
 				89750E592657E986005A1BC5 /* PaymentManager.swift */,
+				89BFD361265E9ED400955B2F /* PaymentNetworkService.swift */,
+				89BFD368265EA59800955B2F /* MockPaymentNetworkManager.swift */,
 			);
 			name = Payment;
 			sourceTree = "<group>";
@@ -4985,6 +4991,7 @@
 				4C1885D2218F8E1C00B67051 /* PhotoGridViewCell.swift in Sources */,
 				3470C8822559B23F00F5847C /* CVUpdate.swift in Sources */,
 				348815C8255346A500D4F4C4 /* CVNode.swift in Sources */,
+				89BFD362265E9ED400955B2F /* PaymentNetworkService.swift in Sources */,
 				349439D824360D63001045F7 /* BaseGroupMemberViewController.swift in Sources */,
 				88C4E38024635337009C9B97 /* DeviceTransferService.swift in Sources */,
 				348EE28F25B897BF00814FC2 /* ReusableMediaView.swift in Sources */,
@@ -5089,6 +5096,7 @@
 				3496955E219B605E00DCFE74 /* PhotoLibrary.swift in Sources */,
 				349ED990221B0194008045B0 /* Onboarding2FAViewController.swift in Sources */,
 				45D231771DC7E8F10034FA89 /* SessionResetJob.swift in Sources */,
+				89BFD369265EA59800955B2F /* MockPaymentNetworkManager.swift in Sources */,
 				348815BC2552E67900D4F4C4 /* CVComponentSystemMessage.swift in Sources */,
 				88A4CC19246CE6810082211F /* DeviceTransferInitialViewController.swift in Sources */,
 				8835DE01230DBF7E00DC6B66 /* ComposeViewController.swift in Sources */,

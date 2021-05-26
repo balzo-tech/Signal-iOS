@@ -45,7 +45,10 @@ class PaymentManager: NSObject {
         return context
     }()
     
-    override init() {
+    private let paymentNetworkService: PaymentNetworkService
+    
+    init(paymentNetworkService: PaymentNetworkService) {
+        self.paymentNetworkService = paymentNetworkService
         super.init()
 
         SwiftSingletons.register(self)
@@ -92,36 +95,28 @@ fileprivate class STPPaymentOptionsViewControllerProxy: NSObject, STPPaymentOpti
     }
     
     func paymentOptionsViewController(_ paymentOptionsViewController: STPPaymentOptionsViewController,didFailToLoadWithError error: Error) {
-        print("PaymentManager - paymentOptionsViewController")
         paymentOptionsViewController.dismiss(animated: true, completion: { self.seal.reject(error) })
     }
     
     func paymentOptionsViewControllerDidFinish(_ paymentOptionsViewController: STPPaymentOptionsViewController) {
-        print("PaymentManager - paymentOptionsViewControllerDidFinish")
         paymentOptionsViewController.dismiss(animated: true, completion: { self.seal.fulfill(()) })
     }
     
     func paymentOptionsViewControllerDidCancel(_ paymentOptionsViewController: STPPaymentOptionsViewController) {
-        print("PaymentManager - paymentOptionsViewControllerDidCancel")
         paymentOptionsViewController.dismiss(animated: true, completion: { self.seal.fulfill(()) })
     }
 }
 
 extension PaymentManager: STPCustomerEphemeralKeyProvider {
     
-    enum CustomerKeyError: LocalizedError {
-        case invalidResponse
-        
-        var errorDescription: String? {
-            switch self {
-            case .invalidResponse: return NSLocalizedString("ERROR_DESCRIPTION_SERVER_FAILURE", comment: "Generic server error")
-            }
-        }
-    }
-
     func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping STPJSONResponseCompletionBlock) {
-        // TODO: Call specific backend endpoint to get the Stripe Customer Ephemeral Key for the current user
-        completion(nil, CustomerKeyError.invalidResponse)
+        firstly {
+            self.paymentNetworkService.createCustomerKey(withAPIVersion: apiVersion)
+        }.done { customerKey in
+            completion(customerKey, nil)
+        }.catch { error in
+            completion(nil, error)
+        }
     }
 }
 
@@ -226,9 +221,7 @@ class MockCustomer: STPCustomer {
 }
 
 class MockKeyProvider: NSObject, STPCustomerEphemeralKeyProvider {
-    func createCustomerKey(
-        withAPIVersion apiVersion: String, completion: @escaping STPJSONResponseCompletionBlock
-    ) {
+    func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping STPJSONResponseCompletionBlock) {
         completion(nil, NSError.stp_ephemeralKeyDecodingError())
     }
 }

@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import PromiseKit
 
 @objc
 class AppSettingsViewController: OWSTableViewController2 {
@@ -77,7 +78,13 @@ class AppSettingsViewController: OWSTableViewController2 {
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "account"),
             actionBlock: { [weak self] in
                 guard let self = self else { return }
-                AppEnvironment.shared.paymentManagerRef.showPaymentMethods(presenter: self)
+                firstly {
+                    AppEnvironment.shared.paymentManagerRef.showPaymentMethods(presenter: self)
+                }.catch { error in
+                    print("AppSettingsViewController - showPaymentMethods Failed")
+                    OWSActionSheets.showActionSheet(title: NSLocalizedString("ALERT_ERROR_TITLE", comment: "Generic error indicator"),
+                                                    message: error.localizedDescription)
+                }
             }
         ))
         

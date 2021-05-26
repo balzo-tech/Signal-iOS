@@ -5,8 +5,11 @@
 import Foundation
 import UIKit
 import Stripe
+import PromiseKit
 
 class PaymentManager: NSObject {
+    
+    static private let useMockData: Bool = true
     
     static private let theme: STPTheme = {
         // TODO: Add custom theme
@@ -22,14 +25,21 @@ class PaymentManager: NSObject {
     }()
     
     private lazy var customerContext: STPCustomerContext = {
-//        let context = STPCustomerContext(keyProvider: self)
-        
-        // Mock customer context to show the payment methods UI, waiting for the backend to provide the ephemeral key.
-        let keyManager = STPEphemeralKeyManager(
-            keyProvider: MockKeyProvider(),
-            apiVersion: STPAPIClient.apiVersion,
-            performsEagerFetching: true)
-        let context = MockCustomerContext(keyManager: keyManager, apiClient: MockAPIClient())
+        #if DEBUG
+        let context: STPCustomerContext
+        if Self.useMockData {
+            // Mock customer context to show the payment methods UI, waiting for the backend to provide the ephemeral key.
+            let keyManager = STPEphemeralKeyManager(
+                keyProvider: MockKeyProvider(),
+                apiVersion: STPAPIClient.apiVersion,
+                performsEagerFetching: true)
+            context = MockCustomerContext(keyManager: keyManager, apiClient: MockAPIClient())
+        } else {
+            context = STPCustomerContext(keyProvider: self)
+        }
+        #else
+        let context = STPCustomerContext(keyProvider: self)
+        #endif
         
         context.includeApplePayPaymentMethods = true
         return context
@@ -43,14 +53,23 @@ class PaymentManager: NSObject {
         StripeAPI.defaultPublishableKey = FeatureFlags.isUsingProductionService ? ProjectInfo.StripeTestKey : ProjectInfo.StripeProductionKey
     }
     
-    func showPaymentMethods(presenter: UIViewController) {
+    func showPaymentMethods(presenter: UIViewController) -> PromiseKit.Promise<Void> {
+        let delegateProxy = STPPaymentOptionsViewControllerProxy()
         let viewController = STPPaymentOptionsViewController(configuration: self.paymentConfiguration,
                                                              theme: Self.theme,
                                                              customerContext: self.customerContext,
-                                                             delegate: self)
+                                                             delegate: delegateProxy)
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationBar.stp_theme = Self.theme
+        // Ensure that the view controller is dismissed only through STPPaymentOptionsViewControllerDelegate delegate methods,
+        // thus allowing the proxy to be released from memory.
+        navigationController.modalPresentationStyle = .fullScreen
         presenter.present(navigationController, animated: true, completion: nil)
+        return delegateProxy.promise
+    }
+    
+    func checkIfDefaultPaymentMethodExist() -> PromiseKit.Promise<Bool> {
+        return Promise { self.customerContext.retrieveCustomer($0.resolve) }.map { !$0.sources.isEmpty }
     }
     
     func onLogOut() {
@@ -58,30 +77,46 @@ class PaymentManager: NSObject {
     }
 }
 
-extension PaymentManager: STPPaymentOptionsViewControllerDelegate {
+fileprivate class STPPaymentOptionsViewControllerProxy: NSObject, STPPaymentOptionsViewControllerDelegate {
+    var (promise, seal) = PromiseKit.Promise<Void>.pending()
+    private var retainCycle: STPPaymentOptionsViewControllerProxy?
+    
+    override init() {
+        super.init()
+        self.retainCycle = self
+        
+        self.promise = self.promise.ensure {
+            // ensure we break the retain cycle
+            self.retainCycle = nil
+        }
+    }
     
     func paymentOptionsViewController(_ paymentOptionsViewController: STPPaymentOptionsViewController,didFailToLoadWithError error: Error) {
         print("PaymentManager - paymentOptionsViewController")
-        OWSActionSheets.showActionSheet(title: NSLocalizedString("ERROR_NETWORK_FAILURE",
-                                                                 comment: "Error indicating network connectivity problems."),
-                                        message: error.localizedDescription)
+        paymentOptionsViewController.dismiss(animated: true, completion: { self.seal.reject(error) })
     }
     
     func paymentOptionsViewControllerDidFinish(_ paymentOptionsViewController: STPPaymentOptionsViewController) {
         print("PaymentManager - paymentOptionsViewControllerDidFinish")
-        paymentOptionsViewController.dismiss(animated: true, completion: nil)
+        paymentOptionsViewController.dismiss(animated: true, completion: { self.seal.fulfill(()) })
     }
     
     func paymentOptionsViewControllerDidCancel(_ paymentOptionsViewController: STPPaymentOptionsViewController) {
         print("PaymentManager - paymentOptionsViewControllerDidCancel")
-        paymentOptionsViewController.dismiss(animated: true, completion: nil)
+        paymentOptionsViewController.dismiss(animated: true, completion: { self.seal.fulfill(()) })
     }
 }
 
 extension PaymentManager: STPCustomerEphemeralKeyProvider {
     
-    enum CustomerKeyError: Error {
+    enum CustomerKeyError: LocalizedError {
         case invalidResponse
+        
+        var errorDescription: String? {
+            switch self {
+            case .invalidResponse: return NSLocalizedString("ERROR_DESCRIPTION_SERVER_FAILURE", comment: "Generic server error")
+            }
+        }
     }
 
     func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping STPJSONResponseCompletionBlock) {

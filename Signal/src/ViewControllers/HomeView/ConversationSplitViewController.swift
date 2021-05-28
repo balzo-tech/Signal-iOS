@@ -101,6 +101,7 @@ class ConversationSplitViewController: UISplitViewController, ConversationSplit 
             return owsFailDebug("unexpected nav bar")
         }
         owsNavBar.switchToStyle(collapsed ? .default : .secondaryBar)
+        owsNavBar.shadowImage = UIImage()
     }
 
     private var hasHiddenExtraSubivew = false

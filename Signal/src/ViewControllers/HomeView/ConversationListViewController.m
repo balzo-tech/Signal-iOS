@@ -612,11 +612,17 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
 //            break;
 //    }
     
+    // Embedding the titleImageView in a titleContainer is hack needed to have the image of a specific size 
     UIImage *image = [UIImage imageNamed:@"loop-logo-128"];
-    UIImageView* titleImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    CGRect imageRect = CGRectMake(0, 0, 200, 30);
+    
+    UIImageView* titleImageView = [[UIImageView alloc] initWithFrame:imageRect];
     titleImageView.contentMode = UIViewContentModeScaleAspectFit;
     titleImageView.image = image;
-    self.navigationItem.titleView = titleImageView;
+    
+    UIView* titleContainer = [[UIView alloc] initWithFrame:imageRect];
+    [titleContainer addSubview:titleImageView];
+    self.navigationItem.titleView = titleContainer;
 
     [self applyDefaultBackButton];
 

@@ -42,9 +42,33 @@ class MockPaymentNetworkManager: NSObject {
 
 extension MockPaymentNetworkManager: PaymentNetworkService {
     
+    private static var testStripeBaseUrl: URL { URL(string: "https://loop-test-balzo.herokuapp.com")! }
+    
     // Needed by Stripe for customer authentication
     func createCustomerKey(withAPIVersion apiVersion: String) -> Promise<[AnyHashable: Any]?> {
-        return self.defaultRequestDelay.map { throw PaymentNetworkError.invalidResponse }
+        return Promise { seal in
+            let url = Self.testStripeBaseUrl.appendingPathComponent("ephemeral_keys")
+            var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+            urlComponents.queryItems = [URLQueryItem(name: "api_version", value: apiVersion)]
+            var request = URLRequest(url: urlComponents.url!)
+            request.httpMethod = "POST"
+            let task = URLSession.shared.dataTask(
+                with: request,
+                completionHandler: { (data, response, error) in
+                    guard let response = response as? HTTPURLResponse,
+                        response.statusCode == 200,
+                        let data = data,
+                        let json =
+                            ((try? JSONSerialization.jsonObject(with: data, options: [])
+                            as? [String: Any]) as [String: Any]??)
+                    else {
+                        seal.resolve(nil, error)
+                        return
+                    }
+                    seal.resolve(json, nil)
+                })
+            task.resume()
+        }
     }
     
     func checkIfCanAddSubscriptionPlans() -> Promise<Bool> {

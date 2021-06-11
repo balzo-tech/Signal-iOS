@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Attimo Srl. All rights reserved.
 //
 
 import Foundation
@@ -19,10 +19,10 @@ class MockPaymentNetworkManager: NSObject {
     private static let canAccessAllPremiumGroups: Bool = true
     
     private static let currentSubscriptions: [Subscription] = [
-        Subscription(identifier: "1", groupName: "Test Premium Group 1"),
-        Subscription(identifier: "2", groupName: "Test Premium Group 2"),
-        Subscription(identifier: "3", groupName: "Test Premium Group 3"),
-        Subscription(identifier: "4", groupName: "Test Premium Group 4"),
+        Subscription(identifier: "1", hasIssue: true),
+        Subscription(identifier: "2", hasIssue: false),
+        Subscription(identifier: "3", hasIssue: false),
+        Subscription(identifier: "4", hasIssue: false),
     ]
     
     private static let subscriptionPlanForAllGroups: SubscriptionPlan? = {

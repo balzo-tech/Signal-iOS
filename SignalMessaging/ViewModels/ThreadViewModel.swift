@@ -17,6 +17,8 @@ public class ThreadViewModel: NSObject {
     @objc public let disappearingMessagesConfiguration: OWSDisappearingMessagesConfiguration
     @objc public let groupCallInProgress: Bool
     @objc public let hasWallpaper: Bool
+    @objc public let subscriptionPlan: SubscriptionPlan?
+    @objc public let subscription: Subscription?
 
     public var isContactThread: Bool {
         return !isGroupThread
@@ -34,8 +36,28 @@ public class ThreadViewModel: NSObject {
     @objc
     public let conversationListInfo: ConversationListInfo?
 
+    // This is just to test thread UI, waiting for the server to provide subscription plan and current subscription.
+    private static var mockSubscriptionPlanCounter: Int = 0
+    private static var mockSubscriptionIssueCounter: Int = 0
+    
     @objc
     public init(thread: TSThread, forConversationList: Bool, transaction: SDSAnyReadTransaction) {
+        
+        // TODO: Init with data from server.
+        if ThreadViewModel.mockSubscriptionPlanCounter % 3 != 0 {
+            self.subscriptionPlan = SubscriptionPlan(price: 9.99, period: 1, periodUnit: .month)
+        } else {
+            self.subscriptionPlan = nil
+        }
+        ThreadViewModel.mockSubscriptionPlanCounter += 1
+        
+        if ThreadViewModel.mockSubscriptionIssueCounter % 3 == 2 {
+            self.subscription = Subscription(identifier: "1", hasIssue: true)
+        } else {
+            self.subscription = nil
+        }
+        ThreadViewModel.mockSubscriptionIssueCounter += 1
+        
         self.threadRecord = thread
         self.disappearingMessagesConfiguration = thread.disappearingMessagesConfiguration(with: transaction)
 

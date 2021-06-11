@@ -798,6 +798,8 @@
 		88F7EE93230253C5003ADF7D /* UsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F7EE92230253C5003ADF7D /* UsernameViewController.swift */; };
 		88F8195A2383569A007914E8 /* CNContactViewController+OWS.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F819592383569A007914E8 /* CNContactViewController+OWS.m */; };
 		88FE237E249C22080041670F /* ConversationViewController+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE237D249C22080041670F /* ConversationViewController+Scroll.swift */; };
+		8911BBA9267397B600BDF9B9 /* SubscriptionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8911BBA5267395A900BDF9B9 /* SubscriptionPlan.swift */; };
+		8911BBAA267397BA00BDF9B9 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8911BBA7267395C900BDF9B9 /* Subscription.swift */; };
 		892D5A79264EDBE400C679DF /* attachment_accent_blue.json in Resources */ = {isa = PBXBuildFile; fileRef = 892D5A78264EDBE400C679DF /* attachment_accent_blue.json */; };
 		89750E5A2657E986005A1BC5 /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89750E592657E986005A1BC5 /* PaymentManager.swift */; };
 		89BFD362265E9ED400955B2F /* PaymentNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFD361265E9ED400955B2F /* PaymentNetworkService.swift */; };
@@ -1826,6 +1828,8 @@
 		88F819582383569A007914E8 /* CNContactViewController+OWS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CNContactViewController+OWS.h"; sourceTree = "<group>"; };
 		88F819592383569A007914E8 /* CNContactViewController+OWS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNContactViewController+OWS.m"; sourceTree = "<group>"; };
 		88FE237D249C22080041670F /* ConversationViewController+Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConversationViewController+Scroll.swift"; sourceTree = "<group>"; };
+		8911BBA5267395A900BDF9B9 /* SubscriptionPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlan.swift; sourceTree = "<group>"; };
+		8911BBA7267395C900BDF9B9 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		892D5A78264EDBE400C679DF /* attachment_accent_blue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = attachment_accent_blue.json; sourceTree = "<group>"; };
 		89750E592657E986005A1BC5 /* PaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		8981C8F64D94D3C52EB67A2C /* Pods-SignalTests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalTests.test.xcconfig"; path = "Pods/Target Support Files/Pods-SignalTests/Pods-SignalTests.test.xcconfig"; sourceTree = "<group>"; };
@@ -2891,6 +2895,7 @@
 		453518931FC63DBF00210559 /* SignalMessaging */ = {
 			isa = PBXGroup;
 			children = (
+				8911BBAB267397CF00BDF9B9 /* payment */,
 				3469419C215D2EE400B5BFAD /* appearance */,
 				454A96571FD600B4008D2A0E /* attachments */,
 				34480B5C1FD0A98800BC14EF /* categories */,
@@ -3581,6 +3586,15 @@
 				88E34F2822F26CC100966CC2 /* StorageServiceProto+Sync.swift */,
 			);
 			path = "Storage Service";
+			sourceTree = "<group>";
+		};
+		8911BBAB267397CF00BDF9B9 /* payment */ = {
+			isa = PBXGroup;
+			children = (
+				8911BBA5267395A900BDF9B9 /* SubscriptionPlan.swift */,
+				8911BBA7267395C900BDF9B9 /* Subscription.swift */,
+			);
+			path = payment;
 			sourceTree = "<group>";
 		};
 		89EF3B342656931F001BA601 /* Payment */ = {
@@ -4819,6 +4833,7 @@
 				346129AD1FD1F34E00532771 /* ImageCache.swift in Sources */,
 				3465948424352FE900E5C510 /* OWSTableViewController.swift in Sources */,
 				88EFF4F525AD1ACB000FAFBA /* ConversationItem.swift in Sources */,
+				8911BBA9267397B600BDF9B9 /* SubscriptionPlan.swift in Sources */,
 				340B870E23DF3E3A00BE0AFC /* GroupV2UpdatesImpl.swift in Sources */,
 				340872D02239787F00CB25B0 /* AttachmentTextToolbar.swift in Sources */,
 				3470249C238367EA0078D72C /* TextApprovalViewController.swift in Sources */,
@@ -4920,6 +4935,7 @@
 				3464451122B7F97100A957B1 /* DateUtil.m in Sources */,
 				4C38E501230374D700E464B9 /* UIViewController+Permissions.m in Sources */,
 				4C948FF72146EB4800349F0D /* BlockListCache.swift in Sources */,
+				8911BBAA267397BA00BDF9B9 /* Subscription.swift in Sources */,
 				34BBC84F220B8A0100857249 /* ImageEditorCropViewController.swift in Sources */,
 				88BAE55D2487595B001F00F9 /* ImageEditorBlurViewController.swift in Sources */,
 				34AC09ED211B39B100997B47 /* ContactFieldView.swift in Sources */,

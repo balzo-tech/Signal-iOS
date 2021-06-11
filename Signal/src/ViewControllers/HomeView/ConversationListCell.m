@@ -26,6 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) UIView *typingIndicatorWrapper;
 @property (nonatomic) UIImageView *muteIconView;
 @property (nonatomic) UIView *muteIconWrapper;
+@property (nonatomic) UIView *premiumView;
+@property (nonatomic) UIView *subscriptionErrorIconWrapper;
 
 @property (nonatomic) UIView *unreadBadge;
 @property (nonatomic) UILabel *unreadLabel;
@@ -106,19 +108,64 @@ NS_ASSUME_NONNULL_BEGIN
     [self.muteIconView setContentHuggingHorizontalHigh];
     [self.muteIconView setCompressionResistanceHorizontalHigh];
     [self.muteIconWrapper addSubview:self.muteIconView];
-    [self.muteIconView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 2, 0)];
+    [self.muteIconView autoPinEdgeToSuperviewEdge:ALEdgeLeading];
+    [self.muteIconView autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
+    
+    // Premium badge
+    self.premiumView = [UIView containerView];
+    [self.premiumView setContentHuggingHorizontalHigh];
+    [self.premiumView setCompressionResistanceHorizontalHigh];
+    
+    UIView* premiumBackgroundView = [UIView containerView];
+    [premiumBackgroundView setContentHuggingHorizontalHigh];
+    [premiumBackgroundView setCompressionResistanceHorizontalHigh];
+    premiumBackgroundView.backgroundColor = Theme.isDarkThemeEnabled ? UIColor.ows_azureRadianceDark500 : UIColor.ows_azureRadianceDark50;
+    premiumBackgroundView.layer.cornerRadius = 4;
+    [self.premiumView addSubview:premiumBackgroundView];
+    [premiumBackgroundView autoPinEdgeToSuperviewEdge:ALEdgeLeading];
+    [premiumBackgroundView autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
+    
+    UILabel* premiumLabel = [UILabel new];
+    [premiumLabel setContentHuggingHorizontalHigh];
+    [premiumLabel setCompressionResistanceHorizontalHigh];
+    premiumLabel.text = @"PRO";
+    premiumLabel.textColor = Theme.isDarkThemeEnabled ? UIColor.ows_azureRadianceDark50 : UIColor.ows_azureRadianceDark500;
+    premiumLabel.font = self.premiumFont;
+    [premiumBackgroundView addSubview:premiumLabel];
+    [premiumLabel autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(2, 4, 2, 4) excludingEdge:ALEdgeBottom];
+    [premiumBackgroundView autoAlignAxis:ALAxisBaseline toSameAxisOfView:premiumLabel withOffset:4];
+    
+    // Subscription error icon
+    self.subscriptionErrorIconWrapper = [UIView containerView];
+    [self.subscriptionErrorIconWrapper setContentHuggingHorizontalHigh];
+    [self.subscriptionErrorIconWrapper setCompressionResistanceHorizontalHigh];
+
+    UIImageView* subscriptionErrorIconView  = [UIImageView withTemplateImageName:@"error-solid-24"
+                                                                       tintColor:UIColor.ows_redRibbon500];
+    [subscriptionErrorIconView setContentHuggingHorizontalHigh];
+    [subscriptionErrorIconView setCompressionResistanceHorizontalHigh];
+    [subscriptionErrorIconView autoSetDimensionsToSize:CGSizeMake(14.0, 14.0)];
+    [self.subscriptionErrorIconWrapper addSubview:subscriptionErrorIconView];
+    [subscriptionErrorIconView autoPinEdgeToSuperviewEdge:ALEdgeLeading];
+    [subscriptionErrorIconView autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
 
     UIView *topRowSpacer = UIView.hStretchingSpacer;
 
     UIStackView *topRowView = [[UIStackView alloc] initWithArrangedSubviews:@[
         self.nameLabel,
         self.muteIconWrapper,
+        self.premiumView,
+        self.subscriptionErrorIconWrapper,
         topRowSpacer,
         self.dateTimeLabel,
     ]];
     topRowView.axis = UILayoutConstraintAxisHorizontal;
     topRowView.alignment = UIStackViewAlignmentLastBaseline;
     topRowView.spacing = 6.f;
+    
+    [self.muteIconView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.nameLabel withOffset:0];
+    [premiumBackgroundView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.nameLabel withOffset:0];
+    [subscriptionErrorIconView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.nameLabel withOffset:0];
 
     self.snippetLabel = [UILabel new];
     self.snippetLabel.numberOfLines = 2;
@@ -491,6 +538,20 @@ NS_ASSUME_NONNULL_BEGIN
     return (!self.hasOverrideSnippet && !isBlocked && !thread.hasPendingMessageRequest && thread.isMuted);
 }
 
+- (BOOL)shouldShowPremiumViewForThread:(ThreadViewModel *)thread
+{
+    OWSAssertDebug(thread);
+
+    return (thread.subscriptionPlan != nil);
+}
+
+- (BOOL)shouldShowSubscriptionErrorViewForThread:(ThreadViewModel *)thread
+{
+    OWSAssertDebug(thread);
+
+    return (thread.subscription != nil && thread.subscription.hasIssue);
+}
+
 #pragma mark - Constants
 
 - (UIFont *)unreadFont
@@ -517,6 +578,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIFont *)nameSecondaryFont
 {
     return [UIFont ows_dynamicTypeBodyClampedFont].ows_italic;
+}
+
+- (UIFont *)premiumFont
+{
+    return [UIFont ows_dynamicTypeCaption2ClampedFont].ows_bold;
 }
 
 - (NSUInteger)avatarSize
@@ -656,6 +722,8 @@ NS_ASSUME_NONNULL_BEGIN
     }
 
     self.muteIconWrapper.hidden = ![self shouldShowMuteIndicatorForThread:self.thread isBlocked:self.isBlocked];
+    self.premiumView.hidden = ![self shouldShowPremiumViewForThread:self.thread];
+    self.subscriptionErrorIconWrapper.hidden = ![self shouldShowSubscriptionErrorViewForThread:self.thread];
     self.muteIconView.tintColor = self.snippetColor;
 }
 

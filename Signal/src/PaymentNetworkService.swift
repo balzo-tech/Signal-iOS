@@ -1,25 +1,10 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Attimo Srl. All rights reserved.
 //
 
 import Foundation
 import PromiseKit
 import SignalServiceKit
-
-struct SubscriptionPlan {
-    enum PeriodUnit {
-        case day, week, month, year
-    }
-    
-    let price: Float
-    let period: Int
-    let periodUnit: PeriodUnit
-}
-
-struct Subscription {
-    let identifier: String
-    let groupName: String
-}
 
 enum PaymentNetworkError: LocalizedError {
     case invalidResponse

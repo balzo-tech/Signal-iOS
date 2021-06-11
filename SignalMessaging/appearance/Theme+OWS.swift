@@ -270,7 +270,7 @@ public extension Theme {
             return "select-24"
 
         case .compose24:
-            return isDarkThemeEnabled ? "compose-solid-24" : "compose-outline-24"
+            return "plus-24"
         case .composeNewGroup:
             return isDarkThemeEnabled ? "group-solid-24" : "group-outline-24"
         case .composeFindByPhoneNumber:

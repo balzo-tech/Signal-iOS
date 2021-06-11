@@ -19,10 +19,10 @@ class MockPaymentNetworkManager: NSObject {
     private static let canAccessAllPremiumGroups: Bool = true
     
     private static let currentSubscriptions: [Subscription] = [
-        Subscription(identifier: "1", hasIssue: true),
-        Subscription(identifier: "2", hasIssue: false),
-        Subscription(identifier: "3", hasIssue: false),
-        Subscription(identifier: "4", hasIssue: false),
+        Subscription(identifier: "1", hasIssue: true, isActive: true),
+        Subscription(identifier: "2", hasIssue: false, isActive: true),
+        Subscription(identifier: "3", hasIssue: false, isActive: true),
+        Subscription(identifier: "4", hasIssue: false, isActive: true),
     ]
     
     private static let subscriptionPlanForAllGroups: SubscriptionPlan? = {

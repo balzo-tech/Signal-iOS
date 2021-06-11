@@ -217,6 +217,7 @@ extension ConversationViewController: CVLoadCoordinatorDelegate {
         self.ensureSelectionViewState()
         self.showMessageRequestDialogIfRequired()
         self.configureScrollDownButtons()
+        self.updateSubscriptionPlanOverlay()
 
         benchSteps.step("loadCompletion.1")
 

@@ -150,6 +150,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, nullable) UIBarButtonItem *groupCallBarButtonItem;
 @property (nonatomic) BOOL hasIncrementedGroupCallTooltipShownCount;
 
+@property (nonatomic) SubscriptionPlanOverlayView* subscriptionPlanOverlayView;
+
 @end
 
 #pragma mark -
@@ -223,6 +225,7 @@ typedef enum : NSUInteger {
                                                         enqueueReloadWithCanReuseInteractionModels:YES
                                                                            canReuseComponentStates:NO];
                                                 }];
+    
     return self;
 }
 
@@ -432,6 +435,7 @@ typedef enum : NSUInteger {
     [self createContents];
     [self createConversationScrollButtons];
     [self createHeaderViews];
+    [self createSubscriptionPlanOverlay];
     [self addNotificationListeners];
     [self.loadCoordinator viewDidLoad];
 
@@ -1163,6 +1167,11 @@ typedef enum : NSUInteger {
     self.headerView.attributedTitle = attributedName;
 }
 
+- (void)updateSubscriptionPlanOverlay
+{
+    [self.subscriptionPlanOverlayView refreshViewWithThreadViewModel: self.threadViewModel];
+}
+
 - (void)createHeaderViews
 {
     ConversationHeaderView *headerView = [[ConversationHeaderView alloc] initWithThread:self.thread];
@@ -1181,6 +1190,15 @@ typedef enum : NSUInteger {
 
 
     [self updateNavigationBarSubtitleLabel];
+}
+
+- (void)createSubscriptionPlanOverlay
+{
+    self.subscriptionPlanOverlayView = [[SubscriptionPlanOverlayView alloc] initWithThreadViewModel: self.threadViewModel];
+    [self.view addSubview:self.subscriptionPlanOverlayView];
+    [self.subscriptionPlanOverlayView autoPinEdgesToSuperviewEdges];
+    
+    [self updateSubscriptionPlanOverlay];
 }
 
 - (CGFloat)unreadCountViewDiameter

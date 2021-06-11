@@ -104,6 +104,7 @@ typedef NS_CLOSED_ENUM(NSUInteger, ConversationUIMode) {
 - (void)updateUnreadMessageFlagWithTransaction:(SDSAnyReadTransaction *)transaction;
 - (void)updateUnreadMessageFlagUsingAsyncTransaction;
 - (void)configureScrollDownButtons;
+- (void)updateSubscriptionPlanOverlay;
 - (void)performBatchUpdates:(void (^_Nonnull)(void))batchUpdates
                  completion:(void (^_Nonnull)(BOOL))completion
             logFailureBlock:(void (^_Nonnull)(void))logFailureBlock

@@ -800,6 +800,7 @@
 		88FE237E249C22080041670F /* ConversationViewController+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE237D249C22080041670F /* ConversationViewController+Scroll.swift */; };
 		8911BBA9267397B600BDF9B9 /* SubscriptionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8911BBA5267395A900BDF9B9 /* SubscriptionPlan.swift */; };
 		8911BBAA267397BA00BDF9B9 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8911BBA7267395C900BDF9B9 /* Subscription.swift */; };
+		8911BBAF2673A38300BDF9B9 /* SubscriptionPlanOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8911BBAE2673A38300BDF9B9 /* SubscriptionPlanOverlayView.swift */; };
 		892D5A79264EDBE400C679DF /* attachment_accent_blue.json in Resources */ = {isa = PBXBuildFile; fileRef = 892D5A78264EDBE400C679DF /* attachment_accent_blue.json */; };
 		89750E5A2657E986005A1BC5 /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89750E592657E986005A1BC5 /* PaymentManager.swift */; };
 		89BFD362265E9ED400955B2F /* PaymentNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFD361265E9ED400955B2F /* PaymentNetworkService.swift */; };
@@ -1830,6 +1831,7 @@
 		88FE237D249C22080041670F /* ConversationViewController+Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConversationViewController+Scroll.swift"; sourceTree = "<group>"; };
 		8911BBA5267395A900BDF9B9 /* SubscriptionPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlan.swift; sourceTree = "<group>"; };
 		8911BBA7267395C900BDF9B9 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		8911BBAE2673A38300BDF9B9 /* SubscriptionPlanOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlanOverlayView.swift; sourceTree = "<group>"; };
 		892D5A78264EDBE400C679DF /* attachment_accent_blue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = attachment_accent_blue.json; sourceTree = "<group>"; };
 		89750E592657E986005A1BC5 /* PaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		8981C8F64D94D3C52EB67A2C /* Pods-SignalTests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalTests.test.xcconfig"; path = "Pods/Target Support Files/Pods-SignalTests/Pods-SignalTests.test.xcconfig"; sourceTree = "<group>"; };
@@ -3597,13 +3599,30 @@
 			path = payment;
 			sourceTree = "<group>";
 		};
-		89EF3B342656931F001BA601 /* Payment */ = {
+		8911BBAC2673A34E00BDF9B9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				89EF3B3526569348001BA601 /* SubscriptionManager.swift */,
 				89750E592657E986005A1BC5 /* PaymentManager.swift */,
 				89BFD361265E9ED400955B2F /* PaymentNetworkService.swift */,
 				89BFD368265EA59800955B2F /* MockPaymentNetworkManager.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		8911BBAD2673A36200BDF9B9 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8911BBAE2673A38300BDF9B9 /* SubscriptionPlanOverlayView.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		89EF3B342656931F001BA601 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				8911BBAD2673A36200BDF9B9 /* UI */,
+				8911BBAC2673A34E00BDF9B9 /* Services */,
 			);
 			name = Payment;
 			sourceTree = "<group>";
@@ -5043,6 +5062,7 @@
 				88D1D40222EBB5A100F472C5 /* MessageRequestView.swift in Sources */,
 				45CD81EF1DC030E7004C9430 /* SyncPushTokensJob.swift in Sources */,
 				88ABB8BD25352B8300229EAA /* GroupCallMemberSheet.swift in Sources */,
+				8911BBAF2673A38300BDF9B9 /* SubscriptionPlanOverlayView.swift in Sources */,
 				89EF3B3626569348001BA601 /* SubscriptionManager.swift in Sources */,
 				88A4CC0E246CD6CC0082211F /* OnboardingTransferProgressViewController.swift in Sources */,
 				4C0C36F8226647FE0083F19A /* ThreadMapping.swift in Sources */,

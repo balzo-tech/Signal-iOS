@@ -20,3 +20,14 @@ public class SubscriptionPlan: NSObject {
         self.periodUnit = periodUnit
     }
 }
+
+public extension SubscriptionPlan {
+    var dateComponents: DateComponents {
+        switch self.periodUnit {
+        case .day: return DateComponents(day: self.period)
+        case .week: return DateComponents(day: self.period * 7)
+        case .month: return DateComponents(month: self.period)
+        case .year: return DateComponents(year: self.period)
+        }
+    }
+}

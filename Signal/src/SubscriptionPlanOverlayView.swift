@@ -23,6 +23,7 @@ class SubscriptionPlanOverlayView: UIView {
     }
     
     private let optionView = SubscriptionPlanOverlayOptionView()
+    private let groupOwnerView = GroupOwnerView()
     
     @objc
     init(withThreadViewModel threadViewModel: ThreadViewModel) {
@@ -61,7 +62,7 @@ class SubscriptionPlanOverlayView: UIView {
         stackView.addArrangedSubview(groupOwnerHintLabel)
 
         // Group owner view
-        // TODO: Add group owner view
+        stackView.addArrangedSubview(self.groupOwnerView)
 
         // Subscription plan options hint label
         let subscriptionOptionsHintText = NSLocalizedString("SUBSCRIPTION_PLAN_OVERLAY_OPTIONS", comment: "Subscription options hint in SubscriptionPlanOverlayView.")
@@ -127,6 +128,10 @@ class SubscriptionPlanOverlayView: UIView {
         if let subscriptionPlan = self.threadViewModel.subscriptionPlan {
             self.optionView.update(withSubscriptionPlan: subscriptionPlan)
         }
+        if let groupModel = self.currentGroupModel {
+            self.groupOwnerView.update(groupModel: groupModel)
+        }
+        
     }
     
     private func updateVisibility() {
@@ -174,7 +179,7 @@ fileprivate extension SubscriptionPlan {
     
     var priceText: String {
         // Euro currency is hardcoded for now... yes...
-        return String(format: "%.02f €", self.price)
+        return String(format: "%.02f€", self.price)
     }
     
     var renewDateText: String {
@@ -247,5 +252,50 @@ class SubscriptionPlanOverlayOptionView: UIView {
         self.descriptionLabel.text = subscriptionPlan.descriptionText
         self.renewDateLabel.text = subscriptionPlan.renewDateText
         self.priceLabel.text = subscriptionPlan.priceText
+    }
+}
+
+class GroupOwnerView: UIView {
+    
+    private static let avatarSize = CGSize(square: 64.0)
+    
+    private let avatarImageView = AvatarImageView()
+    
+    let ownerNameLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = UIFont.ows_dynamicTypeHeadline
+        label.textColor = Theme.isDarkThemeEnabled ? UIColor.ows_white : UIColor.ows_gray800
+        return label
+    }()
+    
+    init() {
+        super.init(frame: .zero)
+        let horizontalStackView = UIStackView()
+        horizontalStackView.axis = .horizontal
+        horizontalStackView.spacing = 8
+        self.addSubview(horizontalStackView)
+        horizontalStackView.autoPinEdgesToSuperviewEdges()
+        
+        horizontalStackView.addArrangedSubview(self.avatarImageView)
+        self.avatarImageView.autoSetDimensions(to: Self.avatarSize)
+        horizontalStackView.addArrangedSubview(self.ownerNameLabel)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Public Methods
+    
+    public func update(groupModel: TSGroupModel) {
+        guard let owner = groupModel.groupMembership.fullMembers.first(where: { groupModel.groupMembership.isFullMemberAndAdministrator($0) }) else {
+            assertionFailure("Missing owner")
+            return
+        }
+        self.avatarImageView.image = OWSContactAvatarBuilder.init(address: owner,
+                                                                  colorName: .default,
+                                                                  diameter: UInt(Self.avatarSize.width)).buildDefaultImage()
+        self.ownerNameLabel.text = self.contactsManager.displayName(for: owner)
     }
 }

@@ -22,6 +22,8 @@ class SubscriptionPlanOverlayView: UIView {
         return groupThread.groupModel
     }
     
+    private let optionView = SubscriptionPlanOverlayOptionView()
+    
     @objc
     init(withThreadViewModel threadViewModel: ThreadViewModel) {
         self.threadViewModel = threadViewModel
@@ -70,15 +72,19 @@ class SubscriptionPlanOverlayView: UIView {
         stackView.addArrangedSubview(subscriptionOptionsHintLabel)
 
         // Subscription Plan view
-        // TODO: Add subscription Plan view
+        stackView.addArrangedSubview(self.optionView)
 
         // Tips
+        let tipStackView = UIStackView()
+        tipStackView.axis = .vertical
+        tipStackView.spacing = 8
+        stackView.addArrangedSubview(tipStackView)
         let tip1Text = NSLocalizedString("SUBSCRIPTION_PLAN_OVERLAY_TIP_1", comment: "Tip 1 in SubscriptionPlanOverlayView.")
-        stackView.addSubscriptionTipView(text: tip1Text)
+        tipStackView.addSubscriptionTipView(text: tip1Text)
         let tip2Text = NSLocalizedString("SUBSCRIPTION_PLAN_OVERLAY_TIP_2", comment: "Tip 2 in SubscriptionPlanOverlayView.")
-        stackView.addSubscriptionTipView(text: tip2Text)
+        tipStackView.addSubscriptionTipView(text: tip2Text)
         let tip3Text = NSLocalizedString("SUBSCRIPTION_PLAN_OVERLAY_TIP_3", comment: "Tip 3 in SubscriptionPlanOverlayView.")
-        stackView.addSubscriptionTipView(text: tip3Text)
+        tipStackView.addSubscriptionTipView(text: tip3Text)
 
         // Subscribe button
         let buttonHeight: CGFloat = 60
@@ -92,6 +98,8 @@ class SubscriptionPlanOverlayView: UIView {
         subscribeButton.autoSetDimension(.height, toSize: buttonHeight)
         subscribeButton.layer.cornerRadius = buttonHeight / 2.0
         stackView.addArrangedSubview(subscribeButton)
+        
+        self.updateView()
     }
     
     required init?(coder: NSCoder) {
@@ -101,8 +109,7 @@ class SubscriptionPlanOverlayView: UIView {
     @objc
     public func refreshView(withThreadViewModel threadViewModel: ThreadViewModel) {
         self.threadViewModel = threadViewModel
-        
-        self.updateVisibility()
+        self.updateView()
     }
     
     // MARK: - Actions
@@ -114,6 +121,13 @@ class SubscriptionPlanOverlayView: UIView {
     }
     
     // MARK: - Private Methods
+    
+    private func updateView() {
+        self.updateVisibility()
+        if let subscriptionPlan = self.threadViewModel.subscriptionPlan {
+            self.optionView.update(withSubscriptionPlan: subscriptionPlan)
+        }
+    }
     
     private func updateVisibility() {
         guard nil != self.threadViewModel.subscriptionPlan else {
@@ -130,6 +144,7 @@ class SubscriptionPlanOverlayView: UIView {
 }
 
 fileprivate extension UIStackView {
+    
     func addSubscriptionTipView(text: String) {
         let horizontalStackView = UIStackView()
         horizontalStackView.axis = .horizontal
@@ -154,24 +169,7 @@ fileprivate extension UIStackView {
 
 fileprivate extension SubscriptionPlan {
     var descriptionText: String {
-        switch self.periodUnit {
-        case .day:
-            return "\(self.period)" + ((self.period == 1)
-                                        ? NSLocalizedString("SUBSCRIPTION_PLAN_DURATION_DAY_SINGLE", comment: "Subscription plan period unit day singular.")
-                                        : NSLocalizedString("SUBSCRIPTION_PLAN_DURATION_DAY_MULTIPLE", comment: "Subscription plan period unit day plural."))
-        case .week:
-            return "\(self.period)" + ((self.period == 1)
-                                        ? NSLocalizedString("SUBSCRIPTION_PLAN_DURATION_WEEK_SINGLE", comment: "Subscription plan period unit week singular.")
-                                        : NSLocalizedString("SUBSCRIPTION_PLAN_DURATION_WEEK_MULTIPLE", comment: "Subscription plan period unit week plural."))
-        case .month:
-            return "\(self.period)" + ((self.period == 1)
-                                        ? NSLocalizedString("SUBSCRIPTION_PLAN_DURATION_MONTH_SINGLE", comment: "Subscription plan period unit month singular.")
-                                        : NSLocalizedString("SUBSCRIPTION_PLAN_DURATION_MONTH_MULTIPLE", comment: "Subscription plan period unit month plural."))
-        case .year:
-            return "\(self.period)" + ((self.period == 1)
-                                        ? NSLocalizedString("SUBSCRIPTION_PLAN_DURATION_YEAR_SINGLE", comment: "Subscription plan period unit year singular.")
-                                        : NSLocalizedString("SUBSCRIPTION_PLAN_DURATION_YEAR_MULTIPLE", comment: "Subscription plan period unit year plural."))
-        }
+        return "\(self.period) \(self.periodUnitString.capitalizingFirstLetter())"
     }
     
     var priceText: String {
@@ -186,9 +184,68 @@ fileprivate extension SubscriptionPlan {
         }
         let renewalDatePrefix = NSLocalizedString("SUBSCRIPTION_PLAN_OVERLAY_RENEW_DATE_PREFIX", comment: "Subscription renew date prefix in SubscriptionPlanOverlayView.")
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
+        dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         let renewDateString = dateFormatter.string(from: expiryDate)
         return renewalDatePrefix + " " + renewDateString
+    }
+}
+
+class SubscriptionPlanOverlayOptionView: UIView {
+    
+    let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = UIFont.ows_dynamicTypeCallout
+        label.textColor = Theme.isDarkThemeEnabled ? UIColor.ows_white : UIColor.ows_gray800
+        return label
+    }()
+    
+    let renewDateLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = UIFont.ows_dynamicTypeCaption1
+        label.textColor = Theme.isDarkThemeEnabled ? UIColor.ows_gray500 : UIColor.ows_gray400
+        return label
+    }()
+    
+    let priceLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = UIFont.ows_dynamicTypeCallout
+        label.textColor = Theme.isDarkThemeEnabled ? UIColor.ows_white : UIColor.ows_gray800
+        return label
+    }()
+    
+    init() {
+        super.init(frame: .zero)
+        let outerHorizontalStackView = UIStackView()
+        outerHorizontalStackView.axis = .horizontal
+        outerHorizontalStackView.spacing = 10.0
+        self.addSubview(outerHorizontalStackView)
+        outerHorizontalStackView.autoPinEdgesToSuperviewEdges()
+        
+        let innerVerticalStackView = UIStackView()
+        innerVerticalStackView.axis = .vertical
+        innerVerticalStackView.spacing = 4
+        outerHorizontalStackView.addArrangedSubview(innerVerticalStackView)
+        innerVerticalStackView.addArrangedSubview(self.descriptionLabel)
+        innerVerticalStackView.addArrangedSubview(self.renewDateLabel)
+        
+        self.priceLabel.setContentHuggingHorizontalHigh()
+        self.priceLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        outerHorizontalStackView.addArrangedSubview(self.priceLabel)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Public Methods
+    
+    public func update(withSubscriptionPlan subscriptionPlan: SubscriptionPlan) {
+        self.descriptionLabel.text = subscriptionPlan.descriptionText
+        self.renewDateLabel.text = subscriptionPlan.renewDateText
+        self.priceLabel.text = subscriptionPlan.priceText
     }
 }

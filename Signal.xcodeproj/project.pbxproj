@@ -802,6 +802,7 @@
 		8911BBAA267397BA00BDF9B9 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8911BBA7267395C900BDF9B9 /* Subscription.swift */; };
 		8911BBAF2673A38300BDF9B9 /* SubscriptionPlanOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8911BBAE2673A38300BDF9B9 /* SubscriptionPlanOverlayView.swift */; };
 		892D5A79264EDBE400C679DF /* attachment_accent_blue.json in Resources */ = {isa = PBXBuildFile; fileRef = 892D5A78264EDBE400C679DF /* attachment_accent_blue.json */; };
+		89352EB726975D4F0046854A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89352EB626975D4F0046854A /* String+Extensions.swift */; };
 		89750E5A2657E986005A1BC5 /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89750E592657E986005A1BC5 /* PaymentManager.swift */; };
 		89BFD362265E9ED400955B2F /* PaymentNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFD361265E9ED400955B2F /* PaymentNetworkService.swift */; };
 		89BFD369265EA59800955B2F /* MockPaymentNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFD368265EA59800955B2F /* MockPaymentNetworkManager.swift */; };
@@ -1833,6 +1834,7 @@
 		8911BBA7267395C900BDF9B9 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		8911BBAE2673A38300BDF9B9 /* SubscriptionPlanOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlanOverlayView.swift; sourceTree = "<group>"; };
 		892D5A78264EDBE400C679DF /* attachment_accent_blue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = attachment_accent_blue.json; sourceTree = "<group>"; };
+		89352EB626975D4F0046854A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		89750E592657E986005A1BC5 /* PaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		8981C8F64D94D3C52EB67A2C /* Pods-SignalTests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalTests.test.xcconfig"; path = "Pods/Target Support Files/Pods-SignalTests/Pods-SignalTests.test.xcconfig"; sourceTree = "<group>"; };
 		89BFD361265E9ED400955B2F /* PaymentNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentNetworkService.swift; sourceTree = "<group>"; };
@@ -3141,6 +3143,7 @@
 				FCFA64B11A24F29E0007FB87 /* UI Categories */,
 				8811CF832295D8DA00FF6549 /* VolumeButtons.swift */,
 				0D7B7E412623212100F46C0D /* UILabelInteractionManager.swift */,
+				89352EB626975D4F0046854A /* String+Extensions.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -5313,6 +5316,7 @@
 				32A9E22624C11B3F00C43518 /* EmojiMoodPickerView.swift in Sources */,
 				881218F0238CA51600E6F271 /* MessageReactionPicker.swift in Sources */,
 				457F671B20746193000EABCD /* QuotedReplyPreview.swift in Sources */,
+				89352EB726975D4F0046854A /* String+Extensions.swift in Sources */,
 				34A6C28021E503E700B5B12E /* OWSImagePickerController.swift in Sources */,
 				88A9729222FA5D4B004B4FBF /* AttachmentFormatPickerView.swift in Sources */,
 				346C19E125ACE9AE00061D3A /* MediaDownloadSettingsViewController.swift in Sources */,

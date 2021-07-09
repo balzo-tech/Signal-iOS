@@ -86,7 +86,10 @@ extension ConversationSettingsViewController {
                 buildRequestsInvitesAndLinkSection(groupModelV2: groupModelV2, contents: contents)
             }
 
-            contents.addSection(buildGroupMembershipSection(groupModel: groupModel))
+            
+            if false == self.isPremiumGroup || self.isLocalUserAdministrator {
+                contents.addSection(buildGroupMembershipSection(groupModel: groupModel))
+            }
         }
 
         if !isNoteToSelf {

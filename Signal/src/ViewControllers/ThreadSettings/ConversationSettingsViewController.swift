@@ -130,6 +130,17 @@ class ConversationSettingsViewController: OWSTableViewController2 {
         }
         return subscription.isActive
     }
+    
+    var isPremiumGroup: Bool {
+        return self.threadViewModel.subscriptionPlan != nil
+    }
+    
+    var isLocalUserAdministrator: Bool {
+        guard let localAddress = TSAccountManager.localAddress, let currentGroupModel = self.currentGroupModel else {
+            return false
+        }
+        return currentGroupModel.groupMembership.fullMemberAdministrators.contains(localAddress)
+    }
 
     // MARK: - View Lifecycle
 

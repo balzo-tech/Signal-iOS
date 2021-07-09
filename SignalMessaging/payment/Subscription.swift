@@ -12,6 +12,8 @@ public class Subscription: NSObject {
     @objc public let expirationDate: Date
     @objc public let subscriptionPlan: SubscriptionPlan
     
+    @objc public var isSubscribedWithoutIssues: Bool { return self.isActive && !self.hasIssue }
+    
     @objc public init(identifier: String, hasIssue: Bool, isActive: Bool, expirationDate: Date, subscriptionPlan: SubscriptionPlan) {
         self.identifier = identifier
         self.hasIssue = hasIssue

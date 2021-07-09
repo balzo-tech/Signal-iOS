@@ -57,6 +57,9 @@ extension ConversationViewController {
         guard !threadViewModel.hasPendingMessageRequest else {
             return false
         }
+        guard threadViewModel.subscriptionPlan == nil || (threadViewModel.subscription?.isSubscribedWithoutIssues ?? false) else {
+            return false
+        }
         guard let contactThread = thread as? TSContactThread else {
             return RemoteConfig.groupCalling && thread.isGroupV2Thread
         }

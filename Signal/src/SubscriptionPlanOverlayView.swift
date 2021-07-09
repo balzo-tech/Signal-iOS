@@ -129,11 +129,9 @@ class SubscriptionPlanOverlayView: UIView {
             self.subscriptionPlanView.update(withSubscriptionPlan: subscriptionPlan)
         }
         if let groupModel = self.currentGroupModel {
-            guard let owner = groupModel.groupMembership.fullMembers.first(where: { groupModel.groupMembership.isFullMemberAndAdministrator($0) }) else {
-                assertionFailure("Missing owner")
-                return
+            if let owner = groupModel.groupMembership.fullMembers.first(where: { groupModel.groupMembership.isFullMemberAndAdministrator($0) }) {
+                self.groupOwnerView.update(withAddress: owner)
             }
-            self.groupOwnerView.update(withAddress: owner)
         }
     }
     

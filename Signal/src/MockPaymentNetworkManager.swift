@@ -19,10 +19,26 @@ class MockPaymentNetworkManager: NSObject {
     private static let canAccessAllPremiumGroups: Bool = true
     
     private static let currentSubscriptions: [Subscription] = [
-        Subscription(identifier: "1", hasIssue: true, isActive: true, expirationDate: Date(timeIntervalSinceNow: -24 * 60 * 60)),
-        Subscription(identifier: "2", hasIssue: false, isActive: true, expirationDate: Date(timeIntervalSinceNow: 2 * 24 * 60 * 60)),
-        Subscription(identifier: "3", hasIssue: false, isActive: true, expirationDate: Date(timeIntervalSinceNow: 3 * 24 * 60 * 60)),
-        Subscription(identifier: "4", hasIssue: false, isActive: true, expirationDate: Date(timeIntervalSinceNow: 4 * 24 * 60 * 60)),
+        Subscription(identifier: "1",
+                     hasIssue: true,
+                     isActive: true,
+                     expirationDate: Date(timeIntervalSinceNow: -24 * 60 * 60),
+                     subscriptionPlan: SubscriptionPlan(price: 9.99, period: 1, periodUnit: .month)),
+        Subscription(identifier: "2",
+                     hasIssue: false,
+                     isActive: true,
+                     expirationDate: Date(timeIntervalSinceNow: 2 * 24 * 60 * 60),
+                     subscriptionPlan: SubscriptionPlan(price: 9.99, period: 1, periodUnit: .month)),
+        Subscription(identifier: "3",
+                     hasIssue: false,
+                     isActive: true,
+                     expirationDate: Date(timeIntervalSinceNow: 3 * 24 * 60 * 60),
+                     subscriptionPlan: SubscriptionPlan(price: 9.99, period: 1, periodUnit: .month)),
+        Subscription(identifier: "4",
+                     hasIssue: false,
+                     isActive: true,
+                     expirationDate: Date(timeIntervalSinceNow: 4 * 24 * 60 * 60),
+                     subscriptionPlan: SubscriptionPlan(price: 9.99, period: 1, periodUnit: .month)),
     ]
     
     private static let subscriptionPlanForAllGroups: SubscriptionPlan? = {

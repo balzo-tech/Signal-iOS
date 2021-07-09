@@ -64,4 +64,10 @@ class AvatarView: UIView {
             }
         }
     }
+    
+    /// This should be used only to test UI
+    public func debugUpdate(name: String) {
+        self.nameLabel.text = name
+        self.avatarImageView.image = OWSAvatarBuilder.buildRandomAvatar(withDiameter: UInt(Self.avatarSize.width))
+    }
 }

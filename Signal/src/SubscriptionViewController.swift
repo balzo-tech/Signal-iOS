@@ -5,12 +5,17 @@
 import Foundation
 import UIKit
 
-class SubscriptionViewController: UIViewController {
-    
-    private var threadViewModel: ThreadViewModel
+struct DebugSubscriptionViewModel {
+    let groupName: String
+    let subscription: Subscription
+}
 
-    private var thread: TSThread {
-        self.threadViewModel.threadRecord
+class SubscriptionViewController: OWSViewController {
+    
+    private var threadViewModel: ThreadViewModel?
+
+    private var thread: TSThread? {
+        self.threadViewModel?.threadRecord
     }
 
     // Group model reflecting the last known group state.
@@ -21,6 +26,9 @@ class SubscriptionViewController: UIViewController {
         }
         return groupThread.groupModel
     }
+    
+    /// This should be used only to test UI
+    private var debugData: DebugSubscriptionViewModel?
     
     private let subscriptionHintLabel: UILabel = {
         let text = NSLocalizedString("SUBSCRIPTION_HINT", comment: "Subscription hint in SubscriptionViewController.")
@@ -33,7 +41,11 @@ class SubscriptionViewController: UIViewController {
     
     private lazy var groupAvatarView: AvatarView = {
         let view = AvatarView()
-        view.update(withThreadViewModel: self.threadViewModel)
+        if let threadViewModel = self.threadViewModel {
+            view.update(withThreadViewModel: threadViewModel)
+        } else if let debugData = self.debugData {
+            view.debugUpdate(name: debugData.groupName)
+        }
         return view
     }()
     
@@ -48,8 +60,10 @@ class SubscriptionViewController: UIViewController {
     
     private lazy var subscriptionPlanView: SubscriptionPlanView = {
         let view = SubscriptionPlanView()
-        if let subscriptionPlan = self.threadViewModel.subscriptionPlan, let subscription = self.threadViewModel.subscription {
-            view.update(withSubscriptionPlan: subscriptionPlan, expirationDate: subscription.expirationDate)
+        if let subscription = self.threadViewModel?.subscription {
+            view.update(withSubscription: subscription)
+        } else if let debugData = self.debugData {
+            view.update(withSubscription: debugData.subscription)
         }
         return view
     }()
@@ -79,7 +93,20 @@ class SubscriptionViewController: UIViewController {
     
     init(withThreadViewModel threadViewModel: ThreadViewModel) {
         self.threadViewModel = threadViewModel
-        super.init(nibName: nil, bundle: nil)
+        super.init()
+    }
+    
+    init(withDebugData debugData: DebugSubscriptionViewModel) {
+        self.debugData = debugData
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         self.title = NSLocalizedString("SUBSCRIPTION_TITLE", comment: "Title of SubscriptionViewController.")
         self.view.backgroundColor = Theme.backgroundColor
@@ -122,8 +149,10 @@ class SubscriptionViewController: UIViewController {
         stackView.addBlankSpace(space: 12.0)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.backBarButtonItem = .init(title: "   ", style: .plain, target: nil, action: nil)
     }
     
     // MARK: - Actions

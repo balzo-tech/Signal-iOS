@@ -5257,8 +5257,8 @@
 /* Subscription options hint in SubscriptionPlanOverlayView. */
 "SUBSCRIPTION_PLAN_OVERLAY_OPTIONS" = "OPTIONS";
 
-/* Subscription renew date prefix in SubscriptionPlanOverlayView. */
-"SUBSCRIPTION_PLAN_OVERLAY_RENEW_DATE_PREFIX" = "Renews";
+/* Subscription renew date prefix. */
+"SUBSCRIPTION_PLAN_RENEW_DATE_PREFIX" = "Renews";
 
 /* Tip 1 in SubscriptionPlanOverlayView. */
 "SUBSCRIPTION_PLAN_OVERLAY_TIP_1" = "You can unsubscribe whenever you want";

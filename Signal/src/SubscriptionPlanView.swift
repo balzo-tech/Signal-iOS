@@ -56,41 +56,15 @@ class SubscriptionPlanView: UIView {
     
     // MARK: - Public Methods
     
-    public func update(withSubscriptionPlan subscriptionPlan: SubscriptionPlan, expirationDate: Date? = nil) {
+    public func update(withSubscriptionPlan subscriptionPlan: SubscriptionPlan) {
         self.descriptionLabel.text = subscriptionPlan.descriptionText
-        self.renewDateLabel.text = subscriptionPlan.getRenewDateText(withExpiryDate: expirationDate)
+        self.renewDateLabel.text = subscriptionPlan.getRenewDateText(withExpiryDate: nil)
         self.priceLabel.text = subscriptionPlan.priceText
     }
-}
-
-fileprivate extension SubscriptionPlan {
-    var descriptionText: String {
-        return "\(self.period) \(self.periodUnitString.capitalizingFirstLetter())"
-    }
     
-    var priceText: String {
-        // Euro currency is hardcoded for now... yes...
-        return String(format: "%.02f€", self.price)
-    }
-    
-    /// If no expiry date is provided, it would be calculated as if the subscription started today
-    func getRenewDateText(withExpiryDate expiryDate: Date?) -> String {
-        let unwrappedExpiryDate: Date
-        if let expiryDate = expiryDate {
-            unwrappedExpiryDate = expiryDate
-        } else {
-            guard let expiryDate = Calendar.current.date(byAdding: self.dateComponents, to: Date()) else {
-                assertionFailure("Couldn't compute expiry date")
-                return ""
-            }
-            unwrappedExpiryDate = expiryDate
-        }
-        
-        let renewalDatePrefix = NSLocalizedString("SUBSCRIPTION_PLAN_OVERLAY_RENEW_DATE_PREFIX", comment: "Subscription renew date prefix in SubscriptionPlanOverlayView.")
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        let renewDateString = dateFormatter.string(from: unwrappedExpiryDate)
-        return renewalDatePrefix + " " + renewDateString
+    public func update(withSubscription subscription: Subscription) {
+        self.descriptionLabel.text = subscription.subscriptionPlan.descriptionText
+        self.renewDateLabel.text = subscription.subscriptionPlan.getRenewDateText(withExpiryDate: subscription.expirationDate)
+        self.priceLabel.text = subscription.subscriptionPlan.priceText
     }
 }

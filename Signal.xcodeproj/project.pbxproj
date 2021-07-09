@@ -808,6 +808,8 @@
 		8937C33E26984C7E0084299A /* SubscriptionPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8937C33D26984C7E0084299A /* SubscriptionPlanView.swift */; };
 		8937C3402698612F0084299A /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8937C33F2698612F0084299A /* UIStackView+Extensions.swift */; };
 		8937C342269875CD0084299A /* SubscriptionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8937C341269875CD0084299A /* SubscriptionListViewController.swift */; };
+		8937C34826988C4D0084299A /* SubscriptionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8937C34726988C4D0084299A /* SubscriptionListCell.swift */; };
+		8937C34A26988D310084299A /* SubscriptionPlan+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8937C34926988D310084299A /* SubscriptionPlan+Extensions.swift */; };
 		89750E5A2657E986005A1BC5 /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89750E592657E986005A1BC5 /* PaymentManager.swift */; };
 		89BFD362265E9ED400955B2F /* PaymentNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFD361265E9ED400955B2F /* PaymentNetworkService.swift */; };
 		89BFD369265EA59800955B2F /* MockPaymentNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFD368265EA59800955B2F /* MockPaymentNetworkManager.swift */; };
@@ -1845,6 +1847,8 @@
 		8937C33D26984C7E0084299A /* SubscriptionPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlanView.swift; sourceTree = "<group>"; };
 		8937C33F2698612F0084299A /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		8937C341269875CD0084299A /* SubscriptionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionListViewController.swift; sourceTree = "<group>"; };
+		8937C34726988C4D0084299A /* SubscriptionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionListCell.swift; sourceTree = "<group>"; };
+		8937C34926988D310084299A /* SubscriptionPlan+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscriptionPlan+Extensions.swift"; sourceTree = "<group>"; };
 		89750E592657E986005A1BC5 /* PaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		8981C8F64D94D3C52EB67A2C /* Pods-SignalTests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalTests.test.xcconfig"; path = "Pods/Target Support Files/Pods-SignalTests/Pods-SignalTests.test.xcconfig"; sourceTree = "<group>"; };
 		89BFD361265E9ED400955B2F /* PaymentNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentNetworkService.swift; sourceTree = "<group>"; };
@@ -3155,6 +3159,7 @@
 				0D7B7E412623212100F46C0D /* UILabelInteractionManager.swift */,
 				89352EB626975D4F0046854A /* String+Extensions.swift */,
 				8937C33F2698612F0084299A /* UIStackView+Extensions.swift */,
+				8937C34926988D310084299A /* SubscriptionPlan+Extensions.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -3632,6 +3637,7 @@
 				8937C341269875CD0084299A /* SubscriptionListViewController.swift */,
 				8937C33B26984B310084299A /* AvatarView.swift */,
 				8937C33D26984C7E0084299A /* SubscriptionPlanView.swift */,
+				8937C34726988C4D0084299A /* SubscriptionListCell.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -5279,6 +5285,7 @@
 				348815D025545C0A00D4F4C4 /* CVAttachments.swift in Sources */,
 				346EAA1225013CDF00E8AB6F /* SendMessageFlow.swift in Sources */,
 				34D8C0271ED3673300188D7C /* DebugUIMessages.m in Sources */,
+				8937C34826988C4D0084299A /* SubscriptionListCell.swift in Sources */,
 				329D42A725AE673400DCB449 /* NetworkInterfacePreferenceViewController.swift in Sources */,
 				880BFFEA234590FA00F6FAB1 /* ConversationSplitViewController.swift in Sources */,
 				88A4CC1D246D00090082211F /* DeviceTransferProgressViewController.swift in Sources */,
@@ -5409,6 +5416,7 @@
 				88D23D2423CEC0C700B0E74B /* CallKitCallManager.swift in Sources */,
 				459311FC1D75C948008DD4F0 /* OWSDeviceTableViewCell.m in Sources */,
 				AC12B86D0DA4943DF1DE9CE6 /* OWSAddToContactViewController.swift in Sources */,
+				8937C34A26988D310084299A /* SubscriptionPlan+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

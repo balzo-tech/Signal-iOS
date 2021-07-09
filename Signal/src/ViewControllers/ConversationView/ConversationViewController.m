@@ -1542,6 +1542,10 @@ typedef enum : NSUInteger {
 
 - (void)showConversationSettingsWithMode:(ConversationSettingsPresentationMode)mode
 {
+    if (self.threadViewModel.subscriptionPlan != nil && (self.threadViewModel.subscription == nil || !self.threadViewModel.subscription.isSubscribedWithoutIssues)) {
+        return;
+    }
+    
     NSMutableArray<UIViewController *> *viewControllers = [self.viewControllersUpToSelf mutableCopy];
 
     ConversationSettingsViewController *settingsView =

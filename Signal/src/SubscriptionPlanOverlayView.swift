@@ -22,8 +22,8 @@ class SubscriptionPlanOverlayView: UIView {
         return groupThread.groupModel
     }
     
-    private let optionView = SubscriptionPlanOverlayOptionView()
-    private let groupOwnerView = GroupOwnerView()
+    private let subscriptionPlanView = SubscriptionPlanView()
+    private let groupOwnerView = AvatarView()
     
     @objc
     init(withThreadViewModel threadViewModel: ThreadViewModel) {
@@ -73,7 +73,7 @@ class SubscriptionPlanOverlayView: UIView {
         stackView.addArrangedSubview(subscriptionOptionsHintLabel)
 
         // Subscription Plan view
-        stackView.addArrangedSubview(self.optionView)
+        stackView.addArrangedSubview(self.subscriptionPlanView)
 
         // Tips
         let tipStackView = UIStackView()
@@ -126,12 +126,15 @@ class SubscriptionPlanOverlayView: UIView {
     private func updateView() {
         self.updateVisibility()
         if let subscriptionPlan = self.threadViewModel.subscriptionPlan {
-            self.optionView.update(withSubscriptionPlan: subscriptionPlan)
+            self.subscriptionPlanView.update(withSubscriptionPlan: subscriptionPlan)
         }
         if let groupModel = self.currentGroupModel {
-            self.groupOwnerView.update(groupModel: groupModel)
+            guard let owner = groupModel.groupMembership.fullMembers.first(where: { groupModel.groupMembership.isFullMemberAndAdministrator($0) }) else {
+                assertionFailure("Missing owner")
+                return
+            }
+            self.groupOwnerView.update(withAddress: owner)
         }
-        
     }
     
     private func updateVisibility() {
@@ -169,133 +172,5 @@ fileprivate extension UIStackView {
         horizontalStackView.addArrangedSubview(label)
         
         self.addArrangedSubview(horizontalStackView)
-    }
-}
-
-fileprivate extension SubscriptionPlan {
-    var descriptionText: String {
-        return "\(self.period) \(self.periodUnitString.capitalizingFirstLetter())"
-    }
-    
-    var priceText: String {
-        // Euro currency is hardcoded for now... yes...
-        return String(format: "%.02f€", self.price)
-    }
-    
-    var renewDateText: String {
-        guard let expiryDate = Calendar.current.date(byAdding: self.dateComponents, to: Date()) else {
-            assertionFailure("Couldn't compute expiry date")
-            return ""
-        }
-        let renewalDatePrefix = NSLocalizedString("SUBSCRIPTION_PLAN_OVERLAY_RENEW_DATE_PREFIX", comment: "Subscription renew date prefix in SubscriptionPlanOverlayView.")
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        let renewDateString = dateFormatter.string(from: expiryDate)
-        return renewalDatePrefix + " " + renewDateString
-    }
-}
-
-class SubscriptionPlanOverlayOptionView: UIView {
-    
-    let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = UIFont.ows_dynamicTypeCallout
-        label.textColor = Theme.isDarkThemeEnabled ? UIColor.ows_white : UIColor.ows_gray800
-        return label
-    }()
-    
-    let renewDateLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = UIFont.ows_dynamicTypeCaption1
-        label.textColor = Theme.isDarkThemeEnabled ? UIColor.ows_gray500 : UIColor.ows_gray400
-        return label
-    }()
-    
-    let priceLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = UIFont.ows_dynamicTypeCallout
-        label.textColor = Theme.isDarkThemeEnabled ? UIColor.ows_white : UIColor.ows_gray800
-        return label
-    }()
-    
-    init() {
-        super.init(frame: .zero)
-        let outerHorizontalStackView = UIStackView()
-        outerHorizontalStackView.axis = .horizontal
-        outerHorizontalStackView.spacing = 10.0
-        self.addSubview(outerHorizontalStackView)
-        outerHorizontalStackView.autoPinEdgesToSuperviewEdges()
-        
-        let innerVerticalStackView = UIStackView()
-        innerVerticalStackView.axis = .vertical
-        innerVerticalStackView.spacing = 4
-        outerHorizontalStackView.addArrangedSubview(innerVerticalStackView)
-        innerVerticalStackView.addArrangedSubview(self.descriptionLabel)
-        innerVerticalStackView.addArrangedSubview(self.renewDateLabel)
-        
-        self.priceLabel.setContentHuggingHorizontalHigh()
-        self.priceLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        outerHorizontalStackView.addArrangedSubview(self.priceLabel)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Public Methods
-    
-    public func update(withSubscriptionPlan subscriptionPlan: SubscriptionPlan) {
-        self.descriptionLabel.text = subscriptionPlan.descriptionText
-        self.renewDateLabel.text = subscriptionPlan.renewDateText
-        self.priceLabel.text = subscriptionPlan.priceText
-    }
-}
-
-class GroupOwnerView: UIView {
-    
-    private static let avatarSize = CGSize(square: 64.0)
-    
-    private let avatarImageView = AvatarImageView()
-    
-    let ownerNameLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = UIFont.ows_dynamicTypeHeadline
-        label.textColor = Theme.isDarkThemeEnabled ? UIColor.ows_white : UIColor.ows_gray800
-        return label
-    }()
-    
-    init() {
-        super.init(frame: .zero)
-        let horizontalStackView = UIStackView()
-        horizontalStackView.axis = .horizontal
-        horizontalStackView.spacing = 8
-        self.addSubview(horizontalStackView)
-        horizontalStackView.autoPinEdgesToSuperviewEdges()
-        
-        horizontalStackView.addArrangedSubview(self.avatarImageView)
-        self.avatarImageView.autoSetDimensions(to: Self.avatarSize)
-        horizontalStackView.addArrangedSubview(self.ownerNameLabel)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Public Methods
-    
-    public func update(groupModel: TSGroupModel) {
-        guard let owner = groupModel.groupMembership.fullMembers.first(where: { groupModel.groupMembership.isFullMemberAndAdministrator($0) }) else {
-            assertionFailure("Missing owner")
-            return
-        }
-        self.avatarImageView.image = OWSContactAvatarBuilder.init(address: owner,
-                                                                  colorName: .default,
-                                                                  diameter: UInt(Self.avatarSize.width)).buildDefaultImage()
-        self.ownerNameLabel.text = self.contactsManager.displayName(for: owner)
     }
 }

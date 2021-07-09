@@ -79,7 +79,10 @@ public class ThreadViewModel: NSObject {
             self.subscription = nil
         } else if self.name == "Error Group" {
             self.subscriptionPlan = SubscriptionPlan(price: 9.99, period: 1, periodUnit: .month)
-            self.subscription = Subscription(identifier: "1", hasIssue: true, isActive: true)
+            self.subscription = Subscription(identifier: "1", hasIssue: true, isActive: true, expirationDate: Date(timeIntervalSinceNow: -24 * 60 * 60))
+        } else if self.name == "Subscribed Group" {
+            self.subscriptionPlan = SubscriptionPlan(price: 9.99, period: 1, periodUnit: .month)
+            self.subscription = Subscription(identifier: "1", hasIssue: false, isActive: true, expirationDate: Date(timeIntervalSinceNow: 7 * 24 * 60 * 60))
         } else {
             self.subscriptionPlan = nil
             self.subscription = nil

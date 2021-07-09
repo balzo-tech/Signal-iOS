@@ -177,6 +177,27 @@ extension ConversationSettingsViewController {
         actionBlock: { [weak self] in
             self?.showWallpaperSettingsView()
         }))
+        
+        if self.hasActiveSubscription {
+            section.add(OWSTableItem(customCellBlock: { [weak self] in
+                guard let self = self else {
+                    owsFailDebug("Missing self")
+                    return OWSTableItem.newCell()
+                }
+                
+                let cell = OWSTableItem.buildCellWithAccessoryLabel(
+                    icon: .settingsSubscription,
+                    iconBackgroundColor: UIColor.ows_lipstickDark500,
+                    itemName: NSLocalizedString("SETTINGS_SUBSCRIPTION",
+                                                comment: "Label for settings view that allows user to check his subscription."),
+                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "subscription")
+                )
+                return cell
+            },
+            actionBlock: { [weak self] in
+                self?.showSubscriptionView()
+            }))
+        }
 
         if !isNoteToSelf && !isGroupThread && thread.hasSafetyNumbers() {
             // Safety Numbers

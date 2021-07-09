@@ -4507,6 +4507,9 @@
 /* Label for settings view that allows user to change the wallpaper. */
 "SETTINGS_ITEM_WALLPAPER" = "Sfondo chat";
 
+/* Label for settings view that allows user to check his subscription. */
+"SETTINGS_SUBSCRIPTION" = "Abbonamento";
+
 /* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "Politica e termini sulla privacy";
 
@@ -5292,3 +5295,18 @@
 
 /* Subscription plan period unit year plural. */
 "SUBSCRIPTION_PLAN_DURATION_YEAR_MULTIPLE" = "anni";
+
+/* Title of SubscriptionViewController. */
+"SUBSCRIPTION_TITLE" = "Termina Abbonamento";
+
+/* Subscription hint in SubscriptionViewController. */
+"SUBSCRIPTION_HINT" = "IL TUO ABBONAMENTO";
+
+/* Subscription options hint in SubscriptionViewController. */
+"SUBSCRIPTION_OPTIONS" = "OPZIONI";
+
+/* Unsubscribe button SubscriptionViewController. */
+"SUBSCRIPTION_UNSUBSCRIBE_BUTTON" = "Annulla Abbonamento";
+
+/* Subscription info in SubscriptionViewController. */
+"SUBSCRIPTION_INFO" = "Nulla in suspendisse et a, lacus ut tortor dictumst. A tincidunt maecenas porttitor adipiscing ornare eget. Diam arcu tristique vel facilisi velit augue.";

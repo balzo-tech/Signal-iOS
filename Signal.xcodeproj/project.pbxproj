@@ -803,6 +803,10 @@
 		8911BBAF2673A38300BDF9B9 /* SubscriptionPlanOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8911BBAE2673A38300BDF9B9 /* SubscriptionPlanOverlayView.swift */; };
 		892D5A79264EDBE400C679DF /* attachment_accent_blue.json in Resources */ = {isa = PBXBuildFile; fileRef = 892D5A78264EDBE400C679DF /* attachment_accent_blue.json */; };
 		89352EB726975D4F0046854A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89352EB626975D4F0046854A /* String+Extensions.swift */; };
+		8937C33A269845690084299A /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8937C339269845690084299A /* SubscriptionViewController.swift */; };
+		8937C33C26984B310084299A /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8937C33B26984B310084299A /* AvatarView.swift */; };
+		8937C33E26984C7E0084299A /* SubscriptionPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8937C33D26984C7E0084299A /* SubscriptionPlanView.swift */; };
+		8937C3402698612F0084299A /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8937C33F2698612F0084299A /* UIStackView+Extensions.swift */; };
 		89750E5A2657E986005A1BC5 /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89750E592657E986005A1BC5 /* PaymentManager.swift */; };
 		89BFD362265E9ED400955B2F /* PaymentNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFD361265E9ED400955B2F /* PaymentNetworkService.swift */; };
 		89BFD369265EA59800955B2F /* MockPaymentNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFD368265EA59800955B2F /* MockPaymentNetworkManager.swift */; };
@@ -1835,6 +1839,10 @@
 		8911BBAE2673A38300BDF9B9 /* SubscriptionPlanOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlanOverlayView.swift; sourceTree = "<group>"; };
 		892D5A78264EDBE400C679DF /* attachment_accent_blue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = attachment_accent_blue.json; sourceTree = "<group>"; };
 		89352EB626975D4F0046854A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		8937C339269845690084299A /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
+		8937C33B26984B310084299A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		8937C33D26984C7E0084299A /* SubscriptionPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlanView.swift; sourceTree = "<group>"; };
+		8937C33F2698612F0084299A /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		89750E592657E986005A1BC5 /* PaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		8981C8F64D94D3C52EB67A2C /* Pods-SignalTests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalTests.test.xcconfig"; path = "Pods/Target Support Files/Pods-SignalTests/Pods-SignalTests.test.xcconfig"; sourceTree = "<group>"; };
 		89BFD361265E9ED400955B2F /* PaymentNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentNetworkService.swift; sourceTree = "<group>"; };
@@ -3144,6 +3152,7 @@
 				8811CF832295D8DA00FF6549 /* VolumeButtons.swift */,
 				0D7B7E412623212100F46C0D /* UILabelInteractionManager.swift */,
 				89352EB626975D4F0046854A /* String+Extensions.swift */,
+				8937C33F2698612F0084299A /* UIStackView+Extensions.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -3617,6 +3626,9 @@
 			isa = PBXGroup;
 			children = (
 				8911BBAE2673A38300BDF9B9 /* SubscriptionPlanOverlayView.swift */,
+				8937C339269845690084299A /* SubscriptionViewController.swift */,
+				8937C33B26984B310084299A /* AvatarView.swift */,
+				8937C33D26984C7E0084299A /* SubscriptionPlanView.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -5020,6 +5032,7 @@
 				34DC9BD921543E0C00FDDCEC /* DebugContactsUtils.m in Sources */,
 				4C25768A23AD510800E0398D /* LoadMoreMessagesView.swift in Sources */,
 				88F58A1725EEE5B9008CDA24 /* AppSettingsViewController.swift in Sources */,
+				8937C33A269845690084299A /* SubscriptionViewController.swift in Sources */,
 				88D23D1023CEBF7F00B0E74B /* NotificationActionHandler.swift in Sources */,
 				4C04392A220A9EC800BAEA63 /* VoiceNoteLock.swift in Sources */,
 				8806EF1B248DBFC100E764C7 /* ContactPermissionReminderMegaphone.swift in Sources */,
@@ -5074,6 +5087,7 @@
 				88ABB8B7253421F200229EAA /* GroupCallVideoGrid.swift in Sources */,
 				88905E9E229CCA96004E4234 /* ExpirationNagView.swift in Sources */,
 				887889B2247F2E72001B5FCF /* Emoji.swift in Sources */,
+				8937C3402698612F0084299A /* UIStackView+Extensions.swift in Sources */,
 				3405C06E25435048008B24EF /* ConversationViewController+Banners.swift in Sources */,
 				881D85B822D92C2B00E118DF /* OWSPinSetupViewController.swift in Sources */,
 				340FC8BA204DAC8D007AEB0F /* FingerprintViewScanController.m in Sources */,
@@ -5142,6 +5156,7 @@
 				34A17D81253F7237009F8C02 /* ConversationSettingsViewController+LegacyGroups.swift in Sources */,
 				452037D11EE84975004E4CDF /* DebugUISessionState.m in Sources */,
 				88A4CC12246CE2F50082211F /* QRCodeView.swift in Sources */,
+				8937C33C26984B310084299A /* AvatarView.swift in Sources */,
 				D221A09A169C9E5E00537ABF /* main.m in Sources */,
 				34B3F87B1E8DF1700035BE1A /* SplashViewController.swift in Sources */,
 				3448E1622213585C004B052E /* OnboardingBaseViewController.swift in Sources */,
@@ -5328,6 +5343,7 @@
 				8851DB4324CCF0EB001EACD2 /* ConversationInputTextView.swift in Sources */,
 				76EB054018170B33006006FC /* AppDelegate.m in Sources */,
 				347C3842252CE6C900F3D941 /* CVComponentMessage.swift in Sources */,
+				8937C33E26984C7E0084299A /* SubscriptionPlanView.swift in Sources */,
 				88D23D2C23CEC17400B0E74B /* CallAudioService.swift in Sources */,
 				344A761124B366F4009D69A5 /* FlagsViewController.swift in Sources */,
 				887889A52476E999001B5FCF /* OWSPinConfirmationViewController.swift in Sources */,

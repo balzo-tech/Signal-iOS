@@ -123,6 +123,13 @@ class ConversationSettingsViewController: OWSTableViewController2 {
     var isGroupThread: Bool {
         return thread.isGroupThread
     }
+    
+    var hasActiveSubscription: Bool {
+        guard let subscription = self.threadViewModel.subscription else {
+            return false
+        }
+        return subscription.isActive
+    }
 
     // MARK: - View Lifecycle
 
@@ -350,6 +357,11 @@ class ConversationSettingsViewController: OWSTableViewController2 {
 
     func showWallpaperSettingsView() {
         let vc = WallpaperSettingsViewController(thread: thread)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func showSubscriptionView() {
+        let vc = SubscriptionViewController(withThreadViewModel: self.threadViewModel)
         navigationController?.pushViewController(vc, animated: true)
     }
 

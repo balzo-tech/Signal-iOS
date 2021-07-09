@@ -22,7 +22,7 @@ class SubscriptionViewController: UIViewController {
         return groupThread.groupModel
     }
     
-    let subscriptionHintLabel: UILabel = {
+    private let subscriptionHintLabel: UILabel = {
         let text = NSLocalizedString("SUBSCRIPTION_HINT", comment: "Subscription hint in SubscriptionViewController.")
         let label = UILabel()
         label.text = text
@@ -37,7 +37,7 @@ class SubscriptionViewController: UIViewController {
         return view
     }()
     
-    let subscriptionPlanHintLabel: UILabel = {
+    private let subscriptionPlanHintLabel: UILabel = {
         let text = NSLocalizedString("SUBSCRIPTION_OPTIONS", comment: "Subscription options hint in SubscriptionViewController.")
         let label = UILabel()
         label.text = text
@@ -67,7 +67,7 @@ class SubscriptionViewController: UIViewController {
         return button
     }()
     
-    let infoLabel: UILabel = {
+    private let infoLabel: UILabel = {
         let text = NSLocalizedString("SUBSCRIPTION_INFO", comment: "Subscription info in SubscriptionViewController.")
         let label = UILabel()
         label.text = text
@@ -127,10 +127,6 @@ class SubscriptionViewController: UIViewController {
     }
     
     // MARK: - Actions
-    
-    @objc private func backDidPressed() {
-        self.navigationController?.popViewController(animated: true)
-    }
     
     @objc func unsubscribeButtonPressed() {
         // TODO: Unsubscribe

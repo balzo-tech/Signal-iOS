@@ -5310,3 +5310,9 @@
 
 /* Subscription info in SubscriptionViewController. */
 "SUBSCRIPTION_INFO" = "Nulla in suspendisse et a, lacus ut tortor dictumst. A tincidunt maecenas porttitor adipiscing ornare eget. Diam arcu tristique vel facilisi velit augue.";
+
+/* Title for the 'subscriptions' link in settings. */
+"SETTINGS_SUBSCRIPTIONS" = "Abbonamenti";
+
+/* Title of SubscriptionListViewController. */
+"SUBSCRIPTION_LIST_TITLE" = "Abbonamenti";

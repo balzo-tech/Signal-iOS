@@ -72,22 +72,6 @@ class AppSettingsViewController: OWSTableViewController2 {
         ))
         
         section1.add(.disclosureItem(
-            icon: .settingsAccount,
-            iconBackgroundColor: UIColor.ows_azureRadianceDark500,
-            name: NSLocalizedString("SETTINGS_PAYMENT_METHODS", comment: "Title for the 'payment methods' link in settings."),
-            accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "account"),
-            actionBlock: { [weak self] in
-                guard let self = self else { return }
-                firstly {
-                    AppEnvironment.shared.paymentManagerRef.showPaymentMethods(presenter: self)
-                }.catch { error in
-                    OWSActionSheets.showActionSheet(title: NSLocalizedString("ALERT_ERROR_TITLE", comment: "Generic error indicator"),
-                                                    message: error.localizedDescription)
-                }
-            }
-        ))
-        
-        section1.add(.disclosureItem(
             icon: .settingsLinkedDevices,
             iconBackgroundColor: UIColor.ows_blueGrey500,
             name: NSLocalizedString("LINKED_DEVICES_TITLE", comment: "Menu item and navbar title for the device manager"),
@@ -100,6 +84,16 @@ class AppSettingsViewController: OWSTableViewController2 {
         contents.addSection(section1)
 
         let section2 = OWSTableSection()
+        section2.add(.disclosureItem(
+            icon: .settingsSubscription,
+            iconBackgroundColor: UIColor.ows_shockingPink500,
+            name: NSLocalizedString("SETTINGS_SUBSCRIPTIONS", comment: "Title for the 'subscriptions' link in settings."),
+            accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "subscriptions"),
+            actionBlock: { [weak self] in
+                let vc = SubscriptionListViewController()
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+        ))
         section2.add(.disclosureItem(
             icon: .settingsAppearance,
             iconBackgroundColor: UIColor.ows_azureRadianceDark500,
